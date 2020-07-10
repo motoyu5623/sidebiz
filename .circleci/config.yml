@@ -56,8 +56,8 @@ jobs:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
       - run: bundle exec rails db:create
-      # - run: bundle exec rails db:schema:load
-      - run: bundle exec rails db:migrate
+      - run: bundle exec rails db:schema:load
+      # - run: bundle exec rails db:migrate
       # Rspec
       - run:
           name: Rspec
@@ -92,6 +92,9 @@ jobs:
           name: heroku deploy
           command: |
             git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+      - run:
+          name: heroku db:migrate
+          command: heroku run rails db:migrate
       - run:
           name: heroku maintenance off
           command: heroku maintenance:off --app ${HEROKU_APP_NAME}
