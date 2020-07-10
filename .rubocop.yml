@@ -10,6 +10,11 @@ AllCops:
     - node_modules/**/*
     - config/puma.rb
 
+
+Layout/LineLength:
+  Exclude:
+    - 'config/initializers/devise'
+
 Metrics/MethodLength:
   Exclude:
     - 'db/migrate/*'
