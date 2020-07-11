@@ -26,11 +26,6 @@ RSpec.describe User, type: :model do
     expect(user.errors[:birthday]).to include("can't be blank")
   end
 
-  # it "is invalid without password" do
-  #   user.password = nil
-  #   user.valid?
-  #   expect(user.errors[:password]).to include("can't be blank")
-  # end
   it 'is invalid with a duplicate email address' do
     other_user.email = user.email
     other_user.valid?
