@@ -40,3 +40,4 @@ Style/StringLiterals:
   Exclude:
     - 'config/environments/production.rb'
     - 'config/spring.rb'
+    
