@@ -1,4 +1,6 @@
 class JobsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @jobs = Job.all
   end
@@ -8,11 +10,19 @@ class JobsController < ApplicationController
   end
 
   def new
-    @job = Job.new
+    @job = current_user.jobs.build
   end
 
   def create
-    Job.create(job_params)
+    @job = current_user.jobs.build(job_params)
+    @job.save
+    if @job.save
+      flash[:success] = "job registered!"
+      redirect_to job_path(@job.id)
+    else
+      flash[:success] = "register faild"
+      render :new
+    end
   end
 
   def edit
@@ -30,9 +40,10 @@ class JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:name, :type, :section, :industry,
+    params.require(:job).permit(:name, :work_type, :company, :section,
+                                :industry,
                                 :medium, :occupation, :started_at,
                                 :ended_at, :worktime_week, :description,
-                                :pulled_skill, :returned_skill, :is_main)
+                                :pulled_skill, :returned_skill, :is_main, :user_id)
   end
 end

@@ -1,2 +1,17 @@
 <h1>Jobs#show</h1>
 <p>Find me in app/views/jobs/show.html.erb</p>
+
+<h4>副業名</h4>
+<span><%= @job.name %></span>
+
+<h4>働き方</h4>
+<span><%= @job.work_type %></span>
+<h4>労働時間（週）</h4>
+<span><%= @job.worktime_week %></span>
+<h4>概要</h4>
+<span><%= @job.description %></span>
+
+<h4>本業から活かせたスキル</h4>
+<span><%= @job.pulled_skill %></span>
+<h4>本業から還元できたスキル</h4>
+<span><%= @job.returned_skill %></span>
