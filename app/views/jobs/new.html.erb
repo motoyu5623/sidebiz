@@ -1,7 +1,21 @@
 <h1>Jobs#new</h1>
+<p>Find me in app/views/jobs/new.html.erb</p>
+
 <h1><%= current_user.username %></h1>
-<br>
+
 <%= form_with(model: @job, local:true) do |f| %>
+ <% if @job.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
+
+      <ul>
+        <% @job.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="field">
     <span class="field_left"><%= f.label :name %></span>
     <span class="field_right"><%= f.text_field :name %></span>
@@ -69,14 +83,17 @@
     <span class="field_left"><%= f.label '労働時間（週）' %></span>
     <span class="field_right"><%= f.select(:worktime_week, options_for_select([['〜5時間', 1],['5〜10時間', 2],['10〜15時間', 3],['15〜20時間', 4],['20〜25時間', 5],['それ以上', 6], ])) %></span>
   </div>
+
   <div class="field">
-    <span class="field_left"><%= f.label :description %></span>
+    <span class="field_left"><%= f.label '概要' %></span>
     <span class="field_right"><%= f.text_area :description %></span>
   </div>
+
   <div class="field">
     <span class="field_left"><%= f.label '本業から活用できたスキル' %></span>
     <span class="field_right"><%= f.text_area :pulled_skill %></span>
   </div>
+
   <div class="field">
     <span class="field_left"><%= f.label '本業に還元できたスキル' %></span>
     <span class="field_right"><%= f.text_area :returned_skill %></span>
