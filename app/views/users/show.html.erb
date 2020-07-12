@@ -1,0 +1,12 @@
+<div>
+  <h1>ユーザーネーム</h1>
+  <h1><%= @user.username %></h1>
+</div>
+<div>副業について</div>
+<br>
+<% @jobs.each do |job| %>
+  <div>
+    <span>副業名：</span>
+    <span><%= job.name %></span>
+  </div>
+<% end %>
