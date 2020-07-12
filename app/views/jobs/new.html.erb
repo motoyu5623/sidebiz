@@ -1,0 +1,18 @@
+<h1>Jobs#new</h1>
+<p>Find me in app/views/jobs/new.html.erb</p>
+
+<%= form_with model: @job do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_field :work_type %>
+  <%= f.text_field :section %>
+  <%= f.text_field :industry %>
+  <%= f.text_field :medium %>
+  <%= f.text_field :occupation %>
+  <%= f.date_select :description %>
+  <%= f.date_select :description %>
+  <%= f.text_field :description %>
+  <%= f.text_area :description %>
+  <%= f.text_area :pulled_skill %>
+  <%= f.text_area :returned_skill %>
+  <%= f.submit %>
+<% end %>
