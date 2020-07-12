@@ -2,7 +2,7 @@ class Job < ApplicationRecord
   belongs_to :user
 
   validates :name, presence: true, length: { maximum: 50 }
-  validates :type, length: { maximum: 50 }
+  validates :work_type, length: { maximum: 50 }
   validates :section, length: { maximum: 50 }
   validates :industry, length: { maximum: 50 }
   validates :medium, length: { maximum: 50 }

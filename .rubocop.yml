@@ -19,6 +19,10 @@ Metrics/MethodLength:
   Exclude:
     - 'db/migrate/*'
 
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
 Metrics/AbcSize:
   Exclude:
     - 'db/migrate/*'
