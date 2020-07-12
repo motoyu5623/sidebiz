@@ -1,12 +1,12 @@
 class User < ApplicationRecord
   has_one :main_job,
-    -> { where(is_main: true) },
-    class_name: 'Job',
-    autosave: true
-  
+          -> { where(is_main: true) },
+          class_name: 'Job',
+          autosave: true
+
   has_many :jobs,
-    -> { where(is_main: false)},
-    class_name: 'Job'
+           -> { where(is_main: false) },
+           class_name: 'Job'
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

@@ -14,11 +14,10 @@ class CreateJobs < ActiveRecord::Migration[6.0]
       t.text       :pulled_skill, null: false
       t.text       :returned_skill, null: false
       t.boolean    :is_main, default: false
-      
+
       t.references :user, null: false, foreign_key: true
       t.timestamps
     end
     add_index :jobs, :name
-
   end
 end
