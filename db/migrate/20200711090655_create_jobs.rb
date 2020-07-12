@@ -18,7 +18,6 @@ class CreateJobs < ActiveRecord::Migration[6.0]
       t.references :user, null: false, foreign_key: true
       t.timestamps
     end
-    add_index :jobs, :user_id
     add_index :jobs, :name
 
   end
