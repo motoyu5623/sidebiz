@@ -1,2 +1,14 @@
 <h1>Jobs#index</h1>
 <p>Find me in app/views/jobs/index.html.erb</p>
+
+
+<h2>副業レビュー一覧</h2>
+<br>
+<% @jobs.each do |job| %>
+  <div>
+    <span>副業名：</span>
+    <span>
+      <%= link_to job.name, job_path(job) %>
+    </span>
+  </div>
+<% end %>

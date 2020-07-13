@@ -18,6 +18,6 @@
 <% @jobs.each do |job| %>
   <div>
     <span>副業名：</span>
-    <span><%= job.name %></span>
+    <span><%= link_to job.name, job_path(job) %></span>
   </div>
 <% end %>

@@ -2,7 +2,7 @@ class JobsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @jobs = Job.all
+    @jobs = Job.where(is_main: false)
   end
 
   def show
