@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe 'Jobs', type: :request do
-  let!(:job) { create(:job) }
+  let!(:user) { create(:user) }
+  let!(:job) { create(:job, user: user) }
+  let!(:main_job) { create(:job, :main_job, user: user) }
 
   describe 'GET /index' do
     it 'returns http success' do

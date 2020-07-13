@@ -14,5 +14,9 @@ FactoryBot.define do
     pulled_skill { 'なし' }
     returned_skill { 'なし' }
     is_main { false }
+
+    trait :main_job do
+      is_main { true }
+    end
   end
 end

@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'MainJobs', type: :request do
   let!(:user) { create(:user) }
-  let!(:main_job) { create(:job, is_main: true) }
 
   describe 'GET /new' do
     it 'returns http success' do

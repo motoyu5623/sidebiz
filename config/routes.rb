@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   get 'main_job/new'
   post 'main_job/create'
   get 'main_job/edit'
