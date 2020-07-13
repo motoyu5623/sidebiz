@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: %i[index show]
 
   def index
     @jobs = Job.all
@@ -17,10 +17,10 @@ class JobsController < ApplicationController
     @job = current_user.jobs.build(job_params)
     @job.save
     if @job.save
-      flash[:success] = "job registered!"
+      flash[:success] = 'job registered!'
       redirect_to job_path(@job.id)
     else
-      flash[:success] = "register faild"
+      flash[:success] = 'register faild'
       render :new
     end
   end
