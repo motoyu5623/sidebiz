@@ -1,6 +1,6 @@
 @import '~bootstrap/scss/bootstrap';
 
-@mixin box_sizing {
+body {
   -moz-box-sizing:    border-box;
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
@@ -11,5 +11,44 @@
   float: left;
   width: 100%;
   margin-top: 45px;
-  @include box_sizing;
+}
+
+.field {
+  width: 90%;
+  margin-bottom: 10px;
+}
+
+.field-left {
+  display: inline-block;
+  width: 30%;
+  text-align: right;
+  vertical-align: top;
+  margin-right: 10px;
+}
+
+.field-right {
+  display: inline-block;
+  width: 65%;
+}
+
+.input-form {
+  width: 80%;
+}
+
+.job-left{
+  width: 30%;
+}
+
+.job-center{
+  width: 30%;
+}
+
+.job-right{
+  width: 30%;
+}
+
+.description-400 {
+  border: 1px solid;
+  height: 30px;
+  
 }

@@ -1,34 +1,66 @@
-<h1>Jobs#show</h1>
-<p>Find me in app/views/jobs/show.html.erb</p>
-
-<h4>ユーザーネーム</h4>
+<h1>Jobs詳細</h1>
 <h1><%= link_to @user.username, user_path(@user) %></h1>
+<br>
+<div class="card">
+      <div class="job_name_holder_sm">
+        <div>副業名</div>
+        <div><%= @job.name %></div>
+      </div>
+  <div class="card-body">
+    <div class="row">
+
+      <div class="col-4 job-left">
+      <table border="1" style="border-collapse: collapse">
+        <tr>
+          <td><div>働き方</div></td>
+          <td><div>会社勤めとか<%= @job.work_type %></div></td>
+        </tr>
+        <tr>
+          <td><div>会社名</div></td>
+          <td><div><%= @job.company %></div></td>
+        </tr>
+        <tr>
+          <td><div>部署</div></td>
+          <td><div><%= @job.section %></div></td>
+        </tr>
+        <tr>
+          <td><div>業界</div></td>
+          <td> <div><%= @job.industry %></div></td>
+        </tr>
+        <tr>
+          <td><div>案件ルート</div></td>
+          <td><div><%= @job.medium %></div></td>
+        </tr>
+        <tr>
+          <td><div>労働時間（週）</div></td>
+          <td><div><%= @job.worktime_week %></div></td>
+        </tr>
+      </table>
+      </div>
+      <div class="col-4 job-center">
+        <div>主な業務内容</div>
+        <div class="description-400"><%= @job.description %></div>
+
+        <div>本業から活かせたスキル</div>
+        <div class="description-400"><%= @job.pulled_skill %></div>
+        <div>本業から還元できたスキル</div>
+        <div class="description-400"><%= @job.returned_skill %></div>
+      </div>
+      <div class="col-4 job-right">
+        グラフエリア
+      </div>
+    </div>
+  </div>
+</div>
 
 <br><br>
 
-<h4>副業名</h4>
-<span><%= @job.name %></span>
+<div>本業名</div>
+<div><%= @main_job.name %></div>
 
-<h4>働き方</h4>
-<span><%= @job.work_type %></span>
-<h4>労働時間（週）</h4>
-<span><%= @job.worktime_week %></span>
-<h4>概要</h4>
-<span><%= @job.description %></span>
-
-<h4>本業から活かせたスキル</h4>
-<span><%= @job.pulled_skill %></span>
-<h4>本業から還元できたスキル</h4>
-<span><%= @job.returned_skill %></span>
-
-<br><br>
-
-<h4>本業名</h4>
-<span><%= @main_job.name %></span>
-
-<h4>働き方</h4>
-<span><%= @main_job.work_type %></span>
-<h4>労働時間（週）</h4>
-<span><%= @main_job.worktime_week %></span>
-<h4>概要</h4>
-<span><%= @main_job.description %></span>
+<div>働き方</div>
+<div><%= @main_job.work_type %></div>
+<div>労働時間（週）</div>
+<div><%= @main_job.worktime_week %></div>
+<div>概要</div>
+<div><%= @main_job.description %></div>

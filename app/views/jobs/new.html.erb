@@ -1,8 +1,3 @@
-<h1>Jobs#new</h1>
-<p>Find me in app/views/jobs/new.html.erb</p>
-
-<h1><%= current_user.username %></h1>
-
 <%= form_with(model: @job, local:true) do |f| %>
  <% if @job.errors.any? %>
     <div id="error_explanation">
@@ -17,43 +12,43 @@
   <% end %>
 
   <div class="field">
-    <span class="field_left"><%= f.label :name %></span>
-    <span class="field_right"><%= f.text_field :name %></span>
+    <span class="field-left"><%= f.label :name %></span>
+    <span class="field-right"><%= f.text_field :name %></span>
   </div>
 
   <div class="field">
-    <span class="field_left"><%= f.label :work_type %></span>
-    <span class="field_right"><%= f.text_field :work_type %></span>
+    <span class="field-left"><%= f.label :work_type %></span>
+    <span class="field-right"><%= f.text_field :work_type, class:"input-form" %></span>
   </div>
 
   <div class="field">
-    <span class="field_left"><%= f.label :company %></span>
-    <span class="field_right"><%= f.text_field :company %></span>
+    <span class="field-left"><%= f.label :company %></span>
+    <span class="field-right"><%= f.text_field :company %></span>
   </div>
 
   <div class="field">
-    <span class="field_left"><%= f.label :section %></span>
-    <span class="field_right"><%= f.text_field :section %></span>
+    <span class="field-left"><%= f.label :section %></span>
+    <span class="field-right"><%= f.text_field :section %></span>
   </div>
   
   <div class="field">
-    <span class="field_left"><%= f.label :industry %></span>
-    <span class="field_right"><%= f.text_field :industry %></span>
+    <span class="field-left"><%= f.label :industry %></span>
+    <span class="field-right"><%= f.text_field :industry %></span>
   </div>
 
   <div class="field">
-    <span class="field_left"><%= f.label :medium %></span>
-    <span class="field_right"><%= f.text_field :medium %></span>
+    <span class="field-left"><%= f.label :medium %></span>
+    <span class="field-right"><%= f.text_field :medium %></span>
   </div>
 
   <div class="field">
-    <span class="field_left"><%= f.label :occupation %></span>
-    <span class="field_right"><%= f.text_field :occupation %></span>
+    <span class="field-left"><%= f.label :occupation %></span>
+    <span class="field-right"><%= f.text_field :occupation %></span>
   </div>
 
   <div class="field">
-    <span class="field_left"><%= f.label :started_at %></span>
-    <span class="field_right">
+    <span class="field-left"><%= f.label :started_at %></span>
+    <span class="field-right">
       <%= raw sprintf(f.date_select(:started_at,
                                     use_month_numbers: true,
                                     date_separator: '%s',
@@ -66,8 +61,8 @@
   </div>
 
   <div class="field">
-    <span class="field_left"><%= f.label :ended_at %></span>
-    <span class="field_right">
+    <span class="field-left"><%= f.label :ended_at %></span>
+    <span class="field-right">
       <%= raw sprintf(f.date_select(:ended_at,
                                     use_month_numbers: true,
                                     date_separator: '%s',
@@ -80,23 +75,23 @@
   </div>
 
   <div class="field">
-    <span class="field_left"><%= f.label '労働時間（週）' %></span>
-    <span class="field_right"><%= f.select(:worktime_week, options_for_select([['〜5時間', 1],['5〜10時間', 2],['10〜15時間', 3],['15〜20時間', 4],['20〜25時間', 5],['それ以上', 6], ])) %></span>
+    <span class="field-left"><%= f.label '労働時間（週）' %></span>
+    <span class="field-right"><%= f.select(:worktime_week, options_for_select([['〜5時間', 1],['5〜10時間', 2],['10〜15時間', 3],['15〜20時間', 4],['20〜25時間', 5],['それ以上', 6], ])) %></span>
   </div>
 
   <div class="field">
-    <span class="field_left"><%= f.label '概要' %></span>
-    <span class="field_right"><%= f.text_area :description %></span>
+    <span class="field-left"><%= f.label '概要' %></span>
+    <span class="field-right"><%= f.text_area :description %></span>
   </div>
 
   <div class="field">
-    <span class="field_left"><%= f.label '本業から活用できたスキル' %></span>
-    <span class="field_right"><%= f.text_area :pulled_skill %></span>
+    <span class="field-left"><%= f.label '本業から活用できたスキル' %></span>
+    <span class="field-right"><%= f.text_area :pulled_skill %></span>
   </div>
 
   <div class="field">
-    <span class="field_left"><%= f.label '本業に還元できたスキル' %></span>
-    <span class="field_right"><%= f.text_area :returned_skill %></span>
+    <span class="field-left"><%= f.label '本業に還元できたスキル' %></span>
+    <span class="field-right"><%= f.text_area :returned_skill %></span>
   </div>
   <%= f.hidden_field :is_main, :value => false %>
   <%= f.hidden_field :user_id, :value => current_user.id %>

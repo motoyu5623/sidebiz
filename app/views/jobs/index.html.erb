@@ -1,14 +1,20 @@
-<h1>Jobs#index</h1>
-<p>Find me in app/views/jobs/index.html.erb</p>
-
-
 <h2>副業レビュー一覧</h2>
 <br>
 <% @jobs.each do |job| %>
-  <div>
-    <span>副業名：</span>
+<div class="card">
+  <div class="card-body">
+    <div class="name_holder_sm">
+      <%= job.user.username %>
+    </div>
+    <%= image_tag '/noimage.png', :size => '100x100' %>
+    <span>本業：</span>
+    <span>
+      <%=  job.user.main_job.name %>
+    </span>
+    <span>→　　副業：</span>
     <span>
       <%= link_to job.name, job_path(job) %>
     </span>
   </div>
+</div>
 <% end %>
