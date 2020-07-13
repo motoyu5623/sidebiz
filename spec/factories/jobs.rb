@@ -13,6 +13,6 @@ FactoryBot.define do
     description { '新規アプリの開発と、既存アプリのメンテナンス' }
     pulled_skill { 'なし' }
     returned_skill { 'なし' }
-    is_main { true }
+    is_main { false }
   end
 end

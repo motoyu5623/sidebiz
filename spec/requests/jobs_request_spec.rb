@@ -17,7 +17,7 @@ RSpec.describe 'Jobs', type: :request do
     end
   end
 
-#ログインしないとだめ
+  # Need to login  !!!!
   # describe 'GET /new' do
   #   it 'returns http success' do
 

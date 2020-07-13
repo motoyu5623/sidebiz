@@ -1,0 +1,99 @@
+<h1>MainJob#new</h1>
+<p>Find me in app/views/main_job/new.html.erb</p>
+
+<h1><%= current_user.username %></h1>
+
+<%= form_with(model: @job, url: main_job_create_path, local:true) do |f| %>
+ <% if @job.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
+
+      <ul>
+        <% @job.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <span class="field_left"><%= f.label :name %></span>
+    <span class="field_right"><%= f.text_field :name %></span>
+  </div>
+
+  <div class="field">
+    <span class="field_left"><%= f.label :work_type %></span>
+    <span class="field_right"><%= f.text_field :work_type %></span>
+  </div>
+
+  <div class="field">
+    <span class="field_left"><%= f.label :company %></span>
+    <span class="field_right"><%= f.text_field :company %></span>
+  </div>
+
+  <div class="field">
+    <span class="field_left"><%= f.label :section %></span>
+    <span class="field_right"><%= f.text_field :section %></span>
+  </div>
+  
+  <div class="field">
+    <span class="field_left"><%= f.label :industry %></span>
+    <span class="field_right"><%= f.text_field :industry %></span>
+  </div>
+
+  <div class="field">
+    <span class="field_left"><%= f.label :medium %></span>
+    <span class="field_right"><%= f.text_field :medium %></span>
+  </div>
+
+  <div class="field">
+    <span class="field_left"><%= f.label :occupation %></span>
+    <span class="field_right"><%= f.text_field :occupation %></span>
+  </div>
+
+  <div class="field">
+    <span class="field_left"><%= f.label :started_at %></span>
+    <span class="field_right">
+      <%= raw sprintf(f.date_select(:started_at,
+                                    use_month_numbers: true,
+                                    date_separator: '%s',
+                                    start_year: 1930,
+                                    end_year: Time.now.year,
+                                    default: Date.new(2016, 1, 1),
+                                    discard_day: true),
+                      '年') + '月' %>
+    </span>
+  </div>
+
+  <div class="field">
+    <span class="field_left"><%= f.label :ended_at %></span>
+    <span class="field_right">
+      <%= raw sprintf(f.date_select(:ended_at,
+                                    use_month_numbers: true,
+                                    date_separator: '%s',
+                                    start_year: 1930,
+                                    end_year: Time.now.year,
+                                    default: Date.new(2016, 1, 1),
+                                    discard_day: true),
+                      '年') + '月' %>
+    </span>
+  </div>
+
+  <div class="field">
+    <span class="field_left"><%= f.label '労働時間（週）' %></span>
+    <span class="field_right"><%= f.select(:worktime_week, options_for_select([['〜5時間', 1],['5〜10時間', 2],['10〜15時間', 3],['15〜20時間', 4],['20〜25時間', 5],['それ以上', 6], ])) %></span>
+  </div>
+
+  <div class="field">
+    <span class="field_left"><%= f.label '概要' %></span>
+    <span class="field_right"><%= f.text_area :description %></span>
+  </div>
+
+  <%= f.hidden_field :pulled_skill, :value => '' %>
+  <%= f.hidden_field :returned_skill, :value => '' %>
+  <%= f.hidden_field :is_main, :value => true %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.submit '登録する' %>
+<% end %>
+
+
