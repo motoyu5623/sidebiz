@@ -15,9 +15,9 @@ class SkillsController < ApplicationController
       render :new
     end
   end
-    
+
   def skill_params
-    params.require(:skill).permit(:name, 
-              job_skills_attributes: [:id, :job_id, :skill_id, :score])
+    params.require(:skill).permit(:name,
+                                  job_skills_attributes: %i[id job_id skill_id score])
   end
 end

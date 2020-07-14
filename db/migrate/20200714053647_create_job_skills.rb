@@ -7,6 +7,6 @@ class CreateJobSkills < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
-    add_index :job_skills, [:job_id, :skill_id], unique: true
+    add_index :job_skills, %i[job_id skill_id], unique: true
   end
 end

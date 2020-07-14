@@ -54,6 +54,6 @@ class JobsController < ApplicationController
                                 :ended_at, :worktime_week, :description,
                                 :pulled_skill, :returned_skill, :is_main, :user_id,
                                 skills_attributes: [:name],
-                                job_skills_attributes: [:id, :skill_id, :score])
+                                job_skills_attributes: %i[id skill_id score])
   end
 end
