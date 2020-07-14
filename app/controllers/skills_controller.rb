@@ -7,7 +7,7 @@ class SkillsController < ApplicationController
   def create
     @job = Job.find(params[:job_id])
     @skills = @job.skills.build(skill_params)
-    if @job.save
+    if @skills.save
       flash[:success] = 'skills registered!'
       redirect_to root_path
     else
@@ -17,6 +17,7 @@ class SkillsController < ApplicationController
   end
     
   def skill_params
-    params.require(:skill).permit(:name, job_ids:[])
+    params.require(:skill).permit(:name, 
+              job_skills_attributes: [:id, :job_id, :skill_id, :score])
   end
 end

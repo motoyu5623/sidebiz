@@ -3,10 +3,29 @@
 
 
 <%= form_for @skills, url: {action: "create"} do |f| %>
+<% if @skills.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@skills.errors.count, "error") %> prohibited this job from being saved:</h2>
+
+      <ul>
+        <% @skills.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
   <div class="field">
     <div><%= f.label :name %></div>
     <%= f.text_field :name %>
   </div>
-  <% f.hidden_field :job_id, value: @job.id %>
+      <span>
+        <%= f.fields_for :job_skills, @skills.job_skills.build do |score_field|%>
+          <%= score_field.label :score %>
+          <%= score_field.number_field :score %>
+          <%= score_field.hidden_field :job_id, value: @job.id %>
+        <% end %>
+      </span>
   <%= f.submit %>
 <% end %>
