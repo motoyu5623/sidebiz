@@ -48,6 +48,14 @@
       </div>
       <div class="col-4 job-right">
         グラフエリア
+        <div>
+          <div>
+            <% @job.job_skills.each do |job_skill| %>
+              <span>スキル名<%= job_skill.skill.name %></span>
+              <span><%= job_skill.score %></span>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

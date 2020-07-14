@@ -1,6 +1,7 @@
 class JobSkill < ApplicationRecord
   belongs_to :job
   belongs_to :skill
-  validate :job_id, presence: true
-  validate :skill_id, presence: true
+  # validates :job_id, presence: true
+  # validates :skill_id, presence: true
+  # validates :score, presence: true
 end

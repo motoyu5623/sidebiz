@@ -16,6 +16,8 @@ class JobsController < ApplicationController
       redirect_to main_job_new_path
     else
       @job = current_user.jobs.build
+      @job.skills.build
+      # @job.skills.job_skills.build
     end
   end
 
@@ -50,6 +52,8 @@ class JobsController < ApplicationController
                                 :industry,
                                 :medium, :occupation, :started_at,
                                 :ended_at, :worktime_week, :description,
-                                :pulled_skill, :returned_skill, :is_main, :user_id)
+                                :pulled_skill, :returned_skill, :is_main, :user_id,
+                                skills_attributes: [:name],
+                                job_skills_attributes: [:id, :skill_id, :score])
   end
 end
