@@ -1,6 +1,6 @@
 class JobSkill < ApplicationRecord
-  belongs_to :job
-  belongs_to :skill
+  belongs_to :job, optional: true, autosave: true
+  belongs_to :skill, optional: true, autosave: true
   # validates :job_id, presence: true
   # validates :skill_id, presence: true
   # validates :score, presence: true

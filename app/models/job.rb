@@ -5,9 +5,9 @@ class Job < ApplicationRecord
   has_many :skills, through: :job_skills
 
   accepts_nested_attributes_for :skills
-  accepts_nested_attributes_for :job_skills
+  accepts_nested_attributes_for :job_skills, allow_destroy: true
 
-  # validates :user_id, presence: true
+  validates :user_id, presence: true
 
   validates :name, presence: true, length: { maximum: 50 }
   # validates :work_type, length: { maximum: 50 }

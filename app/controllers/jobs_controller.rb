@@ -23,10 +23,10 @@ class JobsController < ApplicationController
 
   def create
     @job = current_user.jobs.build(job_params)
-    @job.save
+    # @job.save
     if @job.save
       flash[:success] = 'job registered!'
-      redirect_to job_path(@job.id)
+      redirect_to new_job_skill_path(@job)
     else
       flash[:success] = 'register faild'
       render :new
@@ -49,11 +49,9 @@ class JobsController < ApplicationController
 
   def job_params
     params.require(:job).permit(:name, :work_type, :company, :section,
-                                :industry,
-                                :medium, :occupation, :started_at,
-                                :ended_at, :worktime_week, :description,
-                                :pulled_skill, :returned_skill, :is_main, :user_id,
-                                skills_attributes: [:name],
-                                job_skills_attributes: %i[id skill_id score])
+                                :industry, :medium, :occupation, :started_at, :ended_at,
+                                :worktime_week, :description, :pulled_skill, :returned_skill,
+                                :is_main, :user_id, skills_attributes: [:name,
+                                                                        job_skills_attributes: %i[score job_id]])
   end
 end

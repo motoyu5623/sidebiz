@@ -9,7 +9,7 @@ class SkillsController < ApplicationController
     @skills = @job.skills.build(skill_params)
     if @skills.save
       flash[:success] = 'skills registered!'
-      redirect_to root_path
+      redirect_to job_path(@job)
     else
       flash[:danger] = '登録できませんでした'
       render :new

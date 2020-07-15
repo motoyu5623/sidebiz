@@ -51,8 +51,10 @@
         <div>
           <div>
             <% @job.job_skills.each do |job_skill| %>
-              <span>スキル名<%= job_skill.skill.name %></span>
-              <span><%= job_skill.score %></span>
+              <div>
+                <span>スキル名<%= job_skill.skill.name %></span>
+                <span><%= job_skill.score %></span>
+              </div>
             <% end %>
           </div>
         </div>
