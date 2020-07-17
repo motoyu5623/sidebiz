@@ -94,23 +94,20 @@
     <span class="field-right"><%= f.text_area :returned_skill %></span>
   </div>
 
-<% if false %>
   <div class="field">
     <div>スキルの登録</div>
-      <%= f.fields_for :skills do |skill_field| %>
-        <%= skill_field.label :name %>
-        <%= skill_field.text_field :name %>
-        <span>
-          <%= skill_field.fields_for :job_skills, @job.job_skills.build do |score_field|%>
-            <%= score_field.label :score %>
-            <%= score_field.number_field :score %>
-            <%= score_field.hidden_field :job_id, :value => @job.id %>
+    <%= f.fields_for :job_skills do |skill_field| %>
+      <div>
+          <%= skill_field.fields_for :skill_attributes, @skills do |score_field|%>
+            <%= score_field.label :name %>
+            <%= score_field.text_field :name %>
           <% end %>
-        </span>
-      <% end %>
-    </div>
+        <%= skill_field.label :score %>
+        <%= skill_field.number_field :score %>
+        <%= skill_field.hidden_field :job_id, :value => @job.id %>
+      </div>
+    <% end %>
   </div>
-<% end %>
 
   <%= f.hidden_field :is_main, :value => false %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
