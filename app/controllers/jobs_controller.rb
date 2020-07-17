@@ -16,10 +16,10 @@ class JobsController < ApplicationController
       redirect_to main_job_new_path
     else
       @job = current_user.jobs.build
-      5.times {
+      5.times do
         @job.job_skills.build
         @skills = Skill.new
-      }
+      end
     end
   end
 
@@ -52,7 +52,7 @@ class JobsController < ApplicationController
     params.require(:job).permit(:name, :work_type, :company, :section,
                                 :industry, :medium, :occupation, :started_at, :ended_at,
                                 :worktime_week, :description, :pulled_skill, :returned_skill,
-                                :is_main, :user_id, job_skills_attributes: [:score, :job_id, :skill_id, :id,  
-                                skill_attributes: %i[name id]])
+                                :is_main, :user_id, job_skills_attributes: [:score, :job_id, :skill_id, :id,
+                                                                            skill_attributes: %i[name id]])
   end
 end
