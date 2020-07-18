@@ -1,11 +1,12 @@
 class Job < ApplicationRecord
   belongs_to :user
+  has_many :skills, dependent: :destroy
 
-  has_many :job_skills, dependent: :destroy
-  has_many :skills, through: :job_skills
+  # has_many :job_skills, dependent: :destroy
+  # has_many :skills, through: :job_skills
 
   accepts_nested_attributes_for :skills, allow_destroy: true
-  accepts_nested_attributes_for :job_skills, allow_destroy: true
+  # accepts_nested_attributes_for :job_skills, allow_destroy: true
 
   validates :user_id, presence: true
 

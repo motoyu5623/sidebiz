@@ -50,10 +50,11 @@
         グラフエリア
         <div>
           <div>
-            <% @job.job_skills.each do |job_skill| %>
+            <% @job.skills.each do |skill| %>
               <div>
-                <span>スキル名<%= job_skill.skill.name %></span>
-                <span><%= job_skill.score %></span>
+                <span>スキル名<%= skill.name %></span>
+                <span><%= skill.importance_for_side_job %></span>
+                <span><%= skill.importance_for_main_job %></span>
               </div>
             <% end %>
           </div>

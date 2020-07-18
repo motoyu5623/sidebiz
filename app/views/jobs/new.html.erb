@@ -96,15 +96,18 @@
 
   <div class="field">
     <div>スキルの登録</div>
-    <%= f.fields_for :job_skills do |skill_field| %>
+    <%= f.fields_for :skills do |skill_field| %>
       <div>
-          <%= skill_field.fields_for :skill_attributes, @skills do |score_field|%>
-            <%= score_field.label :name %>
-            <%= score_field.text_field :name %>
-          <% end %>
-        <%= skill_field.label :score %>
-        <%= skill_field.number_field :score %>
-        <%= skill_field.hidden_field :job_id, :value => @job.id %>
+        <%= skill_field.label :name %>
+        <%= skill_field.text_field :name %>
+      </div>
+      <div>
+        <%= skill_field.label :importance_for_side_job %>
+        <%= skill_field.number_field :importance_for_side_job %>
+      </div>
+      <div>
+        <%= skill_field.label :importance_for_main_job %>
+        <%= skill_field.number_field :importance_for_main_job %>
       </div>
     <% end %>
   </div>
