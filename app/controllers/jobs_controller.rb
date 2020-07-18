@@ -13,7 +13,6 @@ class JobsController < ApplicationController
     @labels = @skills.map(&:first)
     @importance_for_side_job = @skills.map(&:second)
     @importance_for_main_job = @skills.map(&:third)
-    
   end
 
   def new
@@ -57,6 +56,6 @@ class JobsController < ApplicationController
     params.require(:job).permit(:name, :work_type, :company, :section,
                                 :industry, :medium, :occupation, :started_at, :ended_at,
                                 :worktime_week, :description, :pulled_skill, :returned_skill,
-                                :is_main, :user_id, skills_attributes: [:name, :job_id, :id, :importance_for_side_job, :importance_for_main_job]) 
+                                :is_main, :user_id, skills_attributes: %i[name job_id id importance_for_side_job importance_for_main_job])
   end
 end

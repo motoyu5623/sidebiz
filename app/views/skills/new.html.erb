@@ -15,18 +15,11 @@
     </div>
   <% end %>
 
-  <%# <% 5.times do |time| %> %>
+  <% 5.times do |time| %>
     <div class="field">
       <div><%= f.label :name %></div>
       <%= f.text_field :name %>
     </div>
-      <span>
-        <%= f.fields_for :job_skills, @skills.job_skills.build do |score_field|%>
-          <%= score_field.label :score %>
-          <%= score_field.number_field :score %>
-          <%= score_field.hidden_field :job_id, value: @job.id %>
-        <% end %>
-      </span>
-    <%# <% end %> %>
+    <% end %>
   <%= f.submit %>
 <% end %>
