@@ -22,7 +22,6 @@ class JobsController < ApplicationController
       @job = current_user.jobs.build
       5.times do
         @job.skills.build
-        # @skills = Skill.new
       end
     end
   end
