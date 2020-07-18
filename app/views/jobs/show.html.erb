@@ -9,7 +9,7 @@
   <div class="card-body">
     <div class="row">
 
-      <div class="col-4 job-left">
+      <div class="col-3 job-left">
       <table border="1" style="border-collapse: collapse">
         <tr>
           <td><div>働き方</div></td>
@@ -46,19 +46,9 @@
         <div>本業から還元できたスキル</div>
         <div class="description-400"><%= @job.returned_skill %></div>
       </div>
-      <div class="col-4 job-right">
-        グラフエリア
-        <div>
-          <div>
-            <% @job.skills.each do |skill| %>
-              <div>
-                <span>スキル名<%= skill.name %></span>
-                <span><%= skill.importance_for_side_job %></span>
-                <span><%= skill.importance_for_main_job %></span>
-              </div>
-            <% end %>
-          </div>
-        </div>
+      <div class="col-5 job-right">
+        <span>スキルチャート</span>
+        <canvas id="myChart" width="400" height="400"></canvas>
       </div>
     </div>
   </div>
@@ -75,3 +65,37 @@
 <div><%= @main_job.worktime_week %></div>
 <div>概要</div>
 <div><%= @main_job.description %></div>
+
+
+<script>
+  var ctx = document.getElementById("myChart");
+  var myChart = new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels: <%= @labels.to_json.html_safe %>,
+      datasets: [{
+        label: '副業で必要なスキル',
+        backgroundColor: "rgba(0,0,80,0.4)",
+        borderColor: "rgba(0,0,80,1)",
+        data: <%= @importance_for_side_job %>
+      }, {
+        label: '本業で必要なスキル',
+        backgroundColor: "rgba(0,255,0,0.4)",
+        borderColor: "rgba(0,255,0,1)",
+        data: <%= @importance_for_main_job %>
+      }
+      ]},
+    options: {
+      scale: {
+        angleLines: {
+            display: true
+        },
+        ticks: {
+            min: 0,
+            max: 5,
+            stepSize: 1
+        }
+      } 
+    }
+  });
+</script>

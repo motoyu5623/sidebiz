@@ -9,6 +9,11 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     @user = @job.user
     @main_job = @user.main_job
+    @skills = @job.skills.pluck(:name, :importance_for_side_job, :importance_for_main_job)
+    @labels = @skills.map(&:first)
+    @importance_for_side_job = @skills.map(&:second)
+    @importance_for_main_job = @skills.map(&:third)
+    
   end
 
   def new
