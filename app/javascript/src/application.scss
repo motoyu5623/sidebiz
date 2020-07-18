@@ -1,1 +1,81 @@
 @import '~bootstrap/scss/bootstrap';
+@import '@fortawesome/fontawesome-free';
+
+
+body {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+}
+
+.field {
+  width: 90%;
+  margin-bottom: 10px;
+}
+
+.field-left {
+  display: inline-block;
+  width: 30%;
+  text-align: right;
+  vertical-align: top;
+  margin-right: 10px;
+}
+
+.field-right {
+  display: inline-block;
+  width: 65%;
+}
+
+.input-form {
+  width: 80%;
+}
+
+.job-left{
+  width: 30%;
+}
+
+.job-center{
+  width: 30%;
+}
+
+.job-right{
+  width: 30%;
+}
+
+.description-400 {
+  border: 1px solid;
+  height: 30px;
+  }
+
+
+.pagination-box {
+  margin-top: 40px;
+}
+
+.pagination {
+  // display: inline-block;
+  margin: 10px, 0;
+  // text-align: center;
+  li {
+    a {
+      border: none;
+      color: #696969;
+    }
+    a:hover {
+      border-radius: 0.25rem;
+    }
+  }
+  .active>a {
+    background: #93c9ff;
+    border-radius: 0.25rem;
+  }
+
+  
+}

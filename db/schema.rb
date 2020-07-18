@@ -10,10 +10,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_10_061733) do
+ActiveRecord::Schema.define(version: 2020_07_18_022458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "job_skills", force: :cascade do |t|
+    t.bigint "job_id"
+    t.bigint "skill_id"
+    t.integer "score"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["job_id", "skill_id"], name: "index_job_skills_on_job_id_and_skill_id", unique: true
+    t.index ["job_id"], name: "index_job_skills_on_job_id"
+    t.index ["skill_id"], name: "index_job_skills_on_skill_id"
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "work_type"
+    t.string "section"
+    t.string "industry"
+    t.string "medium"
+    t.string "occupation"
+    t.date "started_at"
+    t.date "ended_at"
+    t.integer "worktime_week", null: false
+    t.text "description", null: false
+    t.text "pulled_skill", null: false
+    t.text "returned_skill", null: false
+    t.boolean "is_main", default: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "company"
+    t.index ["name"], name: "index_jobs_on_name"
+    t.index ["user_id"], name: "index_jobs_on_user_id"
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "importance_for_side_job"
+    t.integer "importance_for_main_job"
+    t.bigint "job_id"
+    t.index ["job_id"], name: "index_skills_on_job_id"
+    t.index ["name"], name: "index_skills_on_name"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
@@ -31,4 +75,7 @@ ActiveRecord::Schema.define(version: 2020_07_10_061733) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "job_skills", "jobs"
+  add_foreign_key "job_skills", "skills"
+  add_foreign_key "jobs", "users"
 end

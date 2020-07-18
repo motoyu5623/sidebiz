@@ -1,0 +1,23 @@
+<div>
+  <h1>ユーザーネーム</h1>
+  <h1><%= @user.username %></h1>
+</div>
+
+
+<h2>本業について</h2>
+<br>
+<div>
+  <span>本業名：</span>
+  <span><%= @main_job.name %></span>
+</div>
+<br>
+<br>
+
+<h2>副業について</h2>
+<br>
+<% @jobs.each do |job| %>
+  <div>
+    <span>副業名：</span>
+    <span><%= link_to job.name, job_path(job) %></span>
+  </div>
+<% end %>
