@@ -1,59 +1,59 @@
-<h2>副業レビュー一覧</h2>
-<i class="fab fa-facebook-f fa-3x mx-2"></i>
-<%= fa_icon "baby", text: "BB", class: 'mx-2', size: '3x' %>
+<h2>投稿一覧</h2>
 <br>
 <% @jobs.each do |job| %>
-<div class="card">
-      <div class="card-header">
-        <div class="row">
-          <div class="col-lg-7 col-4">
-            <div class="name-holder-sm">
-              <%= link_to job.user.username, user_path(job.user) %>
-            </div>
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-lg-7 col-4">
+          <div class="name-holder-sm">
+            <%= link_to job.user.username, user_path(job.user) %>
           </div>
-          <div class="col-lg-5 col-8">
-            <div class="row job-transition">
-              <div class="main-name">
-                <span class="tag">本業</span>
-                <span><%=  job.user.main_job.name %></span>
-              </div>
-              <div class="arrow">→</div>
-              <div class="side-name">
-                <span class="tag">副業</span>
-                <span><%= link_to job.name, job_path(job) %></span>
-              </div>
+        </div>
+        <div class="col-lg-5 col-8 no-padding">
+          <div class="row job-transition">
+            <div class="main-name">
+              <span class="tag main-tag">本業</span>
+              <span><%=  job.user.main_job.name %></span>
+            </div>
+            <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+            <div class="side-name">
+              <span class="tag side-tag">副業</span>
+              <span><%= link_to job.name, job_path(job) %></span>
+            </div>
+            <div class="link-to-job">
+              <%= link_to job_path(job) do %>
+                <i class="fas fa-external-link-alt"></i>
+              <% end %>
             </div>
           </div>
         </div>
       </div>
-  <div class="row no-gutters card-content">
-    <div class="col-2">
-      <%= image_tag '/noimage.png', class:"card-img-size" %>
     </div>
-    <%# <div class="col-10">
-      <div class="card-body"> %>
-        <%# <div class="row card-content-wrapper"> %>
-        <div class="container col-lg-5 col-10">
-          <div class="simple-description">
-            <%= job.description %>
-          </div>
+    <div class="row no-gutters card-content">
+      <div class="col-2">
+        <%= image_tag '/noimage.png', class:"card-img-size" %>
+      </div>
+      <div class="container col-lg-5 col-10">
+        <div class="simple-description">
+          <%= job.description %>
         </div>
-          <div class="col-lg-5 col-12">
-            <div class="skill-tags-vertical">
-              <% job.skills.each do |skill| %>
-                <div class="skill-tag-row">
-                  <div class="skill-tag skill-main-tags"><%= skill.importance_for_main_job %></div>
-                  <div class="skill-tag skill-name"><%= skill.name %></div>
-                  <div class="skill-tag skill-side-tags"><%= skill.importance_for_side_job %></div>
-                </div>
-              <% end %>
-            </div>
+      </div>
+      <div class="col-lg-5 col-12">
+        <div class="skill-tags-vertical">
+          <div class="skill-tags-explanation">
+            <span>スキルの重要度</span>
           </div>
-      <%# </div> %>
-      <%# </div>
-    </div> %>
+          <% job.skills.each do |skill| %>
+            <div class="skill-tag-row">
+              <div class="skill-tag skill-main-tags"><%= skill.importance_for_main_job %></div>
+              <div class="skill-tag skill-name"><%= skill.name %></div>
+              <div class="skill-tag skill-side-tags"><%= skill.importance_for_side_job %></div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 <% end %>
 
 <div class="row justify-content-center pagination-box">
