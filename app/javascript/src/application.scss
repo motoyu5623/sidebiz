@@ -1,11 +1,17 @@
+
+$dark:#006699;
+
 @import '~bootstrap/scss/bootstrap';
 @import '@fortawesome/fontawesome-free';
+
 
 
 body {
   -moz-box-sizing:    border-box;
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
+  background-color: #feffff;
+  padding-top: 50px;
 }
 
 .debug_dump {
@@ -78,4 +84,103 @@ body {
   }
 
   
+}
+
+.card {
+  margin-bottom: 20px;
+  box-shadow: 5px 5px 5px 0 #003366;
+}
+
+.card-header {
+  background-color: #006699;
+  color: #ffffff;
+  border: none;
+  .name-holder-sm {
+  }
+  a {
+    color: #ffffff;
+  }
+  a:link {
+    color:#ffffff;
+    }
+  a:visited {
+  color:#ffffff;
+  }
+  a:hover {
+  color:#99ffff;
+  text-decoration:underline;
+  }
+  
+  a:active {
+  color:#6699cc;
+  }
+}
+.card-body {
+  background-color: #edf2f5;
+}
+.card-content {
+  background-color: #edf2f5;
+}
+.tag {
+  border: 1px solid;
+  border-radius: 0.6rem;
+  background-color: #ddd;
+  padding: 0.25rem;
+}
+
+.card-img-size {
+  width: 100%;
+}
+.job-transition {
+  display: inline-block;
+  width: 100%;
+  margin: 0;
+  .main-name {
+    float: left;
+    padding: 0;
+    width: 47%;
+  }
+  .arrow {
+    display: inline-block;
+    padding: 0;
+    width: 6%;
+  }
+  .side-name {
+    float: right;
+    text-align: right;
+    padding: 0;
+    width: 47%;
+  }
+}
+
+.card-content-wrapper {
+  margin: 0;
+}
+.skill-tags-vertical {
+  min-width: 100%;
+  margin-top: 10px;
+  .skill-tag-row {
+    text-align: center;
+    .skill-tag {
+      display: inline-block;
+    }
+    .skill-main-tags {
+      width: 18%;
+    }
+    .skill-name {
+      width: 60%;
+    }
+    .skill-side-tags {
+      width: 18%;
+    }
+  }
+}
+
+
+.simple-description {
+  // border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  background-color: #feffff;
+  height: 9rem;
+  margin: 10px;
 }
