@@ -129,6 +129,7 @@ body {
 }
 .card-body {
   background-color: #edf2f5;
+  padding: 2rem;
 }
 .card-content {
   background-color: #edf2f5;
@@ -136,7 +137,7 @@ body {
 .tag {
   border: 1px solid #edf2f5;
   border-radius: 1rem;
-  padding: 0.2rem;
+  padding: 0.2rem 0.5rem;
 }
 .main-tag {
   background-color: #006699;
@@ -218,9 +219,12 @@ body {
   border-radius: 0.5rem;
   background-color: #feffff;
   height: 9rem;
-  margin: 1rem;
+  // margin: 1rem;
   padding: 0.5rem;
 }
+
+
+// Job show ページ
 
 .job-show-title-box{
     font-size: 1.5rem;
@@ -244,4 +248,69 @@ body {
   a:active {
   color:#6699cc;
   }
+}
+
+.job-summary-box {
+  // background-color: #6699cc;
+  padding: 3rem 1rem 1rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  border: #006699 1px solid;
+  position: relative;
+
+  .job-summary-title {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    border: #006699 1px solid;
+    border-radius: 0.4rem 0 0.4rem 0;
+    padding: 0.25rem 1rem;
+  }
+  .job-summary-title-main {
+    background-color: #edf2f5;
+    // color: #feffff;
+    // background-color: #aacddf;
+    color: #006699;
+  }
+  .job-summary-title-side {
+    background-color: #006699;
+    color: #feffff;
+  }
+
+
+  .job-profile-table {
+    background-color: #fff;
+    width: 90%;
+    border: #edf2f5;
+    border-radius: 0.5rem;
+
+    th {
+      width: 10rem;
+    }
+    td {
+      padding: 0.25rem 0.5rem;
+    }
+  }
+}
+
+.section-title {
+  display: inline-block;
+  border: #006699 1px solid;
+  border-radius: 1rem;
+  padding: 0 1rem 0 0.5rem;
+  margin-bottom: 0.5rem;
+  background-color: #aacddf;
+  color: #006699;
+}
+
+.job-synergy-box {
+  margin: 3rem auto;
+
+  .synergy-icon {
+    vertical-align: middle;
+    margin: 0 auto;
+    text-align: center;
+    color: #006699;
+  }
+
 }

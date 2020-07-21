@@ -1,0 +1,49 @@
+<div class="row job-summary-box">
+  <% if job.is_main %>
+    <div class="job-summary-title job-summary-title-main">
+      <span class="tag main-tag">本業</span>
+      <span><%= job.name %></span>
+    </div>
+  <% else %>
+    <div class="job-summary-title job-summary-title-side">
+      <span class="tag side-tag">副業</span>
+      <span><%= job.name %></span>
+    </div>
+    <% end %>
+
+  <div class="col-5 job-left">
+    <div class="section-title"><i class="fas fa-pen fa-fw"></i>  基本情報</div>
+    <table border="1" style="border-collapse: collapse" class="job-profile-table">
+      <tr>
+        <th>働き方</th>
+        <td>会社勤めとか<%= job.work_type %></td>
+      </tr>
+      <tr>
+        <th>会社名</th>
+        <td><%= job.company %></td>
+      </tr>
+      <tr>
+        <th>部署</th>
+        <td><%= job.section %></td>
+      </tr>
+      <tr>
+        <th>業界</th>
+        <td><%= job.industry %></td>
+      </tr>
+      <tr>
+        <th>案件ルート</th>
+        <td><%= job.medium %></td>
+      </tr>
+      <tr>
+        <th>労働時間（週）</th>
+        <td><%= job.worktime_week %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-7 job-center">
+    <div class="section-title"><i class="fas fa-pen fa-fw"></i> 業務内容</div>
+    <div class="simple-description">
+      <%= job.description %>
+    </div>
+  </div>
+</div>

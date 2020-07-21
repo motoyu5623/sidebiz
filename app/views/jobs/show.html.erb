@@ -4,96 +4,14 @@
 </div>
 <br>
 <div class="card">
-  <div class="card-header">
-    <div class="job_name_holder_sm">
-      <div><%= @job.name %></div>
-    </div>
-  </div>
   <div class="card-body">
-    <div class="row">
-      <div class="col-3 job-left">
-        <div class="side-name">
-          <span class="tag side-tag">副業</span>
-          <span><%= @job.name %></span>
-        </div>
-        <table border="1" style="border-collapse: collapse">
-          <tr>
-            <td><div>働き方</div></td>
-            <td><div>会社勤めとか<%= @job.work_type %></div></td>
-          </tr>
-          <tr>
-            <td><div>会社名</div></td>
-            <td><div><%= @job.company %></div></td>
-          </tr>
-          <tr>
-            <td><div>部署</div></td>
-            <td><div><%= @job.section %></div></td>
-          </tr>
-          <tr>
-            <td><div>業界</div></td>
-            <td> <div><%= @job.industry %></div></td>
-          </tr>
-          <tr>
-            <td><div>案件ルート</div></td>
-            <td><div><%= @job.medium %></div></td>
-          </tr>
-          <tr>
-            <td><div>労働時間（週）</div></td>
-            <td><div><%= @job.worktime_week %></div></td>
-          </tr>
-        </table>
-        <br>
-        <div class="main-name">
-          <span class="tag main-tag">本業</span>
-          <span><%= @main_job.name %></span>
-        </div>
-        <table border="1" style="border-collapse: collapse">
-          <tr>
-            <td><div>働き方</div></td>
-            <td><div>会社勤めとか<%= @main_job.work_type %></div></td>
-          </tr>
-          <tr>
-            <td><div>会社名</div></td>
-            <td><div><%= @main_job.company %></div></td>
-          </tr>
-          <tr>
-            <td><div>部署</div></td>
-            <td><div><%= @main_job.section %></div></td>
-          </tr>
-          <tr>
-            <td><div>業界</div></td>
-            <td> <div><%= @main_job.industry %></div></td>
-          </tr>
-          <tr>
-            <td><div>案件ルート</div></td>
-            <td><div><%= @main_job.medium %></div></td>
-          </tr>
-          <tr>
-            <td><div>労働時間（週）</div></td>
-            <td><div><%= @main_job.worktime_week %></div></td>
-          </tr>
-        </table>
-      </div>
-      <div class="col-4 job-center">
-        <div>副業の業務内容</div>
-        <div class="simple-description">
-          <%= @job.description %>
-        </div>
-        <div>本業から活かせたスキル</div>
-        <div class="simple-description">
-          <%= @job.pulled_skill %>
-        </div>
-        <div>本業から還元できたスキル</div>
-        <div class="simple-description">
-          <%= @job.returned_skill %>
-        </div>
-        <div>本業の業務内容</div>
-        <div class="simple-description">
-          <%= @main_job.description %>
-        </div>
-      </div>
-      <div class="col-5 job-right">
-        <span>スキルチャート</span>
+    <%= render "job_summary_box", job:@job %>
+    <%= render "job_synergy", job:@job %>
+    <%= render "job_summary_box", job:@main_job %>
+    <hr>
+    <span>スキルチャート</span>
+    <div class="row justify-content-center">
+      <div class="col-8 col-lg-5 job-right">
         <canvas id="myChart" width="400" height="400"></canvas>
       </div>
     </div>
