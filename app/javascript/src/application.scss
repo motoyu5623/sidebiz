@@ -1,10 +1,10 @@
-
+// 初期設定
 $dark:#006699;
 
 @import '~bootstrap/scss/bootstrap';
 @import '@fortawesome/fontawesome-free';
 
-
+// 汎用
 
 body {
   -moz-box-sizing:    border-box;
@@ -22,6 +22,33 @@ body {
   width: 100%;
   margin-top: 45px;
 }
+
+.pagination-box {
+  margin-top: 40px;
+}
+.pagination {
+  // display: inline-block;
+  margin: 10px, 0;
+  // text-align: center;
+  li {
+    a {
+      border: none;
+      color: #696969;
+    }
+    a:hover {
+      border-radius: 0.25rem;
+    }
+  }
+  .active>a {
+    background: #93c9ff;
+    border-radius: 0.25rem;
+  }
+}
+
+.page-title {
+  margin: 2rem 0;
+}
+// ヘッダー
 .navbar {
   box-shadow: 0 2px 4px 0 #003366;
 }
@@ -32,6 +59,7 @@ body {
   font-family: Georgia, 'Times New Roman', Times, serif;;
 }
 
+// レビュー投稿ページ
 .field {
   width: 90%;
   margin-bottom: 10px;
@@ -69,32 +97,59 @@ body {
 .description-400 {
   border: 1px solid;
   height: 30px;
-  }
+}
+  
+// Jobインデックスページ
 
+.search-box {
+  background-color: #a3cbdf;
+  padding: 1rem 3rem;
+  border-radius: 1rem;
 
-.pagination-box {
-  margin-top: 40px;
 }
 
-.pagination {
-  // display: inline-block;
-  margin: 10px, 0;
-  // text-align: center;
-  li {
-    a {
-      border: none;
-      color: #696969;
-    }
-    a:hover {
-      border-radius: 0.25rem;
-    }
-  }
-  .active>a {
-    background: #93c9ff;
-    border-radius: 0.25rem;
-  }
+.form-field {
+  display: inline-block;
+  margin-right: 2rem;
 
-  
+
+  .label {
+    margin-bottom: 0;
+  }
+  .input-form {
+    width: 100%;
+    border-radius: 0.5rem;
+    border: none;
+    height: 2.5rem;
+  }
+}
+
+.submit-field {
+  .submit-form {
+    background-color: #006699;
+    width: 40%;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    vertical-align: bottom;
+    color: #feffff;
+  }
+  .submit-form:hover {
+    background-color: #4e98bd;
+
+  }
+  .clear-btn {
+    display: inline-block;
+    vertical-align: bottom;
+    width: 40%;
+    padding: 1px 6px;
+    border-radius: 0.5rem;
+    height: 2.5rem;
+    .clear-btn-link {
+      width: 100%;
+    }
+    
+  }
 }
 
 .card {
@@ -285,7 +340,7 @@ body {
     border-radius: 0.5rem;
 
     th {
-      width: 10rem;
+      width: 6rem;
     }
     td {
       padding: 0.25rem 0.5rem;

@@ -2,7 +2,10 @@ class JobsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @jobs = Job.where(is_main: false).order(updated_at: :desc).page(params[:page])
+    # @jobs = Job.where(is_main: false).order(updated_at: :desc).page(params[:page])
+    # @q = Job.ransack(params[:q])
+    @q = Job.where(is_main: false).order(updated_at: :desc).ransack(params[:q])
+    @jobs = @q.result.includes(:user, :skills).page(params[:page])
   end
 
   def show
