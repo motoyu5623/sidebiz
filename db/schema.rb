@@ -10,21 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_18_022458) do
+ActiveRecord::Schema.define(version: 2020_07_23_060845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "job_skills", force: :cascade do |t|
-    t.bigint "job_id"
-    t.bigint "skill_id"
-    t.integer "score"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["job_id", "skill_id"], name: "index_job_skills_on_job_id_and_skill_id", unique: true
-    t.index ["job_id"], name: "index_job_skills_on_job_id"
-    t.index ["skill_id"], name: "index_job_skills_on_skill_id"
-  end
 
   create_table "jobs", force: :cascade do |t|
     t.string "name", null: false
@@ -75,7 +64,5 @@ ActiveRecord::Schema.define(version: 2020_07_18_022458) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "job_skills", "jobs"
-  add_foreign_key "job_skills", "skills"
   add_foreign_key "jobs", "users"
 end
