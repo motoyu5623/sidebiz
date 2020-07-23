@@ -41,15 +41,31 @@ class JobsController < ApplicationController
   end
 
   def edit
-    @job = Job.find(params[:id])
+    @job = Job.find_by(id: params[:id])
+    # @job.skills.create_or_find_by
+    if @job.skills.blank?
+      5.times do
+        @job.skills.build
+      end
+    end
   end
 
   def update
-    Job.update(job_params)
+    @job = Job.find_by(id: params[:id])
+    @job.update(job_params)
+    if @job.save
+      flash[:success] = '編集に成功しました'
+      redirect_to job_path(@job)
+    else
+      flash[:danger] = '編集に失敗しました'
+      render :edit
+    end
   end
 
   def destroy
-    Job.destroy(job_params)
+    @job = Job.find_by(id: params[:id])
+    @job.destroy
+    redirect_to user_path(current_user)
   end
 
   private
