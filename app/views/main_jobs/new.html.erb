@@ -2,7 +2,7 @@
 <div class="page-title">
   <h2>本業情報の登録</h2>
 </div>
-<%= form_with(model: @job, url: main_job_path, local:true, class:"job-new-field") do |f| %>
+<%= form_with(model: @job, url: main_jobs_path, local:true, class:"job-new-field") do |f| %>
   <%= render "shared/common_form", {job:@job, f:f} %>
 
   <%= f.hidden_field :pulled_skill, :value => '' %>

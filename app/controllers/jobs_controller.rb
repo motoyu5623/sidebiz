@@ -43,11 +43,13 @@ class JobsController < ApplicationController
   def edit
     @job = Job.find_by(id: params[:id])
     # @job.skills.create_or_find_by
-    if @job.skills.blank?
-      5.times do
-        @job.skills.build
-      end
+    # if @job.skills.blank?
+    return unless @job.skills.blank?
+
+    5.times do
+      @job.skills.build
     end
+    # end
   end
 
   def update
