@@ -1,3 +1,6 @@
+<div class="page-title">
+  <h2><%= @user.username %>のページ</h2>
+</div>
 <div class="row">
   <div class="col-3">
     <%= image_tag '/noimage.png', class:"", :size =>'150x150' %>
@@ -9,13 +12,27 @@
     <div class="job-list">
       <div class="main-name">
         <span class="tag main-tag">本業</span>
-        <span><%= @user.main_job.name %></span>
+        <% if @user.main_job %>
+          <span><%= @user.main_job.name %></span>
+          <%= link_to "編集", edit_main_job_path(@main_job) %>
+        <% else %>
+          <span>未登録　<span>
+          <%= link_to "→本業を登録する", new_main_job_path if @user == current_user %>
+        <% end %>
       </div>
       <div class="side-name">
-        <% @user.jobs.each do |job| %>
-          <span class="tag side-tag">副業</span>
-          <span><%= link_to job.name, job_path(job) %></span>
+        <span class="tag side-tag">副業</span>
+        <% if @user.jobs.present? %>
+          <% @user.jobs.each do |job| %>
+            <span><%= link_to job.name, job_path(job) %></span>
+          <% end %>
+        <% else %>
+          <span>未登録　<span>
+          <% if @user ==current_user && @user.main_job %>
+            <%= link_to "→副業を登録する", new_job_path %>
+          <% end %>
         <% end %>
+
       </div>
     </div>
   </div>

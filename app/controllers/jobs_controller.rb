@@ -20,7 +20,7 @@ class JobsController < ApplicationController
 
   def new
     if current_user.main_job.nil?
-      redirect_to main_job_new_path
+      redirect_to new_main_job_path
     else
       @job = current_user.jobs.build
       5.times do

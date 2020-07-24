@@ -1,0 +1,97 @@
+<% if job.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(job.errors.count, "error") %> prohibited this job from being saved:</h2>
+
+    <ul>
+      <% job.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="field">
+  <span class="field-left"><%= f.label yield(:title) %>名</span>
+  <span class="field-right"><%= f.text_field :name, class:"input-form"  %></span>
+</div>
+
+<div class="field">
+  <span class="field-left"><%= f.label "労働形態" %></span>
+  <span class="field-right">
+    <%= f.radio_button(:work_type, 1) %>
+    <%= f.label(:work_type, "会社勤務") %>
+    <%= f.radio_button(:work_type, 2) %>
+    <%= f.label(:work_type, "個人") %>
+  </span>
+</div>
+<hr>
+<span class="field-right">会社勤務の場合</span>
+<div class="field">
+  <span class="field-left"><%= f.label "会社名" %></span>
+  <span class="field-right"><%= f.text_field :company, class:"input-form"  %></span>
+</div>
+
+<div class="field">
+  <span class="field-left"><%= f.label "部門" %></span>
+  <span class="field-right"><%= f.text_field :section, class:"input-form"  %></span>
+</div>
+<hr>
+
+<span class="field-right">個人の場合</span>
+
+<div class="field">
+  <span class="field-left"><%= f.label "案件獲得方法" %></span>
+  <span class="field-right"><%= f.text_field :medium, class:"input-form" %></span>
+</div>
+<hr>
+
+<div class="field">
+  <span class="field-left"><%= f.label "業種" %></span>
+  <span class="field-right"><%= f.text_field :industry, class:"input-form"  %></span>
+</div>
+
+
+<div class="field">
+  <span class="field-left"><%= f.label "職種" %></span>
+  <span class="field-right"><%= f.text_field :occupation, class:"input-form" %></span>
+</div>
+
+<div class="field">
+  <span class="field-left"><%= f.label "開始年月" %></span>
+  <span class="field-right">
+    <%= raw sprintf(f.date_select(:started_at,
+                                  {use_month_numbers: true,
+                                  date_separator: '%s',
+                                  start_year: 1930,
+                                  end_year: Time.now.year,
+                                  default: Date.new(2016, 1, 1),
+                                  discard_day: true},
+                                  class:"input-form-select"),
+                    '年') + '月' %>
+  </span>
+</div>
+
+<div class="field">
+  <span class="field-left"><%= f.label "終了年月" %></span>
+  <span class="field-right">
+    <%= raw sprintf(f.date_select(:ended_at,
+                                  {use_month_numbers: true,
+                                  date_separator: '%s',
+                                  start_year: 1930,
+                                  end_year: Time.now.year,
+                                  default: Date.new(2016, 1, 1),
+                                  discard_day: true},
+                                  class:"input-form-select"),
+                    '年') + '月' %>
+  </span>
+</div>
+
+<div class="field">
+  <span class="field-left"><%= f.label '労働時間（週）' %></span>
+  <span class="field-right"><%= f.select(:worktime_week, options_for_select([['〜5時間', 1],['5〜10時間', 2],['10〜15時間', 3],['15〜20時間', 4],['20〜25時間', 5],['それ以上', 6], ]), {}, class:"input-form-select") %></span>
+</div>
+
+<div class="field">
+  <span class="field-left"><%= f.label '主な業務内容' %></span>
+  <span class="field-right"><%= f.text_area :description, class:"input-form-large" %></span>
+</div>

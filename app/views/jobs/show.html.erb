@@ -1,6 +1,6 @@
 <div class="job-show-title-box">
   <span class="job-show-title"><%= @job.name %></span>
-  <span> の詳細 </span><%= link_to "@#{@user.username}", user_path(@user) %>
+  <span> のレビュー </span><%= link_to "@#{@user.username}", user_path(@user) %>
 </div>
 <br>
 <div class="card">
@@ -25,12 +25,12 @@
     data: {
       labels: <%= @labels.to_json.html_safe %>,
       datasets: [{
-        label: '副業で必要なスキル',
+        label: '副業における重要度',
         backgroundColor: "rgba(0,0,80,0.4)",
         borderColor: "rgba(0,0,80,1)",
         data: <%= @importance_for_side_job %>
       }, {
-        label: '本業で必要なスキル',
+        label: '本業における重要度',
         backgroundColor: "rgba(0,255,0,0.4)",
         borderColor: "rgba(0,255,0,1)",
         data: <%= @importance_for_main_job %>

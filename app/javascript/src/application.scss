@@ -11,7 +11,7 @@ body {
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
   background-color: #feffff;
-  padding-top: 50px;
+  padding-top: 80px;
 }
 .no-padding {
   padding: 0;
@@ -46,7 +46,8 @@ body {
 }
 
 .page-title {
-  margin: 2rem 0;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 // ヘッダー
 .navbar {
@@ -60,9 +61,17 @@ body {
 }
 
 // レビュー投稿ページ
+.job-new-field {
+  background-color: #edf2f5;
+  padding: 2rem;
+  margin: 0 auto;
+  width: 100%;
+  border-radius: 1rem;
+}
 .field {
-  width: 90%;
-  margin-bottom: 10px;
+  margin: 0 auto;
+  width: 100%;
+  margin-bottom: 1.5rem;
 }
 
 .field-left {
@@ -80,6 +89,51 @@ body {
 
 .input-form {
   width: 80%;
+  border-radius: 0.25rem;
+  height: 2rem;
+  border: 1px solid #fff;
+
+}
+.input-form-select {
+  border: none;
+  height: 2rem;
+}
+.input-form-large {
+  width: 80%;
+  border-radius: 0.25rem;
+  height: 4rem;
+  border: 1px solid #fff;
+}
+.skill-input-table {
+  background-color: #fff;
+  // border: #edf2f5;
+  border: #fff;
+  // border: none;
+  border-radius: 0.5rem;
+
+  th {
+    font-weight: normal;
+    text-align: center;
+  }
+
+  th, td {
+    padding: 0 1rem;
+  }
+}
+.form-in-table {
+  display: inline-block;
+  // background-color: #edf2f5;
+  margin: 0.4rem auto;
+  width: 100%;
+  // border: none;
+  border-radius: 0.25rem;
+  height: 2rem;
+  border: 1px solid #bdd4e2;
+}
+
+.btn-submit {
+  margin-top: 4rem;
+  text-align: center;
 }
 
 .job-left{
