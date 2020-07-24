@@ -11,8 +11,9 @@ body {
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
   background-color: #feffff;
-  padding-top: 80px;
+  padding-top: 62px;
 }
+
 .no-padding {
   padding: 0;
 }
@@ -58,6 +59,18 @@ body {
   font-size: 1.5rem;
   // font-weight: bold;
   font-family: Georgia, 'Times New Roman', Times, serif;;
+}
+
+// トップページ
+.top-background-img-wrapper {
+  overflow-x: hidden;
+
+}
+.top-background-img {
+  // background-size: cover;
+  background-position: center center;
+  max-width: 100%;
+  min-width: 1140px;
 }
 
 // レビュー投稿ページ

@@ -1,34 +1,43 @@
-<% if user_signed_in? %>
-  <div class="container">
-    <div class="jumbotron m-3">
-      <h1 class="display-4">Hello, Bootstrap!</h1>
-      <hr class="my-4">
-      <p>This is the template of Ruby on Rails using Bootstrap.</p>
-      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">
-        <i class="far fa-window-maximize"></i>
-        Click here
-      </button>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            Hello!
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-<% else %>
-  <p>You are not signed in</p> 
-<% end %>
+<div class="top-background-img-wrapper">
+  <%= image_tag '/personal-2923048_1920.jpg', class:"top-background-img" %>
+  <p>キャッチコピー</p>
+</div>
+
+<div class="container">
+  <h3>共感を呼ぶ</h3>
+  <p>副業に興味があるけど、何をやれば良いかわからないあなたへ</p>
+  <p>副業をやっている人たちの声を聞いてみませんか？</p>
+  <a href="#">導線</a>
+
+  <h3>Sidebizはこんなことができます</h3>
+  <h3>こんなメリットがあります</h3>
+    <p>副業のリアルな声が聞ける</p>
+    <p>自分の本業を活かせる副業が見つけられる</p>
+    <p>副業の先輩と繋がれる</p>
+  <a href="#">導線</a>
+
+  <h3>お客の声</h3>
+    <p>名前、写真、年齢、居住地、印象的な言葉を見出しに</p>
+  <h3>使い方</h3> 
+    <p>副業で検索する</p>
+    <p>本業やスキルで検索する</p>
+    <p>気になったものをストック</p>
+    <p>もっと詳しく知りたい場合は、直接質問してみよう</p>
+    <p>ストックされたら無料で使い続けられるみたいな方式にする？</p>
+
+  <h3>差別化</h3>
+  <h3>登録しよう</h3>
+  <a href="#">導線</a>
+
+  <% if @jobs.present? %>
+    <span><strong><%= @jobs.count %></strong> 件の投稿が一致しました</span>
+  <% else %>
+    <span>一致する検索結果はありませんでした</span>
+  <% end %>
+  <%= render "shared/job_card", jobs: @jobs %>
+  <% if user_signed_in? %>
+    <p>ログイン済みです</p> 
+  <% else %>
+    <p>You are not signed in</p> 
+  <% end %>
+</div>
