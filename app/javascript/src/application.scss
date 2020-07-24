@@ -423,3 +423,44 @@ body {
   }
 
 }
+
+
+// ユーザー編集
+
+
+.edit-field {
+  // border:1px solid #DBDBDB;
+  background-color: #edf2f5;
+  width: 100%;
+  min-height: 580px;
+  max-height: 730px;
+  padding: 0;
+  margin-top: 10px;
+  border-radius: 0.5rem;
+  
+  .tab-content {
+    padding: 2rem;
+    
+    .field {
+      margin-top:10px;
+      
+      .field-left{
+        display: inline-block;
+        vertical-align:top;
+        width:25%;
+        text-align:right;
+        padding-right: 20px;
+      }
+      
+      .field-right {
+        display: inline-block;
+        width:65%;
+      }
+    }
+    
+    .personal-info {
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+  }
+}
