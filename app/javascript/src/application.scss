@@ -463,4 +463,9 @@ body {
       margin-bottom: 10px;
     }
   }
+  .nav-pills {
+    .active{
+      background-color: $dark;
+    }
+  }
 }

@@ -1,62 +1,12 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<% if false %>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-    <% end %>
-
-    <div class="field">
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
-      <% if @minimum_password_length %>
-        <br />
-        <em><%= @minimum_password_length %> characters minimum</em>
-      <% end %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-      <%= f.password_field :current_password, autocomplete: "current-password" %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "Update" %>
-    </div>
-  <% end %>
-
-  <h3>Cancel my account</h3>
-
-  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-  <%= link_to "Back", :back %>
-<% end %>
-
-
-
-
-<% provide(:title, 'Edit profile') %>
 <%= render "devise/shared/error_messages", resource: resource %>
 
 <div class="container edit-field">
   <div class="row">
     <div class="col-3">
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">プロフィールを編集</a>
-        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">パスワードを変更</a>
-        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">アカウントを削除</a>
+        <a class="nav-link active tab-dark" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">プロフィールを編集</a>
+        <a class="nav-link tab-dark" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">パスワードを変更</a>
+        <a class="nav-link tab-dark" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">アカウントを削除</a>
       </div>
     </div>
     
@@ -82,7 +32,12 @@
           </div>
           <div class="field">
             <span class="field-left"><%= f.label "誕生日" %></span>
-              <span class="field-right"><%= f.select :birthday, [ ["Male",1], ["Female", 2], ["Other", 3 ] ,["Prefer not to say", 4] ], prompt: "Choose gender", class:"input-form-select" %></span>
+              <span class="field-right"><%= f.date_select(:birthday, {
+                                  use_month_numbers: true,
+                                  start_year: 1930,
+                                  end_year: (Time.now.year - 10),
+                                  default: Date.new(1989, 1, 1)}, 
+                                  class:"input-form-select") %></span>
           </div>
           <div class="field">
             <span class="field-left"><%= f.label "居住エリア" %></span>
