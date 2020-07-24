@@ -1,70 +1,72 @@
-<div class="page-title">
-  <h2><%= @user.username %>のページ</h2>
-</div>
-<div class="row">
-  <div class="col-3">
-    <%= image_tag '/noimage.png', class:"", :size =>'150x150' %>
-    <h1><%= link_to @user.username, user_path(@user) %></h1>
-    <div><%= @user.birthday %></div>
-    <div><%= @user.living_place %></div>
+<div class="container">
+  <div class="page-title">
+    <h2><%= @user.username %>のページ</h2>
   </div>
-  <div class="col-4">
-    <div class="job-list">
-      <div class="main-name">
-        <span class="tag main-tag">本業</span>
-        <% if @user.main_job %>
-          <span><%= @user.main_job.name %></span>
-          <%= link_to "編集", edit_main_job_path(@main_job) %>
-        <% else %>
-          <span>未登録　<span>
-          <%= link_to "→本業を登録する", new_main_job_path if @user == current_user %>
-        <% end %>
-      </div>
-      <div class="side-name">
-        <span class="tag side-tag">副業</span>
-        <% if @user.jobs.present? %>
-          <% @user.jobs.each do |job| %>
-            <span><%= link_to job.name, job_path(job) %></span>
+  <div class="row">
+    <div class="col-3">
+      <%= image_tag '/noimage.png', class:"", :size =>'150x150' %>
+      <h1><%= link_to @user.username, user_path(@user) %></h1>
+      <div><%= @user.birthday %></div>
+      <div><%= @user.living_place %></div>
+    </div>
+    <div class="col-4">
+      <div class="job-list">
+        <div class="main-name">
+          <span class="tag main-tag">本業</span>
+          <% if @user.main_job %>
+            <span><%= @user.main_job.name %></span>
+            <%= link_to "編集", edit_main_job_path(@main_job) %>
+          <% else %>
+            <span>未登録　<span>
+            <%= link_to "→本業を登録する", new_main_job_path if @user == current_user %>
           <% end %>
-        <% else %>
-          <span>未登録　<span>
-          <% if @user ==current_user && @user.main_job %>
-            <%= link_to "→副業を登録する", new_job_path %>
+        </div>
+        <div class="side-name">
+          <span class="tag side-tag">副業</span>
+          <% if @user.jobs.present? %>
+            <% @user.jobs.each do |job| %>
+              <span><%= link_to job.name, job_path(job) %></span>
+            <% end %>
+          <% else %>
+            <span>未登録　<span>
+            <% if @user ==current_user && @user.main_job %>
+              <%= link_to "→副業を登録する", new_job_path %>
+            <% end %>
           <% end %>
-        <% end %>
 
+        </div>
+      </div>
+    </div>
+    <div class="col-5">
+      <div class="profile">
+        <div>略歴</div>
+        <%= @user.profile%>
       </div>
     </div>
   </div>
-  <div class="col-5">
-    <div class="profile">
-      <div>略歴</div>
-      <%= @user.profile%>
+  <hr>
+  <div class="row">
+    <div class="col-2">
+      <% if current_user == @user %>
+        <button type="button" class="btn btn-dark"><%= link_to "個人設定の編集", edit_user_registration_path %></button>
+        
+      <% else %>
+        <button type="button" class="btn btn-dark">フォローする</button>
+      <% end %>
+    </div>
+    <div class="col-2">
+      <span>20 フォロワー</span>
+    </div>
+    <div class="col-2">
+      <span>20 フォロー</span>
+    </div>
+    <div class="col-2">
+      <span>20 参考になった</span>
     </div>
   </div>
-</div>
-<hr>
-<div class="row">
-  <div class="col-2">
-    <% if current_user == @user %>
-      <button type="button" class="btn btn-dark"><%= link_to "個人設定の編集", edit_user_registration_path %></button>
-      
-    <% else %>
-      <button type="button" class="btn btn-dark">フォローする</button>
-    <% end %>
-  </div>
-  <div class="col-2">
-    <span>20 フォロワー</span>
-  </div>
-  <div class="col-2">
-    <span>20 フォロー</span>
-  </div>
-  <div class="col-2">
-    <span>20 参考になった</span>
-  </div>
-</div>
-<hr>
-<h2>副業一覧</h2>
-<br>
+  <hr>
+  <h2>副業一覧</h2>
+  <br>
 
-<%= render "jobs/job_card", jobs: @jobs %>
+  <%= render "shared/job_card", jobs: @jobs %>
+</div>

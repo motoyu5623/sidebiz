@@ -1,17 +1,17 @@
 <% provide(:title, "副業") %>
-<div class="page-title">
-  <h2>副業レビューの編集</h2>
-</div>
-<%= form_with(model: @job, local:true, class:"job-new-field") do |f| %>
-
-  <%= render "shared/common_form", {job:@job, f:f} %>
-  <%= render "shared/common_form_for_side_job", {job:@job, f:f} %>
-
-  <%= f.hidden_field :is_main, :value => false %>
-  <%= f.hidden_field :user_id, :value => current_user.id %>
-  <div class="btn-submit">
-    <%= f.submit '登録する', class:"btn btn-dark" %>
+<div class="container">
+  <div class="page-title">
+    <h2>副業レビューの編集</h2>
   </div>
-<% end %>
+  <%= form_with(model: @job, local:true, class:"job-new-field") do |f| %>
 
+    <%= render "shared/common_form", {job:@job, f:f} %>
+    <%= render "shared/common_form_for_side_job", {job:@job, f:f} %>
 
+    <%= f.hidden_field :is_main, :value => false %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <div class="btn-submit">
+      <%= f.submit '登録する', class:"btn btn-dark" %>
+    </div>
+  <% end %>
+</div>
