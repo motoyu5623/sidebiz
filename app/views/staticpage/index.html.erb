@@ -1,43 +1,133 @@
 <div class="top-background-img-wrapper">
-  <%= image_tag '/personal-2923048_1920.jpg', class:"top-background-img" %>
-  <p>キャッチコピー</p>
+  <%= image_tag '/Qbb1djUXlC07FG31595665013_1595665025.jpg', class:"top-background-img" %>
+  <div class="container top-container">
+    <div class="top-copy">
+      <p>副業のリアルを知る</p>
+      <p>副業への第一歩を踏み出す</p>
+    </div>
+    <div class="top-signup">
+      <p>副業を実際にしている人たちのレビューを集めました</p>
+      <p>レビューを無制限に見るには...</p>
+      <%= link_to new_user_registration_path, class:"" do %>
+        <button type="button" class="btn btn-dark btn-signup">ユーザー登録する</button>
+      <% end %>
+    </div>
+  </div>
 </div>
 
+<div class="suggestion-area area">
+  <div class="container">
+    <h3 class="area-title">Sidebizとは</h3>
+    <p>副業に興味があるけど、何をはじめれば良いかわからないあなたへ</p>
+    <p>「副業のリアル」をたくさん集めたレビューサイトです。</p>
+    <%= link_to new_user_registration_path, class:"link-signup" do %>
+      <button type="button" class="btn btn-dark btn-signup">ユーザー登録する</button>
+    <% end %>
+  </div>
+</div>
+
+<div class="benefit-area area">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h3 class="area-title">Sidebizではこんなことができます</h3>
+      </div>
+      <div class="col-lg-4 col-12">
+        <div class="benefit-box"><i class="fas fa-check-circle"></i> 副業のリアルな声が聞ける</div>
+        <div class="benefit-description">副業を行っている人たちから「リアルな声」をたくさん集めています。実際の業務の内容、稼働時間、平均月収から、求められるスキルまで。あなたにとって参考になる情報がきっと得られるはずです。</div>
+      </div>
+      <div class="col-lg-4 col-12">
+        <div class="benefit-box"><i class="fas fa-check-circle"></i> 本業を活かせる副業に出逢える</div>
+        <div class="benefit-description">Sidebizのレビューには、副業で必要となるスキルを掲載しています。また、本業がどう活かされているか、という情報も書いていただいているため、あなたに合う副業を探すヒントになるでしょう。</div>
+      </div>
+      <div class="col-lg-4 col-12">
+        <div class="benefit-box"><i class="fas fa-check-circle"></i> 副業の先輩と繋がれる</div>
+        <div class="benefit-description">もし興味のある副業が見つかり、もっと詳しく聞きたい場合は、レビューを書いている人に質問することもできます。もしかしたらそこから人脈の拡大につながるかもしれません。</div>
+      </div>
+    </div>
+    <%= link_to new_user_registration_path, class:"link-signup" do %>
+      <button type="button" class="btn btn-dark btn-signup">ユーザー登録する</button>
+    <% end %>
+  </div>
+</div>
+
+<div class="customer-voice-area area">
+  <div class="container">
+    <h3 class="area-title">お客の声</h3>
+      <p>名前、写真、年齢、居住地、印象的な言葉を見出しに</p>
+    <%= link_to new_user_registration_path, class:"link-signup" do %>
+      <button type="button" class="btn btn-dark btn-signup">登録する</button>
+    <% end %>
+  </div>
+</div>
+
+<div class="tutorial-area area">
+  <div class="container">
+    <h3 class="area-title">使い方</h3> 
+    <div class="row justify-content-center">
+      <div class="media col-8">
+        <%= image_tag '/noimage.png', class:"", :size =>'100x100' %>
+        <div class="media-body use-step">
+          <h5 class="mt-0">副業を名前で検索する</h5>
+          気になる副業があれば、名前で検索してみましょう。
+        </div><!-- /.media-body -->
+      </div><!-- /.media -->
+      <div class="media col-8">
+        <%= image_tag '/noimage.png', class:"", :size =>'100x100' %>
+        <div class="media-body use-step">
+          <h5 class="mt-0">副業を本業やスキルから検索する</h5>
+          自分と同じ本業や、自分が持っているスキルから、副業を検索することも可能です。
+        </div><!-- /.media-body -->
+      </div><!-- /.media -->
+      <div class="media col-8">
+        <%= image_tag '/noimage.png', class:"", :size =>'100x100' %>
+        <div class="media-body use-step">
+          <h5 class="mt-0">気になった副業をストック</h5>
+          気になる副業が見つかったら、どんどんストックしてすぐに参照できるようにしておきましょう。
+        </div><!-- /.media-body -->
+      </div><!-- /.media -->
+      <div class="media col-8">
+        <%= image_tag '/noimage.png', class:"", :size =>'100x100' %>
+        <div class="media-body use-step">
+          <h5 class="mt-0">投稿者に直接質問してみる</h5>
+          レビューに書いていないことを知りたい場合、投稿者に質問してみましょう。
+        </div><!-- /.media-body -->
+      </div><!-- /.media -->
+    </div>
+    <h5 class="mt-0">ストックされたら無料で使い続けられるみたいな方式にする？</h5>
+    <%= link_to new_user_registration_path, class:"link-signup" do %>
+      <button type="button" class="btn btn-dark btn-signup">登録する</button>
+    <% end %>
+  </div>
+</div>
+
+<div class="registration-area area">
+  <div class="container">
+    <h3 class="area-title">差別化</h3>
+
+    <% if user_signed_in? %>
+      <p>ログイン済みです</p> 
+    <% else %>
+      <p>You are not signed in</p> 
+    <% end %>
+    <h3 class="area-title">登録しよう</h3>
+    <%= link_to new_user_registration_path, class:"link-signup" do %>
+      <button type="button" class="btn btn-dark btn-signup">登録する</button>
+    <% end %>
+  </div>
+</div>
+<hr>
+<div class="job-index-area area">
+  <h3 class="area-title">投稿一覧</h3> 
+  <div class="job-index-explanation">
+
+  </div>
+</div>
 <div class="container">
-  <h3>共感を呼ぶ</h3>
-  <p>副業に興味があるけど、何をやれば良いかわからないあなたへ</p>
-  <p>副業をやっている人たちの声を聞いてみませんか？</p>
-  <a href="#">導線</a>
-
-  <h3>Sidebizはこんなことができます</h3>
-  <h3>こんなメリットがあります</h3>
-    <p>副業のリアルな声が聞ける</p>
-    <p>自分の本業を活かせる副業が見つけられる</p>
-    <p>副業の先輩と繋がれる</p>
-  <a href="#">導線</a>
-
-  <h3>お客の声</h3>
-    <p>名前、写真、年齢、居住地、印象的な言葉を見出しに</p>
-  <h3>使い方</h3> 
-    <p>副業で検索する</p>
-    <p>本業やスキルで検索する</p>
-    <p>気になったものをストック</p>
-    <p>もっと詳しく知りたい場合は、直接質問してみよう</p>
-    <p>ストックされたら無料で使い続けられるみたいな方式にする？</p>
-
-  <h3>差別化</h3>
-  <h3>登録しよう</h3>
-  <a href="#">導線</a>
-
   <% if @jobs.present? %>
     <span><strong><%= @jobs.count %></strong> 件の投稿が一致しました</span>
   <% else %>
     <span>一致する検索結果はありませんでした</span>
   <% end %>
   <%= render "shared/job_card", jobs: @jobs %>
-  <% if user_signed_in? %>
-    <p>ログイン済みです</p> 
-  <% else %>
-    <p>You are not signed in</p> 
-  <% end %>
 </div>

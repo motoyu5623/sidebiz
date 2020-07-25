@@ -46,6 +46,15 @@ body {
   }
 }
 
+.notice {
+  background-color: #c9f892;
+  margin: 0;
+}
+.alert {
+  background-color: #f8f092;
+  margin: 0;
+}
+
 .page-title {
   margin-top: 1rem;
   margin-bottom: 2rem;
@@ -64,13 +73,87 @@ body {
 // トップページ
 .top-background-img-wrapper {
   overflow-x: hidden;
+    position: relative;
+  .top-container {
+    position: absolute;
+    left: 50%;
+    top: 50px;
+    transform: translateX(-50%);
+    .top-copy {
+      color: #dddddd;
+      font-size: 2rem;
+      font-family: sans-serif;
+      background-color: rgba($color: #000000, $alpha: 0.4);
+      box-shadow: 0 0 1rem 1rem rgba(0, 0, 0, 0.4);
+    }
+      
+    .top-signup {
+      color: #dddddd;
+      font-family: sans-serif;
+      background-color: rgba($color: #000000, $alpha: 0.4);
+      box-shadow: 0 0 1rem 1rem rgba(0, 0, 0, 0.4);
+      margin-top: 3rem;
+    }
+  }
+}
 
+.link-signup {
+  display: inline-block;
+  margin-top: 1.5rem;
 }
 .top-background-img {
   // background-size: cover;
   background-position: center center;
   max-width: 100%;
   min-width: 1140px;
+}
+
+// .landing-page {
+//   text-align: center;
+// }
+
+.area {
+  text-align: center;
+  padding: 2rem;
+}
+
+.area-title {
+  margin: 1rem auto;
+}
+
+.btn-signup {
+
+}
+.benefit-area {
+  background-color: #edf2f5;
+  .benefit-box {
+    // display: inline-block;
+    margin: 0.5rem;
+    background-color: #fff;
+    border-radius: 1rem;
+    font-weight: bold;
+    padding: 0.25rem;
+    border: #6699cc 1px solid;
+    color: $dark;
+  }
+  .benefit-description {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    text-align: left;
+    padding: 0.5rem 1rem;
+    min-height: 8.5rem;
+  }
+}
+
+
+.tutorial-area {
+  background-color: #eeffff;
+  
+  .use-step {
+    text-align-last: left;
+    padding: 0 1rem;
+
+  }
 }
 
 // レビュー投稿ページ
