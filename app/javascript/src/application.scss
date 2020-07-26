@@ -83,15 +83,15 @@ body {
       color: #dddddd;
       font-size: 2rem;
       font-family: sans-serif;
-      background-color: rgba($color: #000000, $alpha: 0.4);
-      box-shadow: 0 0 1rem 1rem rgba(0, 0, 0, 0.4);
+      background-color: rgba($color: #000000, $alpha: 0.5);
+      box-shadow: 0 0 1rem 1rem rgba(0, 0, 0, 0.5);
     }
       
     .top-signup {
       color: #dddddd;
       font-family: sans-serif;
-      background-color: rgba($color: #000000, $alpha: 0.4);
-      box-shadow: 0 0 1rem 1rem rgba(0, 0, 0, 0.4);
+      background-color: rgba($color: #000000, $alpha: 0.5);
+      box-shadow: 0 0 1rem 1rem rgba(0, 0, 0, 0.5);
       margin-top: 3rem;
     }
   }
@@ -101,6 +101,11 @@ body {
   display: inline-block;
   margin-top: 1.5rem;
 }
+.btn-signup {
+  // padding: 0.5rem 10%;
+  font-size: 1.125rem;
+  // max-width: 10rem;
+}
 .top-background-img {
   // background-size: cover;
   background-position: center center;
@@ -108,22 +113,17 @@ body {
   min-width: 1140px;
 }
 
-// .landing-page {
-//   text-align: center;
-// }
-
 .area {
   text-align: center;
-  padding: 2rem;
+  padding: 2rem 0;
 }
 
 .area-title {
-  margin: 1rem auto;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
 }
 
-.btn-signup {
-
-}
 .benefit-area {
   background-color: #edf2f5;
   .benefit-box {
@@ -148,12 +148,39 @@ body {
 
 .tutorial-area {
   background-color: #eeffff;
-  
+  .media {
+    margin: 1rem 0;
+    border: 1px solid #6699cc;
+    background-color: #fff;
+    border-radius: 0.5rem;
+  }
+  .use-step-icon {
+    border-right: 1px solid #6699cc;
+    padding-right: 0.5rem;
+    
+  }
   .use-step {
     text-align-last: left;
-    padding: 0 1rem;
-
+    padding: 0.5rem 2rem;
   }
+}
+
+.registration-area {
+  .page-transition {
+    text-align-last: left;
+    margin: 1rem 0;
+    vertical-align: middle;
+    padding: 2rem 0;
+
+    .user-attribute {
+      vertical-align: middle;
+      font-size: 1.25rem;
+    }
+  }
+}
+
+.job-index-explanation {
+  // max-width: 670px;
 }
 
 // レビュー投稿ページ
