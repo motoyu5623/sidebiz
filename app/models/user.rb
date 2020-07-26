@@ -8,9 +8,9 @@ class User < ApplicationRecord
   #         dependent: :destroy
 
   has_many :side_jobs, dependent: :destroy
-          #  -> { where(is_main: false) },
-          #  class_name: 'Job',
-          #  dependent: :destroy
+  #  -> { where(is_main: false) },
+  #  class_name: 'Job',
+  #  dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

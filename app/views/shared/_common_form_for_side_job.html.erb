@@ -1,13 +1,6 @@
   <div class="field">
-    <%= f.fields_for :main_jobs do |main_job| %>
-      <span class="field-left"><%= main_job.label '比較対象となる本業' %></span>
-      <span class="field-right"><%= main_job.select :name, current_user.main_jobs.collect{|main| [main.name, main.id]}, {}, class:"input-form-select" %></span>
-    <% end %>
-  </div>
-
-  <div class="field">
     <span class="field-left"><%= f.label '比較対象となる本業' %></span>
-    <span class="field-right"><%= f.collection_select :main_job_id, current_user.main_jobs.all, :id, :name, class:"input-form-large" %></span>
+    <span class="field-right"><%= f.collection_select :main_job_id, current_user.main_jobs.all, :id, :name, {}, class:"input-form-select" %></span>
   </div>
 
   <div class="field">

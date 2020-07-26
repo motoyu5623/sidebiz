@@ -36,9 +36,9 @@ class MainJobsController < ApplicationController
 
   def job_params
     params.require(:main_job).permit(:name, :work_type, :company, :section,
-                                :industry,
-                                :medium, :occupation, :started_at,
-                                :ended_at, :worktime_week, :description,
-                                :user_id)
+                                     :industry,
+                                     :medium, :occupation, :started_at,
+                                     :ended_at, :worktime_week, :description,
+                                     :user_id)
   end
 end
