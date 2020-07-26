@@ -13,8 +13,8 @@
       <div class="job-list">
         <div class="main-name">
           <span class="tag main-tag">本業</span>
-          <% if @user.main_job %>
-            <span><%= @user.main_job.name %></span>
+          <% if @main_job.present? %>
+            <span><%= @main_job.name %></span>
             <%= link_to "編集", edit_main_job_path(@main_job) %>
           <% else %>
             <span>未登録　<span>
@@ -23,14 +23,14 @@
         </div>
         <div class="side-name">
           <span class="tag side-tag">副業</span>
-          <% if @user.jobs.present? %>
-            <% @user.jobs.each do |job| %>
-              <span><%= link_to job.name, job_path(job) %></span>
+          <% if @user.side_jobs.present? %>
+            <% @user.side_jobs.each do |job| %>
+              <span><%= link_to job.name, side_job_path(job) %></span>
             <% end %>
           <% else %>
             <span>未登録　<span>
-            <% if @user ==current_user && @user.main_job %>
-              <%= link_to "→副業を登録する", new_job_path %>
+            <% if @user ==current_user && @user.main_jobs.present? %>
+              <%= link_to "→副業を登録する", new_side_job_path %>
             <% end %>
           <% end %>
 

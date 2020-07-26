@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @jobs = @user.jobs.all.order(updated_at: :desc).page(params[:page])
-    @main_job = @user.main_job
+    @jobs = @user.side_jobs.all.order(updated_at: :desc).page(params[:page])
+    @main_job = @user.main_jobs.first
   end
 end

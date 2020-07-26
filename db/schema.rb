@@ -10,14 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_23_060845) do
+ActiveRecord::Schema.define(version: 2020_07_26_140134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "jobs", force: :cascade do |t|
+  create_table "main_jobs", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.string "name", null: false
     t.string "work_type"
+    t.string "company"
     t.string "section"
     t.string "industry"
     t.string "medium"
@@ -25,16 +29,32 @@ ActiveRecord::Schema.define(version: 2020_07_23_060845) do
     t.date "started_at"
     t.date "ended_at"
     t.integer "worktime_week", null: false
+    t.integer "income_month"
     t.text "description", null: false
-    t.text "pulled_skill", null: false
-    t.text "returned_skill", null: false
-    t.boolean "is_main", default: false
+    t.index ["user_id"], name: "index_main_jobs_on_user_id"
+  end
+
+  create_table "side_jobs", force: :cascade do |t|
     t.bigint "user_id", null: false
+    t.bigint "main_job_id", null: false
+    t.text "pulled_skill"
+    t.text "returned_skill"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name", null: false
+    t.string "work_type"
     t.string "company"
-    t.index ["name"], name: "index_jobs_on_name"
-    t.index ["user_id"], name: "index_jobs_on_user_id"
+    t.string "section"
+    t.string "industry"
+    t.string "medium"
+    t.string "occupation"
+    t.date "started_at"
+    t.date "ended_at"
+    t.integer "worktime_week", null: false
+    t.integer "income_month"
+    t.text "description", null: false
+    t.index ["main_job_id"], name: "index_side_jobs_on_main_job_id"
+    t.index ["user_id"], name: "index_side_jobs_on_user_id"
   end
 
   create_table "skills", force: :cascade do |t|
@@ -43,9 +63,9 @@ ActiveRecord::Schema.define(version: 2020_07_23_060845) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "importance_for_side_job"
     t.integer "importance_for_main_job"
-    t.bigint "job_id"
-    t.index ["job_id"], name: "index_skills_on_job_id"
+    t.bigint "side_job_id"
     t.index ["name"], name: "index_skills_on_name"
+    t.index ["side_job_id"], name: "index_skills_on_side_job_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -64,5 +84,8 @@ ActiveRecord::Schema.define(version: 2020_07_23_060845) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "jobs", "users"
+  add_foreign_key "main_jobs", "users"
+  add_foreign_key "side_jobs", "main_jobs"
+  add_foreign_key "side_jobs", "users"
+  add_foreign_key "skills", "side_jobs"
 end
