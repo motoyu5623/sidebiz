@@ -30,6 +30,7 @@ class SideJobsController < ApplicationController
   end
 
   def create
+    # binding.pry
     @job = current_user.side_jobs.build(job_params)
     if @job.save
       flash[:success] = 'job registered!'
@@ -75,7 +76,8 @@ class SideJobsController < ApplicationController
   def job_params
     params.require(:side_job).permit(:name, :work_type, :company, :section,
                                      :industry, :medium, :occupation, :started_at, :ended_at,
-                                     :worktime_week, :description, :pulled_skill,
+                                     :worktime_week, :income_month,
+                                     :description, :pulled_skill,
                                      :returned_skill, :main_job_id,
                                      :user_id, skills_attributes: %i[name side_job_id id importance_for_side_job importance_for_main_job])
   end

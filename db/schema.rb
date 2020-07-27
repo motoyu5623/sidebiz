@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_26_140134) do
+ActiveRecord::Schema.define(version: 2020_07_27_011348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 2020_07_26_140134) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name", null: false
-    t.string "work_type"
     t.string "company"
     t.string "section"
     t.string "industry"
@@ -31,6 +30,7 @@ ActiveRecord::Schema.define(version: 2020_07_26_140134) do
     t.integer "worktime_week", null: false
     t.integer "income_month"
     t.text "description", null: false
+    t.integer "work_type"
     t.index ["user_id"], name: "index_main_jobs_on_user_id"
   end
 
@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(version: 2020_07_26_140134) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name", null: false
-    t.string "work_type"
     t.string "company"
     t.string "section"
     t.string "industry"
@@ -53,6 +52,7 @@ ActiveRecord::Schema.define(version: 2020_07_26_140134) do
     t.integer "worktime_week", null: false
     t.integer "income_month"
     t.text "description", null: false
+    t.integer "work_type"
     t.index ["main_job_id"], name: "index_side_jobs_on_main_job_id"
     t.index ["user_id"], name: "index_side_jobs_on_user_id"
   end
