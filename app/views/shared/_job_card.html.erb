@@ -6,6 +6,11 @@
           <div class="name-holder-sm">
             <%= link_to job.user.username, user_path(job.user) %>
           </div>
+
+          <div class="action_on_sidebiz">
+            <%= render "shared/action_on_sidebiz", job: job %>
+          </div>
+
         </div>
         <div class="col-lg-5 col-8 no-padding">
           <div class="row job-transition">

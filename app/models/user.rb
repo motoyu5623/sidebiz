@@ -12,6 +12,9 @@ class User < ApplicationRecord
   #  class_name: 'Job',
   #  dependent: :destroy
 
+  has_many :stocks, dependent: :destroy
+  has_many :stock_side_jobs, through: :stocks, source: :side_job
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

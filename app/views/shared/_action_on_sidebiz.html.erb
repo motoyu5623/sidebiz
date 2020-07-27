@@ -1,0 +1,14 @@
+<% if user_signed_in? %>
+  <% if current_user == job.user %>
+    <%= link_to  edit_side_job_path(job), id: :"button-edit-#{job.id}" do %>
+      <i class="fas fa-edit"></i>
+    <% end %>
+    <%= link_to side_job_path(job), id: :"button-delete-#{job.id}", method: :delete, data: { confirm: '削除してよろしいですか？'} do %>
+      <i class="far fa-trash-alt"></i>
+    <% end %>
+  <% else %>
+    <div id="stock_btn_<%= job.id %>">
+      <%= render 'shared/stock_area', job: job %>
+    </div>
+  <% end %>
+<% end %>

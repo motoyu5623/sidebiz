@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'stocks/create'
+  get 'stocks/destroy'
   # get 'skills/create'
   # get 'main_job/new'
   # post 'main_job/create'
@@ -8,8 +10,10 @@ Rails.application.routes.draw do
   root 'staticpage#index'
 
   resources :main_jobs, only: %i[new create edit update]
-  resources :side_jobs do
+  resources :side_jobs, shallow: true do
     resources :skills, only: %i[new create]
+    resource :stocks, only: %i[create destroy]
+    get :stocks, on: :collection
   end
   devise_for :users, controllers: {
     sessions: 'users/sessions'

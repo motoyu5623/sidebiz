@@ -71,6 +71,10 @@ class SideJobsController < ApplicationController
     redirect_to user_path(current_user)
   end
 
+  def stocks
+    @stocks = current_user.stock_side_jobs.include(:user)
+  end
+
   private
 
   def job_params

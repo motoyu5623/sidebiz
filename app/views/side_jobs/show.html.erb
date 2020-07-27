@@ -20,6 +20,10 @@
   </div>
 </div>
 
+<div class="container">
+  <%= render "shared/action_on_sidebiz", job: @job %>
+</div>
+
 <script>
   var ctx = document.getElementById("myChart");
   var myChart = new Chart(ctx, {
