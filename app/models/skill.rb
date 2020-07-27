@@ -1,5 +1,5 @@
 class Skill < ApplicationRecord
-  belongs_to :job
+  belongs_to :side_job
   # validates :name, presence: true
   # has_many :job_skills, dependent: :destroy
   # has_many :jobs, through: :job_skills

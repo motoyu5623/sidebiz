@@ -3,12 +3,9 @@
   <div class="page-title">
     <h2>本業情報の登録</h2>
   </div>
-  <%= form_with(model: @job, url: main_jobs_path, local:true, class:"job-new-field") do |f| %>
-    <%= render "shared/common_form", {job:@job, f:f} %>
+  <%= form_with(model: @main_job, url: main_jobs_path, local:true, class:"job-new-field") do |f| %>
+    <%= render "shared/common_form", {job:@main_job, f:f} %>
 
-    <%= f.hidden_field :pulled_skill, :value => '' %>
-    <%= f.hidden_field :returned_skill, :value => '' %>
-    <%= f.hidden_field :is_main, :value => true %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <div class="btn-submit">
       <%= f.submit '登録する', class:"btn btn-dark" %>

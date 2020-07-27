@@ -1,4 +1,9 @@
   <div class="field">
+    <span class="field-left"><%= f.label '比較対象となる本業' %></span>
+    <span class="field-right"><%= f.collection_select :main_job_id, current_user.main_jobs.all, :id, :name, {}, class:"input-form-select" %></span>
+  </div>
+
+  <div class="field">
     <span class="field-left"><%= f.label '本業から活用できたスキル' %></span>
     <span class="field-right"><%= f.text_area :pulled_skill, class:"input-form-large" %></span>
   </div>

@@ -1,12 +1,13 @@
 class MainJobsController < ApplicationController
   def new
-    @job = current_user.jobs.build
+    @user = current_user
+    @main_job = @user.main_jobs.build
   end
 
   def create
-    @job = current_user.jobs.build(job_params)
-    @job.save
-    if @job.save
+    @main_job = current_user.main_jobs.build(job_params)
+    @main_job.save
+    if @main_job.save
       flash[:success] = 'job registered!'
       redirect_to user_path(current_user.id)
     else
@@ -16,11 +17,11 @@ class MainJobsController < ApplicationController
   end
 
   def edit
-    @job = Job.find_by(id: params[:id])
+    @job = MainJob.find_by(id: params[:id])
   end
 
   def update
-    @job = Job.find_by(id: params[:id])
+    @job = MainJob.find_by(id: params[:id])
     @job.update(job_params)
     if @job.update(job_params)
       flash[:success] = '編集に成功しました'
@@ -34,10 +35,11 @@ class MainJobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:name, :work_type, :company, :section,
-                                :industry,
-                                :medium, :occupation, :started_at,
-                                :ended_at, :worktime_week, :description,
-                                :pulled_skill, :returned_skill, :is_main, :user_id)
+    params.require(:main_job).permit(:name, :work_type, :company, :section,
+                                     :industry,
+                                     :medium, :occupation, :started_at,
+                                     :ended_at, :worktime_week,
+                                     :income_month, :description,
+                                     :user_id)
   end
 end

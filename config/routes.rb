@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root 'staticpage#index'
 
   resources :main_jobs, only: %i[new create edit update]
-  resources :jobs do
+  resources :side_jobs do
     resources :skills, only: %i[new create]
   end
   devise_for :users, controllers: {
