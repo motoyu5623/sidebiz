@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'MainJobs', type: :request do
   let!(:user) { create(:user) }
-  let!(:job) { create(:job, user: user) }
-  let!(:main_job) { create(:job, :main_job, user: user) }
+  let!(:main_job) { create(:main_job, user: user) }
 
   describe 'GET /new' do
     it 'returns http success' do

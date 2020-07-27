@@ -1,5 +1,5 @@
 class Job < ApplicationRecord
-  belongs_to :user
+  # belongs_to :user
   # has_many :skills, dependent: :destroy
 
   # has_many :job_skills, dependent: :destroy
