@@ -19,7 +19,7 @@ class SideJobsController < ApplicationController
   end
 
   def new
-    if current_user.main_jobs.nil?
+    if current_user.main_jobs.blank?
       redirect_to new_main_job_path
     else
       @job = current_user.side_jobs.build
@@ -42,23 +42,23 @@ class SideJobsController < ApplicationController
   end
 
   def edit
-    @job = Job.find_by(id: params[:id])
+    @job = SideJob.find_by(id: params[:id])
     # @job.skills.create_or_find_by
     # if @job.skills.blank?
     return unless @job.skills.blank?
 
-    5.times do
+    3.times do
       @job.skills.build
     end
     # end
   end
 
   def update
-    @job = Job.find_by(id: params[:id])
+    @job = SideJob.find_by(id: params[:id])
     @job.update(job_params)
     if @job.save
       flash[:success] = '編集に成功しました'
-      redirect_to job_path(@job)
+      redirect_to side_job_path(@job)
     else
       flash[:danger] = '編集に失敗しました'
       render :edit
@@ -66,7 +66,7 @@ class SideJobsController < ApplicationController
   end
 
   def destroy
-    @job = Job.find_by(id: params[:id])
+    @job = SideJob.find_by(id: params[:id])
     @job.destroy
     redirect_to user_path(current_user)
   end
