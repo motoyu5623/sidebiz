@@ -130,8 +130,9 @@ body {
 
 .area-title {
   margin-top: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   font-weight: bold;
+  text-align: center;
 }
 
 .benefit-area {
@@ -191,6 +192,38 @@ body {
 
 .job-index-explanation {
   // max-width: 670px;
+}
+
+
+// .account-form-box {
+
+//   border: 1px solid #000;
+//   margin: 3rem auto;
+//   padding: 2rem;
+//   width: 600px;
+//   max-width: 90%;
+//   text-align: center;
+// }
+.devise-link-area {
+  margin-top: 3rem;
+  text-align: center;
+  a {
+    color: #000000;
+  }
+  a:link {
+    color:#000000;
+  }
+  a:visited {
+    color:#000000;
+  }
+  a:hover {
+    color:#6699cc;
+    text-decoration:underline;
+  }
+  a:active {
+    color:#6699cc;
+  }
+
 }
 
 // レビュー投稿ページ
