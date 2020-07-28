@@ -6,12 +6,10 @@
   <%= form_with(model: @job, url: main_job_path, local:true, class:"job-new-field") do |f| %>
     <%= render "shared/common_form", {job:@job, f:f} %>
 
-    <%= f.hidden_field :pulled_skill, :value => '' %>
-    <%= f.hidden_field :returned_skill, :value => '' %>
-    <%= f.hidden_field :is_main, :value => true %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <div class="btn-submit">
-      <%= f.submit '登録する', class:"btn btn-dark" %>
+      <%= f.submit '更新する', class:"btn btn-dark" %>
+      <%= link_to "削除する", side_job_path(@job), method: :delete, data: { confirm: '削除してよろしいですか？'}, class:"btn btn-light"  %>
     </div>
   <% end %>
 </div>
