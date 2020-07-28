@@ -1,5 +1,6 @@
 // 初期設定
 $dark:#006699;
+$light: #EDF2F5;
 
 @import '~bootstrap/scss/bootstrap';
 @import '@fortawesome/fontawesome-free';
@@ -22,6 +23,25 @@ body {
   float: left;
   width: 100%;
   margin-top: 45px;
+}
+
+.black-link {
+  a {
+    color: #024a92;
+  }
+  a:link {
+    color:#024a92;
+  }
+  a:visited {
+    color:#024a92;
+  }
+  a:hover {
+    color:#6699cc;
+    text-decoration:underline;
+  }
+  a:active {
+    color:#6699cc;
+  }
 }
 
 .pagination-box {
@@ -55,8 +75,16 @@ body {
   margin: 0;
 }
 
+.btn-dark {
+  color: #eeffff;
+}
+
+.btn-light {
+  border: 1px solid #bdd4e2;
+}
+
 .page-title {
-  margin-top: 1rem;
+  margin-top: 2rem;
   margin-bottom: 2rem;
 }
 
@@ -418,6 +446,7 @@ body {
   border: 1px solid #edf2f5;
   border-radius: 1rem;
   padding: 0.2rem 0.5rem;
+  margin-bottom: 0.25em;
 }
 .main-tag {
   background-color: #006699;
@@ -632,3 +661,27 @@ body {
     }
   }
 }
+
+// ユーザーshow
+.stats-bar {
+  margin-bottom: 1rem;
+  border-top: 1px solid #bdd4e2;
+  border-bottom: 1px solid #bdd4e2;
+  padding: 1rem 0;
+  vertical-align: bottom;
+
+  .stats-item {
+    display: inline-block;
+    margin-top: 0.5rem;
+  }
+}
+
+.position-top {
+  vertical-align: top;
+}
+.job-list {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+}
+

@@ -1,9 +1,10 @@
 <div class="container">
-  <div class="job-show-title-box">
-    <span class="job-show-title"><%= @job.name %></span>
-    <span> のレビュー </span><%= link_to "@#{@user.username}", user_path(@user) %>
+  <div class="page-title">
+    <div class="job-show-title-box">
+      <span class="job-show-title"><%= @job.name %></span>
+      <span> のレビュー </span><%= link_to "@#{@user.username}", user_path(@user) %>
+    </div>
   </div>
-  <br>
   <div class="card">
     <div class="card-body">
       <%= render "job_summary_box", job:@job %>
