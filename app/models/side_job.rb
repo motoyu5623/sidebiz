@@ -6,6 +6,7 @@ class SideJob < ApplicationRecord
   accepts_nested_attributes_for :skills, allow_destroy: true
 
   has_many :stocks, dependent: :destroy
+  has_many :comments
 
   enum work_type: { '会社勤務' => 1, '個人事業法人' => 2, '個人事業非法人' => 3 }
 

@@ -16,6 +16,8 @@ class SideJobsController < ApplicationController
     @labels = @skills.map(&:first)
     @importance_for_side_job = @skills.map(&:second)
     @importance_for_main_job = @skills.map(&:third)
+    @comments = @job.comments
+    @comment = @job.comments.build
   end
 
   def new

@@ -68,21 +68,6 @@
 </div>
 
 <div class="field">
-  <span class="field-left"><%= f.label "終了年月" %></span>
-  <span class="field-right">
-    <%= raw sprintf(f.date_select(:ended_at,
-                                  {use_month_numbers: true,
-                                  date_separator: '%s',
-                                  start_year: 1930,
-                                  end_year: Time.now.year,
-                                  default: Date.new(2016, 1, 1),
-                                  discard_day: true},
-                                  class:"input-form-select"),
-                    '年') + '月' %>
-  </span>
-</div>
-
-<div class="field">
   <span class="field-left"><%= f.label '労働時間（週）' %></span>
   <span class="field-right">
     <%= f.select(:worktime_week, { '〜5時間' => '〜5時間' , '5〜10時間' => '5〜10時間',

@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :skills, only: %i[new create]
     resource :stocks, only: %i[create destroy]
     get :stocks, on: :collection
+    resources :comments, only: [:create]
+    # get 'change_form' to: 'side_jobs#change_form'
   end
   devise_for :users, controllers: {
     sessions: 'users/sessions'

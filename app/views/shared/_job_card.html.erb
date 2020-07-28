@@ -3,13 +3,17 @@
     <div class="card-header">
       <div class="row">
         <div class="col-lg-7 col-4">
-          <div class="name-holder-sm">
+          <span class="name-holder-sm">
             <%= link_to job.user.username, user_path(job.user) %>
-          </div>
+          </span>
 
-          <div class="action_on_sidebiz">
+          <span class="action_on_sidebiz ml-5">
             <%= render "shared/action_on_sidebiz", job: job %>
-          </div>
+            <span class="ml-3">
+              <i class="fas fa-comment-alt"></i>
+              <%= job.comments.count %>
+            </span>
+          </span>
 
         </div>
         <div class="col-lg-5 col-8 no-padding">
