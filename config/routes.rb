@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'stocks/create'
-  get 'stocks/destroy'
+  # get 'stocks/create'
+  # get 'stocks/destroy'
   # get 'skills/create'
   # get 'main_job/new'
   # post 'main_job/create'

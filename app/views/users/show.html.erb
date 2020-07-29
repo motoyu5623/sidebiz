@@ -28,7 +28,9 @@
             <span class="stats-item">20 フォロー</span>
           </div>
           <div class="col-2">
-            <span class="stats-item">20 ストック</span>
+            <span class="stats-item black-link">
+              <strong><%= link_to "#{@user.stocks.count} ストック", stocks_side_jobs_path %></strong>
+            </span>
           </div>
         </div>
         <hr>

@@ -74,7 +74,7 @@ class SideJobsController < ApplicationController
   end
 
   def stocks
-    @stocks = current_user.stock_side_jobs.include(:user)
+    @stocks = current_user.stock_side_jobs.includes(:user).page(params[:page])
   end
 
   private

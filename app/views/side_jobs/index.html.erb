@@ -1,38 +1,41 @@
 <div class="container">
-    <div class="page-title">
-      <h2>投稿一覧</h2>
-    </div>
-    <div class="search-box">
-      <%= search_form_for @q do |f| %>
-        <div class="row">
-          <div class="col-2 form-field">
-            <%= f.label :name_cont, "副業名", class: "label"   %><br>
-            <%= f.search_field :name_cont, class: "input-form" %>
-          </div>
-          <div class="col-2 form-field">
-            <%= f.label :user_username_cont, "ユーザー名", class: "label"   %><br>
-            <%= f.search_field :user_username_cont, class: "input-form" %>
-          </div>
-          <div class="col-2 form-field">
-            <%= f.label :skills_name_cont, "スキル名", class: "label"  %><br>
-            <%= f.search_field :skills_name_cont, class: "input-form" %>
-          </div>
-  
-          <div class="col-3 align-self-end submit-field">
-            <%= f.submit "検索", class: "submit-form" %>
-            <%= link_to request.path, class:"clear-btn-link" do %>
-              <button type="button" class="btn btn-light clear-btn">クリア</button>
-            <% end %>
-          </div>
+  <div class="page-title">
+    <h2>投稿一覧</h2>
+  </div>
+  <div class="container search-box mb-4">
+    <%= search_form_for @q do |f| %>
+      <div class="row">
+        <div class="col-md-3 col-6 form-field">
+          <%= f.label :name_cont, "副業名", class: "label"   %><br>
+          <%= f.search_field :name_cont, class: "input-form" %>
         </div>
-      <% end %>
-    </div>
-  
-    <% if @jobs.present? %>
-      <span><strong><%= @jobs.count %></strong> 件の投稿が一致しました</span>
-    <% else %>
-      <span>一致する検索結果はありませんでした</span>
+        <div class="col-md-3 col-6 form-field">
+          <%= f.label :main_job_name_cont, "本業名", class: "label"   %><br>
+          <%= f.search_field :main_job_name_cont, class: "input-form" %>
+        </div>
+        <div class="col-md-3 col-6 form-field">
+          <%= f.label :skills_name_cont, "スキル名", class: "label"  %><br>
+          <%= f.search_field :skills_name_cont, class: "input-form" %>
+        </div>
+        <div class="col-md-3 col-6 form-field">
+          <%= f.label :user_username_cont, "ユーザー名", class: "label"   %><br>
+          <%= f.search_field :user_username_cont, class: "input-form" %>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-2 mb-1">
+        <div class="">
+          <%= f.submit "検索", class: "btn btn-dark" %>
+          <%= link_to "クリア", request.path, class:"btn btn-light" %>
+        </div>
+      </div>
     <% end %>
-    <%= render "shared/job_card", jobs: @jobs %>
+  </div>
 
+  <% if @jobs.present? %>
+    <span><strong><%= @jobs.total_count %></strong> 件の投稿が一致しました</span>
+  <% else %>
+    <span>一致する検索結果はありませんでした</span>
+  <% end %>
+  <%= page_entries_info @jobs, entry_name: "item" %>
+  <%= render "shared/job_card", jobs: @jobs %>
 </div>

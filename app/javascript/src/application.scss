@@ -27,13 +27,13 @@ body {
 
 .black-link {
   a {
-    color: #024a92;
+    color: #045cb4;
   }
   a:link {
-    color:#024a92;
+    color:#045cb4;
   }
   a:visited {
-    color:#024a92;
+    color:#045cb4;
   }
   a:hover {
     color:#6699cc;
@@ -75,6 +75,9 @@ body {
   margin: 0;
 }
 
+.btn {
+  min-width: 5rem;
+}
 .btn-dark {
   color: #eeffff;
 }
@@ -347,18 +350,20 @@ body {
   height: 30px;
 }
   
+
 // Jobインデックスページ
 
 .search-box {
   background-color: #a3cbdf;
-  padding: 1rem 3rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   border-radius: 1rem;
 
 }
 
 .form-field {
   display: inline-block;
-  margin-right: 2rem;
+  // margin-right: 2rem;
 
 
   .label {
@@ -369,34 +374,6 @@ body {
     border-radius: 0.5rem;
     border: none;
     height: 2.5rem;
-  }
-}
-
-.submit-field {
-  .submit-form {
-    background-color: #006699;
-    width: 40%;
-    height: 2.5rem;
-    border-radius: 0.5rem;
-    border: none;
-    vertical-align: bottom;
-    color: #feffff;
-  }
-  .submit-form:hover {
-    background-color: #4e98bd;
-
-  }
-  .clear-btn {
-    display: inline-block;
-    vertical-align: bottom;
-    width: 40%;
-    padding: 1px 6px;
-    border-radius: 0.5rem;
-    height: 2.5rem;
-    .clear-btn-link {
-      width: 100%;
-    }
-    
   }
 }
 
