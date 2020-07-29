@@ -6,12 +6,11 @@ class CommentsController < ApplicationController
     @comment = side_job.comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      flash[:success] = "コメントしました"
-      redirect_back(fallback_location: root_path)
+      flash[:success] = 'コメントしました'
     else
-      flash[:danger] = "コメントできませんでした"
-      redirect_back(fallback_location: root_path)
+      flash[:danger] = 'コメントできませんでした'
     end
+    redirect_back(fallback_location: root_path)
   end
 
   private
