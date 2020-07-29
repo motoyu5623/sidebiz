@@ -14,5 +14,6 @@ class MainJob < ApplicationRecord
   validates :user_id, presence: true
   validates :name, presence: true, length: { maximum: 50 }
   validates :worktime_week, presence: true
+  validates :income_month, presence: true
   validates :description, presence: true, length: { maximum: 400 }
 end
