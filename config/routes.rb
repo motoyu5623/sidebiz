@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     # get 'change_form' to: 'side_jobs#change_form'
   end
   devise_for :users, controllers: {
+    registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
   resources :users, only: %i[index show]
