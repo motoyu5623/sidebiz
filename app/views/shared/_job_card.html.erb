@@ -1,37 +1,29 @@
 <% jobs.each do |job| %>
   <div class="card">
-    <div class="card-header">
+    <div class="card-header px-2 py-1">
       <div class="row">
-        <div class="col-lg-7 col-4">
-          <span class="name-holder-sm">
-            <%= link_to job.user.username, user_path(job.user) %>
+        <div class="col-lg-6 col-12 job-transition">
+          <span class="job-name shortcut">
+            <span class="tag main-tag">本業</span>
+            <span><%=  job.main_job.name %></span>
           </span>
-
-          <span class="action_on_sidebiz ml-5">
-            <%= render "shared/action_on_sidebiz", job: job %>
-            <span class="ml-3">
-              <i class="fas fa-comment-alt"></i>
-              <%= job.comments.count %>
+          <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+          <span class="job-name shortcut">
+            <span class="tag side-tag">副業</span>
+            <span>
+              <%= link_to side_job_path(job) do %>
+                <%= job.name %> <i class="fas fa-external-link-alt"></i>
+              <% end %>
             </span>
           </span>
-
         </div>
-        <div class="col-lg-5 col-8 no-padding">
-          <div class="row job-transition">
-            <div class="main-name">
-              <span class="tag main-tag">本業</span>
-              <span><%=  job.main_job.name %></span>
-            </div>
-            <div class="arrow"><i class="fas fa-arrow-right"></i></div>
-            <div class="side-name">
-              <span class="tag side-tag">副業</span>
-              <span><%= link_to job.name, side_job_path(job) %></span>
-            </div>
-            <div class="link-to-job">
-              <%= link_to side_job_path(job) do %>
-                <i class="fas fa-external-link-alt"></i>
-              <% end %>
-            </div>
+        <div class="col-lg-6 col-12">
+          <div class="stock_comment_icon ml-2 my-1">
+            <%= render "shared/stock_button", job: job %>
+            <span class="ml-3">
+              <i class="fas fa-comment-alt"></i>コメント
+              <%= job.comments.count %>
+            </span>
           </div>
         </div>
       </div>
@@ -46,9 +38,11 @@
         </div>
       </div>
       <div class="col-lg-5 col-12">
-        <div class="skill-tags-vertical">
-          <div class="skill-tags-explanation">
-            <span>スキルの重要度</span>
+        <div class="skill-tags-vertical mt-3">
+          <div class="skill-tags-title skill-tag-row mb-2">
+            <div class="skill-tag skill-main-tags">本業</div>
+            <div class="skill-tag skill-name skill-tags-explanation"><span>スキルの重要度</spn></div>
+            <div class="skill-tag skill-side-tags">副業</div>
           </div>
           <% job.skills.each do |skill| %>
             <div class="skill-tag-row">
@@ -59,6 +53,19 @@
           <% end %>
         </div>
       </div>
+    </div>
+    <div class="card-footer px-3 py-1">
+      <div class="card-personal-info">
+          <span class="name-holder-sm black-link mr-3">
+            投稿者: <%= link_to "@#{job.user.username}", user_path(job.user) %>
+          </span>
+          <span class="black-link shortcut">
+            居住地: <%= job.user.living_place %>
+          </span>
+      </div>
+        <% if user_signed_in? && current_user == job.user %>
+          <%= render "shared/job_edit_or_delete", job: job %>
+        <% end %>
     </div>
   </div>
 <% end %>

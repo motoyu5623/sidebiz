@@ -407,11 +407,28 @@ body {
   color:#6699cc;
   }
 
+
   .action_on_sidebiz {
-    text-align: right;
-    float: right;
+    // text-align: right;
+    // float: right;
   }
 }
+.stock_comment_icon {
+  
+}
+
+.card-personal-info {
+  display: inline-block;
+}
+.edit_or_delete {
+  // margin-right: 5%;
+  // margin-top: 0.5rem;
+  // margin-bottom: 0.25rem;
+  display: inline-block;
+  float: right;
+
+}
+
 .card-body {
   background-color: #edf2f5;
   padding: 2rem;
@@ -428,7 +445,7 @@ body {
   border: 1px solid #edf2f5;
   border-radius: 1rem;
   padding: 0.2rem 0.5rem;
-  margin-bottom: 0.25em;
+  margin: 0.25em;
 }
 .main-tag {
   background-color: #006699;
@@ -443,31 +460,50 @@ body {
   width: 100%;
 }
 .job-transition {
-  display: inline-block;
-  width: 100%;
-  margin: 0.25rem auto;
-  .main-name {
-  display: inline-block;
-    padding: 0;
-    width: 42%;
-    text-align: center;
+  // display: inline-block;
+  // width: 100%;
+  // margin: 0.25rem auto;
+  // vertical-align: middle;
+  .job-name {
+    display: inline-block;
+    max-width: 47%;
+    padding: 0.25rem 0;
+      // padding: 0;
+      // width: 42%;
+      // text-align: center;
+    vertical-align: middle;
   }
   .arrow {
     display: inline-block;
-    padding: 0;
     width: 6%;
     text-align: center;
+    vertical-align: middle;
+
+    // display: inline-block;
+    // padding: 0;
+    // width: 6%;
+    // text-align: center;
   }
-  .side-name {
-    display: inline-block;
-    padding: 0;
-    width: 42%;
-    text-align: center;
-  }
-  .link-to-job {
-    display: inline-block;
-    width: 4%;
-  }
+}
+
+.side-name {
+  display: inline-block;
+  // display: inline-block;
+  // padding: 0;
+  // width: 42%;
+  // text-align: center;
+}
+.link-to-job {
+  // display: inline-block;
+  width: 4%;
+}
+
+.shortcut {
+  white-space: nowrap; /* 横幅のMAXに達しても改行しない */
+  overflow: hidden; /* ハミ出した部分を隠す */
+  text-overflow: ellipsis; /* 「…」と省略 */
+  -webkit-text-overflow: ellipsis; /* Safari */
+
 }
 
 .card-content-wrapper {
@@ -484,11 +520,18 @@ body {
 
   }
 }
+
 .skill-tags-vertical {
-  min-width: 100%;
-  margin: 0.5rem auto;
+  // min-width: 100%;
+  // margin: 0.5rem auto;
+
+  .skill-tags-title {
+    border-bottom: 1px solid #aacddf;
+
+  }
   .skill-tag-row {
     text-align: center;
+    margin-bottom: 0.25rem;
     .skill-tag {
       display: inline-block;
     }

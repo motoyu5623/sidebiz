@@ -138,10 +138,11 @@
   </div>
 </div>
 <div class="container">
+
   <% if @jobs.present? %>
-    <span><strong><%= @jobs.count %></strong> 件の投稿が一致しました</span>
+    <span><strong><%= @jobs.total_count %></strong> 件の投稿</span>
   <% else %>
-    <span>一致する検索結果はありませんでした</span>
+    <span>投稿はまだありません。</span>
   <% end %>
   <%= render "shared/job_card", jobs: @jobs %>
 </div>

@@ -1,4 +1,5 @@
 class StocksController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_side_job, only: %i[create destroy]
   def create
     @stock = current_user.stocks.build(side_job_id: params[:side_job_id])
