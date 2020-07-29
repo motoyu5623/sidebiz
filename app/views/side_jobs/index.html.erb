@@ -31,11 +31,12 @@
     <% end %>
   </div>
 
-  <% if @jobs.present? %>
+  <% if params[:q].blank? %>
+    <span><strong><%= @jobs.total_count %></strong> 件の投稿</span>
+  <% elsif @jobs.present? %>
     <span><strong><%= @jobs.total_count %></strong> 件の投稿が一致しました</span>
   <% else %>
     <span>一致する検索結果はありませんでした</span>
   <% end %>
-  <%= page_entries_info @jobs, entry_name: "item" %>
   <%= render "shared/job_card", jobs: @jobs %>
 </div>

@@ -17,11 +17,11 @@
 
 <div class="field">
   <span class="field-left"><%= f.label '労働形態' %></span>
-  <span class="field-right"><%= f.select(:work_type,  {'会社勤務' => '会社勤務','個人事業法人' => '個人事業法人', '個人事業非法人' => '個人事業非法人' }, {}, class:"input-form-select") %></span>
+  <span class="field-right"><%= f.select(:work_type,  {'会社勤務' => '会社勤務','個人事業（法人）' => '個人事業（法人）', '個人事業（非法人）' => '個人事業（非法人）' }, {}, class:"input-form-select") %></span>
 </div>
 
 <hr>
-<span class="field-right">会社勤務の場合</span>
+<span class="field-right">会社勤務の場合(ajax化したい)</span>
 <div class="field">
   <span class="field-left"><%= f.label "会社名" %></span>
   <span class="field-right"><%= f.text_field :company, class:"input-form"  %></span>
@@ -33,24 +33,28 @@
 </div>
 <hr>
 
-<span class="field-right">個人の場合</span>
+<span class="field-right">個人の場合(ajax化したい)</span>
 
 <div class="field">
-  <span class="field-left"><%= f.label "案件獲得方法" %></span>
-  <span class="field-right"><%= f.text_field :medium, class:"input-form" %></span>
+  <span class="field-left"><%= f.label "顧客獲得方法" %></span>
+  <span class="field-right"><%= f.text_field :medium, class:"input-form" %><br><small>SEO、SNS、紹介、セミナー、ダイレクトメール、等</small></span>
+  
 </div>
 <hr>
 
-<div class="field">
-  <span class="field-left"><%= f.label "業種" %></span>
-  <span class="field-right"><%= f.text_field :industry, class:"input-form"  %></span>
-</div>
+<%# false内は非表示 %>
+<% if false %>
+        <div class="field">
+          <span class="field-left"><%= f.label "業種" %></span>
+          <span class="field-right"><%= f.text_field :industry, class:"input-form"  %></span>
+        </div>
 
 
-<div class="field">
-  <span class="field-left"><%= f.label "職種" %></span>
-  <span class="field-right"><%= f.text_field :occupation, class:"input-form" %></span>
-</div>
+        <div class="field">
+          <span class="field-left"><%= f.label "職種" %></span>
+          <span class="field-right"><%= f.text_field :occupation, class:"input-form" %></span>
+        </div>
+<% end %>
 
 <div class="field">
   <span class="field-left"><%= f.label "開始年月" %></span>

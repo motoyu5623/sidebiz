@@ -4,12 +4,12 @@
   </div>
 
   <div class="field">
-    <span class="field-left"><%= f.label '本業から活用できたスキル' %></span>
+    <span class="field-left"><%= f.label '本業から活かせたこと' %></span>
     <span class="field-right"><%= f.text_area :pulled_skill, class:"input-form-large" %></span>
   </div>
 
   <div class="field">
-    <span class="field-left"><%= f.label '本業に還元できたスキル' %></span>
+    <span class="field-left"><%= f.label '本業へ還元できたこと' %></span>
     <span class="field-right"><%= f.text_area :returned_skill, class:"input-form-large" %></span>
   </div>
 
@@ -17,11 +17,12 @@
   <div class="field">
     <span class="field-left">重要なスキル</span>
     <span class="field-right">
-      <table border="1" style="border-collapse: collapse" class="skill-input-table">
+      <small>副業において最も重要と考えられるスキルを、3つご記入ください。<br>そのスキルについて、副業と本業、それぞれにおける重要度を選択してください。</small>
+      <table border="1" style="border-collapse: collapse" class="skill-input-table mt-2">
         <tr>
           <th>スキル名</th>
           <th>副業での重要度</th>
-          <th>本業での重要度</th>
+          <th>(参考)本業での重要度</th>
         </tr>
         <%= f.fields_for :skills do |skill_field| %>
         <tr>

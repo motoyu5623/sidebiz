@@ -2,8 +2,6 @@ class SideJobsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    # @jobs = Job.where(is_main: false).order(updated_at: :desc).page(params[:page])
-    # @q = Job.ransack(params[:q])
     @q = SideJob.order(updated_at: :desc).ransack(params[:q])
     @jobs = @q.result.includes(:user, :skills, :main_job).page(params[:page])
   end
