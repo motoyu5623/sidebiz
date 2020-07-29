@@ -642,6 +642,15 @@ body {
 }
 
 
+.comment-form {
+  width: 100%;
+  border-radius: 0.25rem;
+  // height: 2rem;
+  border: 1px solid #bdd4e2;
+
+}
+
+
 // ユーザー編集
 
 
@@ -689,15 +698,14 @@ body {
 
 // ユーザーshow
 .stats-bar {
-  margin-bottom: 1rem;
-  border-top: 1px solid #bdd4e2;
+  margin: 0.25rem;
   border-bottom: 1px solid #bdd4e2;
-  padding: 1rem 0;
-  vertical-align: bottom;
+  padding: 0.5rem 0;
+  vertical-align: middle;
 
   .stats-item {
     display: inline-block;
-    margin-top: 0.5rem;
+    // margin-top: 0.5rem;
   }
 }
 
