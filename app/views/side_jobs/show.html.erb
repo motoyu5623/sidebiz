@@ -13,7 +13,7 @@
       <hr>
       <span>スキルチャート</span>
       <div class="row justify-content-center">
-        <div class="col-8 col-lg-5 job-right">
+        <div class="col-12 col-lg-5 job-right">
           <canvas id="myChart" width="400" height="400"></canvas>
         </div>
       </div>
@@ -50,7 +50,8 @@
     <% @comments.each do |comment| %>
       <div>
         <% unless comment.user.blank? %>
-          <%= link_to "@#{comment.user.username}", user_path(comment.user) %>
+      <hr>
+          <%= link_to "@#{comment.user.username}", user_path(comment.user), class:"mr-2" %>
         <% end %>
           <%= comment.content %>
       </div>
@@ -59,10 +60,10 @@
     <br>
     <% if user_signed_in? %>
       <%= form_with(model: [@job, @comment], local: true, class:"row align-items-end") do |f| %>
-        <div class="col-8">
+        <div class="col-md-8 col-12">
             <%= f.text_area :content, class:"comment-form", row: 5 %>
         </div>
-        <div class="col-3">
+        <div class="col">
             <%= f.submit "送信する", class:"btn btn-dark mb-2"  %>
         </div>
       <% end %>
@@ -80,13 +81,13 @@
       labels: <%= @labels.to_json.html_safe %>,
       datasets: [{
         label: '副業における重要度',
-        backgroundColor: "rgba(0,0,80,0.4)",
-        borderColor: "rgba(0,0,80,1)",
+        backgroundColor: "rgba(255,126,51,0.5)",
+        borderColor: "rgba(255,126,51,0.5)",
         data: <%= @importance_for_side_job %>
       }, {
         label: '本業における重要度',
-        backgroundColor: "rgba(0,255,0,0.4)",
-        borderColor: "rgba(0,255,0,1)",
+        backgroundColor: "rgba(59,190,255,0.2)",
+        borderColor: "rgba(59,190,255,0.5)",
         data: <%= @importance_for_main_job %>
       }
       ]},

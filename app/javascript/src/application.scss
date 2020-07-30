@@ -523,7 +523,12 @@ body {
   overflow: hidden; /* ハミ出した部分を隠す */
   text-overflow: ellipsis; /* 「…」と省略 */
   -webkit-text-overflow: ellipsis; /* Safari */
+}
 
+.shortcut {
+  overflow: hidden; /* ハミ出した部分を隠す */
+  text-overflow: ellipsis; /* 「…」と省略 */
+  -webkit-text-overflow: ellipsis; /* Safari */
 }
 
 .card-content-wrapper {
@@ -650,7 +655,7 @@ body {
 }
 
 .job-synergy-box {
-  margin: 3rem auto;
+  margin: 2rem auto;
 
   .synergy-icon {
     vertical-align: middle;
