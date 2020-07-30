@@ -196,14 +196,32 @@ body {
     background-color: #fff;
     border-radius: 0.5rem;
   }
-  .use-step-icon {
+  .use-step-icon-box {
     border-right: 1px solid #6699cc;
-    padding-right: 0.5rem;
-    
+    padding: 0;
+    display: flex;
+    align-items: center;
+    // position: relative;
+    // padding-right: 0.5rem;
+    // padding-top: 0.25rem;
+    // padding-bottom: 0.25rem;
+    // height: 100%;
+    .use-step-icon {
+      max-width: 100%;
+      // padding: 3%;
+      // position: absolute;
+      // top: 50%;
+      // left: 0;
+      // transform: translateY(-50%);
+    }
+  }
+
+  .use-step-row {
+    width: 100%;
   }
   .use-step {
     text-align-last: left;
-    padding: 0.5rem 2rem;
+    padding: 0.5rem 0;
   }
 }
 
@@ -414,6 +432,7 @@ body {
   }
 }
 .stock_comment_icon {
+  display: inline-block;
   
 }
 

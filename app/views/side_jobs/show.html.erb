@@ -22,7 +22,7 @@
 </div>
 
 <div class="container">
-  <div class="stock_comment_icon ml-2 my-1 black-link">
+  <div class="stock_comment_icon ml-2 black-link">
     <% if user_signed_in? %>
       <%= render "shared/stock_button", job: @job %>
     <% else %>
@@ -33,6 +33,9 @@
       <%= @job.comments.count %>
     </span>
   </div>
+    <% if user_signed_in? && current_user == @job.user %>
+      <%= render "shared/job_edit_or_delete", job: @job %>
+    <% end %>
 </div>
 
 <div class="container">

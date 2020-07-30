@@ -6,7 +6,7 @@
       <p>副業への第一歩を踏み出す</p>
     </div>
     <div class="top-signup">
-      <p>副業を実際にしている人たちのレビューを集めました</p>
+      <p>実際に行っている人たちの声を集めました</p>
       <p>レビューを無制限に見るには...</p>
       <%= link_to new_user_registration_path, class:"" do %>
         <button type="button" class="btn btn-dark btn-signup">ユーザー登録する</button>
@@ -68,32 +68,56 @@
     <h3 class="area-title">Sidebizの使い方</h3> 
     <div class="row justify-content-center">
       <div class="media col-md-8 col-12">
-        <%= image_tag '/staticpage/search_icon(no_commercial_license).png', class:"use-step-icon", :size =>'100x100' %>
-        <div class="media-body use-step">
-          <h5 class="mt-0">副業を名前で検索する</h5>
-          気になる副業があれば、名前で検索してみましょう。
-        </div><!-- /.media-body -->
+        <div class="row use-step-row">
+          <div class="col-2 use-step-icon-box">
+            <%= image_tag '/staticpage/search_icon(no_commercial_license).png', class:"use-step-icon" %>
+          </div>
+          <div class="col-10">
+            <div class="media-body use-step">
+              <h5 class="mt-0">副業を名前で検索する</h5>
+              気になる副業があれば、名前で検索してみましょう。
+            </div><!-- /.media-body -->
+          </div>
+        </div>
       </div><!-- /.media -->
       <div class="media col-md-8 col-12">
-        <%= image_tag '/staticpage/search_with_filster_img.png', class:"use-step-icon", :size =>'100x100' %>
-        <div class="media-body use-step">
-          <h5 class="mt-0">副業を本業やスキルから検索する</h5>
-          自分と同じ本業や、自分が持っているスキルから、副業を検索することも可能です。
-        </div><!-- /.media-body -->
+        <div class="row use-step-row">
+          <div class="col-2 use-step-icon-box">
+            <%= image_tag '/staticpage/search_with_filster_img.png', class:"use-step-icon p-2" %>
+          </div>
+          <div class="col-10">
+            <div class="media-body use-step">
+              <h5 class="mt-0">副業を本業やスキルから検索する</h5>
+              自分と同じ本業や、自分が持っているスキルから、副業を検索することも可能です。
+            </div><!-- /.media-body -->
+          </div>
+        </div>
       </div><!-- /.media -->
       <div class="media col-md-8 col-12">
-        <%= image_tag '/staticpage/stock_img.jpg', class:"use-step-icon", :size =>'100x100' %>
-        <div class="media-body use-step">
-          <h5 class="mt-0">気になった副業をストック</h5>
-          気になる副業が見つかったら、どんどんストックしてすぐに参照できるようにしておきましょう。
-        </div><!-- /.media-body -->
+        <div class="row use-step-row">
+          <div class="col-2 use-step-icon-box">
+            <%= image_tag '/staticpage/stock_img.jpg', class:"use-step-icon" %>
+          </div>
+          <div class="col-10">
+            <div class="media-body use-step">
+              <h5 class="mt-0">気になった副業をストック</h5>
+              気になる副業が見つかったら、どんどんストックしてすぐに参照できるようにしておきましょう。
+            </div><!-- /.media-body -->
+          </div>
+        </div>
       </div><!-- /.media -->
       <div class="media col-md-8 col-12">
-        <%= image_tag '/staticpage/ask_question_img.png', class:"use-step-icon", :size =>'100x100' %>
-        <div class="media-body use-step">
-          <h5 class="mt-0">投稿者に直接質問してみる</h5>
-          レビューに書いていないことを知りたい場合、投稿者に質問してみましょう。
-        </div><!-- /.media-body -->
+        <div class="row use-step-row">
+          <div class="col-2 use-step-icon-box">
+            <%= image_tag '/staticpage/ask_question_img.png', class:"use-step-icon p-2" %>
+          </div>
+          <div class="col-10">
+            <div class="media-body use-step">
+              <h5 class="mt-0">投稿者に直接質問してみる</h5>
+              レビューに書いていないことを知りたい場合、投稿者に質問してみましょう。
+            </div><!-- /.media-body -->
+          </div>
+        </div>
       </div><!-- /.media -->
     </div>
   </div>
@@ -103,7 +127,7 @@
   <div class="container">
     <h3 class="area-title">早速使ってみよう</h3> 
     <div class="page-transition row">
-      <div class="col-lg-3 offset-lg-3 col-6">
+      <div class="col-lg-3 offset-lg-3 col-12">
         <span class="user-attribute">アカウント未登録の方</span>
       </div>
       <div class="col-1"><i class="fas fa-long-arrow-alt-right fa-2x"></i></div>
