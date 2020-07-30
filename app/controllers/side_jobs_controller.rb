@@ -20,7 +20,7 @@ class SideJobsController < ApplicationController
 
   def new
     if current_user.main_jobs.blank?
-      redirect_to new_main_job_path
+      redirect_to new_main_job_path , notice: '最初に本業の情報を入力してください。'
     else
       @job = current_user.side_jobs.build
       3.times do
