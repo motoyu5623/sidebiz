@@ -7,11 +7,11 @@
     </div>
     <div class="top-signup">
       <p>実際に行っている人たちの声を集めました</p>
-      <p>レビューを無制限に見るには...</p>
-      <%= link_to new_user_registration_path, class:"" do %>
-        <button type="button" class="btn btn-dark btn-signup">ユーザー登録する</button>
-      <% end %>
       <% unless user_signed_in? %>
+        <p>レビューを無制限に見るには...</p>
+        <%= link_to new_user_registration_path, class:"" do %>
+          <button type="button" class="btn btn-dark btn-signup">ユーザー登録する</button>
+        <% end %>
         <br>
         <%= link_to 'ゲストユーザーでログイン', users_guest_sign_in_path, method: :post, class:"btn btn-success mt-1" %>
       <% end %>
@@ -24,8 +24,10 @@
     <h3 class="area-title">Sidebizとは</h3>
     <p>副業に興味があるけど、何をはじめれば良いかわからないあなたへ</p>
     <p>「副業のリアル」をたくさん集めた、副業のレビューサイトです。</p>
-    <%= link_to new_user_registration_path, class:"link-signup" do %>
-      <button type="button" class="btn btn-dark btn-signup">ユーザー登録</button>
+    <% unless user_signed_in? %>
+      <%= link_to new_user_registration_path, class:"link-signup" do %>
+        <button type="button" class="btn btn-dark btn-signup">ユーザー登録</button>
+      <% end %>
     <% end %>
   </div>
 </div>
@@ -49,8 +51,10 @@
         <div class="benefit-description">もし興味のある副業が見つかり、もっと詳しく聞きたい場合は、レビューを書いている人に質問することもできます。もしかしたらそこから人脈の拡大につながるかもしれません。</div>
       </div>
     </div>
-    <%= link_to new_user_registration_path, class:"link-signup" do %>
-      <button type="button" class="btn btn-dark btn-signup">ユーザー登録</button>
+    <% unless user_signed_in? %>
+      <%= link_to new_user_registration_path, class:"link-signup" do %>
+        <button type="button" class="btn btn-dark btn-signup">ユーザー登録</button>
+      <% end %>
     <% end %>
   </div>
 </div>
@@ -127,37 +131,39 @@
   </div>
 </div>
 
-<div class="registration-area area">
-  <div class="container">
-    <h3 class="area-title">早速使ってみよう</h3> 
-    <div class="page-transition row">
-      <div class="col-lg-3 offset-lg-3 col-12">
-        <span class="user-attribute">アカウント未登録の方</span>
+<% unless user_signed_in? %>
+  <div class="registration-area area">
+    <div class="container">
+      <h3 class="area-title">早速使ってみよう</h3> 
+      <div class="page-transition row">
+        <div class="col-lg-3 offset-lg-3 col-12">
+          <span class="user-attribute">アカウント未登録の方</span>
+        </div>
+        <div class="col-1"><i class="fas fa-long-arrow-alt-right fa-2x"></i></div>
+        <div class="col-lg-4 col-5">
+          <%= link_to new_user_registration_path, class:"" do %>
+            <button type="button" class="btn btn-dark btn-signup">ユーザー登録</button>
+          <% end %>
+        </div>
       </div>
-      <div class="col-1"><i class="fas fa-long-arrow-alt-right fa-2x"></i></div>
-      <div class="col-lg-4 col-5">
-        <%= link_to new_user_registration_path, class:"" do %>
-          <button type="button" class="btn btn-dark btn-signup">ユーザー登録</button>
-        <% end %>
+      <div class="page-transition row">
+        <div class="col-lg-3 offset-lg-3 col-6">
+          <span class="user-attribute">アカウントをお持ちの方</span>
+        </div>
+        <div class="col-1"><i class="fas fa-long-arrow-alt-right fa-2x"></i></div>
+        <div class="col-lg-4 col-5">
+          <%= link_to new_user_session_path, class:"" do %>
+            <button type="button" class="btn btn-dark btn-signup">ログインする</button>
+          <% end %>
+        </div>
       </div>
-    </div>
-    <div class="page-transition row">
-      <div class="col-lg-3 offset-lg-3 col-6">
-        <span class="user-attribute">アカウントをお持ちの方</span>
-      </div>
-      <div class="col-1"><i class="fas fa-long-arrow-alt-right fa-2x"></i></div>
-      <div class="col-lg-4 col-5">
-        <%= link_to new_user_session_path, class:"" do %>
-          <button type="button" class="btn btn-dark btn-signup">ログインする</button>
-        <% end %>
-      </div>
-    </div>
 
-    <%# <h3 class="area-title">差別化</h3> %>
+      <%# <h3 class="area-title">差別化</h3> %>
 
+    </div>
   </div>
-</div>
-<hr>
+<% end %>
+
 <div class="job-index-area area">
   <h3 class="area-title">投稿一覧</h3> 
   <div class="job-index-explanation">
