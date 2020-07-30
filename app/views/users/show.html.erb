@@ -2,6 +2,7 @@
   <div class="page-title">
     <h2><%= @user.username %>のページ</h2>
   </div>
+
   <div class="row">
     <div class="col-md-3 col-12">
       <div class="row">
@@ -18,24 +19,26 @@
 
     <div class="col-md-9 col-12">
       <div class="row">
-        <div class="col-12">
-          <div class="row stats-bar">
-            <%= link_to "本業の追加登録", new_main_job_path, class:"btn btn-light" %>
-            <% if current_user == @user %>
-              <%= link_to "個人設定の編集", edit_user_registration_path, class:"btn btn-dark" %>
-            <% else %>
-              <button type="button" class="btn btn-dark">フォローする</button>
-            <% end %>
+        <% if user_signed_in? %>
+          <div class="col-12">
+            <div class="row stats-bar">
+              <% if current_user == @user %>
+                <%= link_to "本業の追加登録", new_main_job_path, class:"btn btn-light mr-2" %>
+                <%= link_to "アカウント編集", edit_user_registration_path, class:"btn btn-dark" %>
+              <% else %>
+                <%# <button type="button" class="btn btn-dark">フォローする</button> %>
+              <% end %>
+            </div>
           </div>
-        </div>
+        <% end %>
         <div class="col-12">
           <div class="row stats-bar">
-            <div class="col-md-3 col-6">
+            <%# <div class="col-md-3 col-6">
               <span class="stats-item">フォロワー数 20</span>
             </div>
             <div class="col-md-3 col-6">
               <span class="stats-item">フォロー数 20</span>
-            </div>
+            </div> %>
             <div class="col-md-3 col-6">
               <span class="stats-item">
                 <strong>ストックされた数 20</strong>
@@ -43,7 +46,12 @@
             </div>
             <div class="col-md-3 col-6">
               <span class="stats-item black-link">
-                <strong><%= link_to "ストックした数 #{@user.stocks.count}", stocks_side_jobs_path %></strong>
+                <% if @user == current_user %>
+                  <strong><%= link_to "ストックした数 #{@user.stocks.count}", stocks_side_jobs_path %></strong>
+                <% else %>
+                  ストックした数 
+                  <%= @user.stocks.count %>
+                <% end %>
               </span>
             </div>
           </div>
@@ -55,7 +63,10 @@
               <% if @main_jobs.present? %>
                 <ul class="job-list black-link">
                   <% @main_jobs.each do |main_job| %>
-                    <li><%= main_job.name %> (<%= link_to "編集", edit_main_job_path(main_job) %>)</li>
+                    <li>
+                      <%= main_job.name %>
+                      <%= link_to "(編集)", edit_main_job_path(main_job) if @user == current_user %>
+                    </li>
                   <% end %>
                 </ul>
               <% else %>
@@ -68,7 +79,7 @@
               <% if @user.side_jobs.present? %>
                 <ul class="job-list black-link">
                   <% @user.side_jobs.each do |job| %>
-                    <li><%= link_to job.name, side_job_path(job) %> (<%= link_to "編集", edit_side_job_path(job) %>)</li>
+                    <li><%= link_to job.name, side_job_path(job) %> <%= link_to "(編集)", edit_side_job_path(job) if @user == current_user %></li>
                   <% end %>
                 </ul>
               <% else %>

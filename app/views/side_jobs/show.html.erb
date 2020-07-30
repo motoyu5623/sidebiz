@@ -22,20 +22,26 @@
 </div>
 
 <div class="container">
-  <div class="stock_comment_icon ml-2 black-link">
-    <% if user_signed_in? %>
-      <%= render "shared/stock_button", job: @job %>
-    <% else %>
-      <%= render "shared/stock_button_no_link", job: @job %>
-    <% end %>
-    <span class="ml-3">
-      <i class="far fa-comment-alt"></i>コメント
-      <%= @job.comments.count %>
-    </span>
+  <div class="row">
+    <div class="col-sm-6 col-12">
+      <div class="stock_comment_icon ml-2 black-link">
+        <% if user_signed_in? %>
+          <%= render "shared/stock_button", job: @job %>
+        <% else %>
+          <%= render "shared/stock_button_no_link", job: @job %>
+        <% end %>
+        <span class="ml-3">
+          <i class="far fa-comment-alt"></i>コメント
+          <%= @job.comments.count %>
+        </span>
+      </div>
+    </div>
+    <div class="col-sm-6 col-12">
+      <% if user_signed_in? && current_user == @job.user %>
+        <%= render "shared/job_edit_or_delete", job: @job %>
+      <% end %>
+    </div>
   </div>
-    <% if user_signed_in? && current_user == @job.user %>
-      <%= render "shared/job_edit_or_delete", job: @job %>
-    <% end %>
 </div>
 
 <div class="container">

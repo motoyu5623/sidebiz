@@ -42,14 +42,13 @@
 </div>
 <hr>
 
+<div class="field">
+  <span class="field-left"><%= f.label "業種" %></span>
+  <span class="field-right"><%= f.text_field :industry, class:"input-form"  %></span>
+</div>
+
 <%# false内は非表示 %>
 <% if false %>
-        <div class="field">
-          <span class="field-left"><%= f.label "業種" %></span>
-          <span class="field-right"><%= f.text_field :industry, class:"input-form"  %></span>
-        </div>
-
-
         <div class="field">
           <span class="field-left"><%= f.label "職種" %></span>
           <span class="field-right"><%= f.text_field :occupation, class:"input-form" %></span>

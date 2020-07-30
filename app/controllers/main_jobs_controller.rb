@@ -1,4 +1,6 @@
 class MainJobsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @user = current_user
     @main_job = @user.main_jobs.build

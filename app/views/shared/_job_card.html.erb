@@ -12,13 +12,13 @@
             <span class="tag side-tag">副業</span>
             <span>
               <%= link_to side_job_path(job) do %>
-                <%= job.name %> <i class="fas fa-external-link-alt"></i>
+                <%= job.name %> (詳細 <i class="fas fa-external-link-alt"></i>)
               <% end %>
             </span>
           </span>
         </div>
         <div class="col-lg-6 col-12">
-          <div class="stock_comment_icon ml-2 my-1">
+          <div class="stock_comment_icon d-flex justify-content-end mr-2 my-1">
             <% if user_signed_in? %>
               <%= render "shared/stock_button", job: job %>
             <% else %>
@@ -59,17 +59,23 @@
       </div>
     </div>
     <div class="card-footer px-3 py-1">
-      <div class="card-personal-info">
-          <span class="name-holder-sm black-link mr-3">
-            投稿者: <%= link_to "@#{job.user.username}", user_path(job.user) %>
-          </span>
-          <span class="black-link shortcut">
-            居住地: <%= job.user.living_place %>
-          </span>
+      <div class="row">
+        <div class="col-sm-6 col-12">
+          <div class="card-personal-info">
+            <span class="name-holder-sm black-link mr-3">
+              投稿者: <%= link_to "@#{job.user.username}", user_path(job.user) %>
+            </span>
+            <span class="black-link shortcut">
+              エリア: <%= job.user.living_place %>
+            </span>
+          </div>
+        </div>
+        <div class="col-sm-6 col-12">
+          <% if user_signed_in? && current_user == job.user %>
+            <%= render "shared/job_edit_or_delete", job: job %>
+          <% end %>
+        </div>
       </div>
-        <% if user_signed_in? && current_user == job.user %>
-          <%= render "shared/job_edit_or_delete", job: job %>
-        <% end %>
     </div>
   </div>
 <% end %>
