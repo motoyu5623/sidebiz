@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
+  before_action :forbid_test_user, {only: [:update,:destroy]}
 
   # GET /resource/sign_up
   # def new
@@ -37,6 +38,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
+
+  private
+  def forbid_test_user
+    if @user.email == "guest@example.com"
+      flash[:notice] = "ゲストユーザーの変更・削除はできません"
+      redirect_to root_path
+    end
+  end
 
   protected
 
