@@ -17,20 +17,15 @@
           <div class="field">
             <span class="field-left">
               <% if @user.avatar.attached? %>
-                <%= image_tag @user.avatar.variant(combine_options:{resize:"200x200^", gravity: :center, crop:"200x200+0+0"}).processed, class:"card-img-size"  %>
+                <%= image_tag @user.avatar.variant(combine_options:{resize:"100x100^", gravity: :center, crop:"100x100+0+0"}).processed  %>
               <% else %>
                 <%= image_tag '/noimage.png', class:"card-img-size" %>
               <% end %>
             </span>
             <span class="field-right">
-
-              <%# <div class="custom-file"> %>
-                <%= f.file_field :avatar, class:"", id:"customFile", accept:"jpg, jpeg, png, gif" %>
-                 <%# <label class="custom-file-label" for="customFile" data-browse="参照">ファイル選択...</label> %>
-              <%# </div> %>
-
+              <%= f.file_field :avatar, class:"", accept:"image/jpg, image/jpeg, image/png, image/gif" %>
               <br>
-              <big><%= @user.username %></big><br>
+              <img id="preview" class="img-preview">
             </span>
           </div>
           <div class="field">
@@ -97,3 +92,20 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $("#user_avatar").bind("change", function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 3) {
+      alert("アップロード可能なファイルの最大サイズは３GBです");
+      $("#user_avatar").val("");
+    }
+  });
+$('#user_avatar').on('change', function (e) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $("#preview").attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]);
+});
+</script>

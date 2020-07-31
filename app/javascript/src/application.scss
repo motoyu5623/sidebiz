@@ -723,6 +723,12 @@ body {
       background-color: $dark;
     }
   }
+
+  .img-preview {
+    max-height: 100px;
+    max-width: 100px;
+    border: none;
+  }
 }
 
 // ユーザーshow
