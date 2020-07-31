@@ -8,7 +8,7 @@
       <div class="row">
         <div class="col-md-8 col-4">
           <% if @user.avatar.attached? %>
-            <%= image_tag @user.avatar, class:"card-img-size"  %>
+            <%= image_tag @user.avatar.variant(combine_options:{resize:"200x200^", gravity: :center, crop:"200x200+0+0"}).processed, class:"card-img-size"  %>
           <% else %>
             <%= image_tag '/noimage.png', class:"card-img-size" %>
           <% end %>

@@ -17,13 +17,19 @@
           <div class="field">
             <span class="field-left">
               <% if @user.avatar.attached? %>
-                <%= image_tag @user.avatar, class:"card-img-size"  %>
+                <%= image_tag @user.avatar.variant(combine_options:{resize:"200x200^", gravity: :center, crop:"200x200+0+0"}).processed, class:"card-img-size"  %>
               <% else %>
                 <%= image_tag '/noimage.png', class:"card-img-size" %>
               <% end %>
             </span>
             <span class="field-right">
-              <%= f.file_field :avatar %>
+
+              <%# <div class="custom-file"> %>
+                <%= f.file_field :avatar, class:"", id:"customFile", accept:"jpg, jpeg, png, gif" %>
+                 <%# <label class="custom-file-label" for="customFile" data-browse="参照">ファイル選択...</label> %>
+              <%# </div> %>
+
+              <br>
               <big><%= @user.username %></big><br>
             </span>
           </div>

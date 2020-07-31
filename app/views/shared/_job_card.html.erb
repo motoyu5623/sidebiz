@@ -34,7 +34,11 @@
     </div>
     <div class="row no-gutters card-content">
       <div class="col-2">
-        <%= image_tag '/noimage.png', class:"card-img-size" %>
+        <% if job.user.avatar.attached? %>
+          <%= image_tag job.user.avatar.variant(combine_options:{resize:"200x200^", gravity: :center, crop:"200x200+0+0"}).processed, class:"card-img-size"  %>
+        <% else %>
+          <%= image_tag '/noimage.png', class:"card-img-size" %>
+        <% end %>
       </div>
       <div class="container col-lg-5 col-10">
         <div class="simple-description shortcut-multi-line">
