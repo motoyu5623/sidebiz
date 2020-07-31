@@ -40,3 +40,6 @@ yarn-debug.log*
 sidebiz.drawio
 .irbrc
 .vscodes
+/config/credentials/production.key
+
+/config/credentials/development.key

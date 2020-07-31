@@ -16,9 +16,14 @@
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <div class="field">
             <span class="field-left">
-              <%= image_tag '/noimage.png', class:"card-img-size" %>
+              <% if @user.image.attached? %>
+                <%= image_tag @user.avatar %>
+              <% else %>
+                <%= image_tag '/noimage.png', class:"card-img-size" %>
+              <% end %>
             </span>
             <span class="field-right">
+              <%= f.file_field :avatar %>
               <big><%= @user.username %></big><br>
             </span>
           </div>
