@@ -17,7 +17,7 @@
           <div class="field">
             <span class="field-left">
               <% if @user.avatar.attached? %>
-                <%= image_tag @user.avatar %>
+                <%= image_tag @user.avatar, class:"card-img-size"  %>
               <% else %>
                 <%= image_tag '/noimage.png', class:"card-img-size" %>
               <% end %>
