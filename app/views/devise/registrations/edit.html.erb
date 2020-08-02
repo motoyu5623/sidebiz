@@ -2,7 +2,7 @@
 
 <div class="container edit-field">
   <div class="row">
-    <div class="col-3">
+    <div class="col-12 col-md-3 p-0">
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <a class="nav-link active tab-dark" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">プロフィールを編集</a>
         <a class="nav-link tab-dark" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">パスワードを変更</a>
@@ -10,61 +10,61 @@
       </div>
     </div>
     
-  <div class="col-9">
-    <div class="tab-content" id="v-pills-tabContent">
-      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-          <div class="field">
-            <span class="field-left">
-              <% if @user.avatar.attached? %>
-                <%= image_tag @user.avatar.variant(combine_options:{resize:"100x100^", gravity: :center, crop:"100x100+0+0"}).processed  %>
-              <% else %>
-                <%= image_tag '/noimage.png', class:"card-img-size" %>
-              <% end %>
-            </span>
-            <span class="field-right">
-              <%= f.file_field :avatar, class:"", accept:"image/jpg, image/jpeg, image/png, image/gif" %>
-              <br>
-              <img id="preview" class="img-preview">
-            </span>
-          </div>
-          <div class="field">
-            <span class="field-left"><%= f.label "ユーザーネーム" %></span>
-            <span class="field-right"><%= f.text_field :username, required: true, autofocus: true, autocomplete: "off", class:"input-form" %></span>
-          </div>
-          <div class="field">
-            <span class="field-left"><%= f.label "メールアドレス" %></span>
-            <span class="field-right"><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input-form" %></span>
-          </div>
-          <div class="field">
-            <span class="field-left"><%= f.label "誕生日" %></span>
-              <span class="field-right"><%= f.date_select(:birthday, {
-                                  use_month_numbers: true,
-                                  start_year: 1930,
-                                  end_year: (Time.now.year - 10),
-                                  default: Date.new(1989, 1, 1)}, 
-                                  class:"input-form-select") %></span>
-          </div>
-          <div class="field">
-            <span class="field-left"><%= f.label "活動エリア" %></span>
-            <span class="field-right"><%= f.text_field :living_place, autofocus: true, autocomplete: "email" , class:"input-form" %></span>
-          </div>
-          <div class="field">
-            <span class="field-left"><%= f.label "経歴" %></span>
-            <span class="field-right"><%= f.text_area :profile, autofocus: true, autocomplete: "email" , class:"input-form-large" %></span>
-          </div>
-          <div class="field">
-            <span class="field-left"></span>
-            <span class="actions field-right"><%= f.submit "プロフィールを更新する", class:"btn btn-dark" %></span>
-          </div>
-        <% end %>
-      </div>
-      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+    <div class="col-12 col-md-9 p-0">
+      <div class="tab-content" id="v-pills-tabContent">
+        <div class="container tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <div class="field row">
+              <span class="field-left col-4 col-sm-3">
+                <% if @user.avatar.attached? %>
+                  <%= image_tag @user.avatar.variant(combine_options:{resize:"100x100^", gravity: :center, crop:"100x100+0+0"}).processed  %>
+                <% else %>
+                  <%= image_tag '/noimage.png', class:"card-img-size" %>
+                <% end %>
+              </span>
+              <span class="field-right col-8 col-sm-9">
+                <%= f.file_field :avatar, class:"", accept:"image/jpg, image/jpeg, image/png, image/gif" %>
+                <br>
+                <img id="preview" class="img-preview">
+              </span>
+            </div>
+            <div class="field row">
+              <span class="field-left col-4 col-sm-3"><%= f.label "ユーザーネーム" %></span>
+              <span class="field-right col-8 col-sm-9"><%= f.text_field :username, required: true, autofocus: true, autocomplete: "off", class:"input-form" %></span>
+            </div>
+            <div class="field row">
+              <span class="field-left col-4 col-sm-3"><%= f.label "メールアドレス" %></span>
+              <span class="field-right col-8 col-sm-9"><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input-form" %></span>
+            </div>
+            <div class="field row">
+              <span class="field-left col-4 col-sm-3"><%= f.label "誕生日" %></span>
+                <span class="field-right col-8 col-sm-9"><%= f.date_select(:birthday, {
+                                    use_month_numbers: true,
+                                    start_year: 1930,
+                                    end_year: (Time.now.year - 10),
+                                    default: Date.new(1989, 1, 1)}, 
+                                    class:"input-form-select") %></span>
+            </div>
+            <div class="field row">
+              <span class="field-left col-4 col-sm-3"><%= f.label "活動エリア" %></span>
+              <span class="field-right col-8 col-sm-9"><%= f.text_field :living_place, autofocus: true, autocomplete: "email" , class:"input-form" %></span>
+            </div>
+            <div class="field row">
+              <span class="field-left col-4 col-sm-3"><%= f.label "経歴" %></span>
+              <span class="field-right col-8 col-sm-9"><%= f.text_area :profile, autofocus: true, autocomplete: "email" , class:"input-form-large" %></span>
+            </div>
+            <div class="field row">
+              <span class="field-left col-4 col-sm-3"></span>
+              <span class="actions field-right col-8 col-sm-9"><%= f.submit "プロフィールを更新する", class:"btn btn-dark" %></span>
+            </div>
+          <% end %>
+        </div>
+        <div class="container tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
               <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
             <% end %>
-            <div class="field">
+            <div class="field row">
               <%= f.label "新しいパスワード" %><br />
               <%= f.password_field :password, autocomplete: "new-password", class:"input-form" %>
               <% if @minimum_password_length %>
@@ -72,11 +72,11 @@
                 <em>※ <%= @minimum_password_length %> 文字以上</em>
               <% end %>
             </div>
-            <div class="field">
+            <div class="field row">
               <%= f.label "新しいパスワード（確認）" %><br />
               <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"input-form"  %>
             </div>
-            <div class="field">
+            <div class="field row">
               <%= f.label "現在のパスワード" %> <i>(パスワード変更のためには、現在のパスワードの入力が必要です)</i><br />
               <%= f.password_field :current_password, autocomplete: "current-password", class:"input-form"  %>
             </div>
@@ -84,10 +84,11 @@
               <%= f.submit "パスワードを変更する", class:"btn btn-dark" %>
             </div>
           <% end %>
-      </div>
-      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-        <h3>アカウントを削除する  </h3>
-        <p>以下のボタンより、アカウントの削除ができます。<br>※保存されているデータはすべて削除されます。 <%= button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "本当に削除してもよろしいですか?" }, method: :delete, class:"btn btn-dark" %></p>
+        </div>
+        <div class="container tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+          <h3>アカウントを削除する  </h3>
+          <p>以下のボタンより、アカウントの削除ができます。<br>※保存されているデータはすべて削除されます。 <%= button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "本当に削除してもよろしいですか?" }, method: :delete, class:"btn btn-dark" %></p>
+        </div>
       </div>
     </div>
   </div>

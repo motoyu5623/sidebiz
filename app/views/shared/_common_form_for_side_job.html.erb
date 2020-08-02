@@ -1,22 +1,22 @@
-  <div class="field">
-    <span class="field-left"><%= f.label '比較対象となる本業' %></span>
-    <span class="field-right"><%= f.collection_select :main_job_id, current_user.main_jobs.all, :id, :name, {}, class:"input-form-select" %></span>
+  <div class="field row">
+    <span class="field-left col-4 col-sm-3"><%= f.label '比較対象となる本業' %></span>
+    <span class="field-right col-8 col-sm-9 col-md-7"><%= f.collection_select :main_job_id, current_user.main_jobs.all, :id, :name, {}, class:"input-form-select" %></span>
   </div>
 
-  <div class="field">
-    <span class="field-left"><%= f.label '本業から活かせたこと' %></span>
-    <span class="field-right"><%= f.text_area :pulled_skill, class:"input-form-large" %></span>
+  <div class="field row">
+    <span class="field-left col-4 col-sm-3"><%= f.label '本業から活かせたこと' %></span>
+    <span class="field-right col-8 col-sm-9 col-md-7"><%= f.text_area :pulled_skill, class:"input-form-large" %></span>
   </div>
 
-  <div class="field">
-    <span class="field-left"><%= f.label '本業へ還元できたこと' %></span>
-    <span class="field-right"><%= f.text_area :returned_skill, class:"input-form-large" %></span>
+  <div class="field row">
+    <span class="field-left col-4 col-sm-3"><%= f.label '本業へ還元できたこと' %></span>
+    <span class="field-right col-8 col-sm-9 col-md-7"><%= f.text_area :returned_skill, class:"input-form-large" %></span>
   </div>
 
   <hr>
-  <div class="field">
-    <span class="field-left">重要スキル</span>
-    <span class="field-right">
+  <div class="field row">
+    <span class="field-left col-4 col-sm-3">重要スキル</span>
+    <span class="field-right col-8 col-sm-9 col-md-7">
       <small><strong><u>副業 </u></strong>において最も重要と考えられる３つのスキルをご記入ください。<br>そのスキルについて、副業と本業、それぞれにおける重要度を選択してください。</small>
       <table border="1" style="border-collapse: collapse" class="skill-input-table mt-2">
         <tr>

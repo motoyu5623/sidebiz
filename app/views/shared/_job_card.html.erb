@@ -33,20 +33,20 @@
       </div>
     </div>
     <div class="row no-gutters card-content">
-      <div class="col-2">
+      <div class="col-sm-2 col-1">
         <% if job.user.avatar.attached? %>
           <%= image_tag job.user.avatar.variant(combine_options:{resize:"200x200^", gravity: :center, crop:"200x200+0+0"}).processed, class:"card-img-size"  %>
         <% else %>
           <%= image_tag '/noimage.png', class:"card-img-size" %>
         <% end %>
       </div>
-      <div class="container col-lg-5 col-10">
+      <div class="container col-lg-5 col-sm-10 col-12">
         <div class="simple-description shortcut-multi-line">
           <%= job.description %>
         </div>
       </div>
       <div class="col-lg-5 col-12">
-        <div class="skill-tags-vertical mt-3">
+        <div class="skill-tags-vertical mt-2">
           <div class="skill-tags-title skill-tag-row mb-2">
             <div class="skill-tag skill-main-tags">本業</div>
             <div class="skill-tag skill-name skill-tags-explanation"><span>スキルの重要度</spn></div>

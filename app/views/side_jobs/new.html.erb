@@ -3,7 +3,7 @@
   <div class="page-title">
     <h2>副業レビューの投稿</h2>
   </div>
-  <%= form_with(model: @job, local:true, class:"job-new-field") do |f| %>
+  <%= form_with(model: @job, local:true, class:"job-new-field container") do |f| %>
     <%= render "shared/common_form", {job:@job, f:f} %>
     <%= render "shared/common_form_for_side_job", {job:@job, f:f} %>
     <%= f.hidden_field :user_id, :value => current_user.id %>

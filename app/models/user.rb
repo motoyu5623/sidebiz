@@ -18,6 +18,7 @@ class User < ApplicationRecord
 
   def validate_avatar
     return unless avatar.attached?
+
     if avatar.blob.byte_size > 3.megabytes
       avatar.purge
       errors.add(:avatar, 'アップロード可能なファイルの最大サイズは３GBです')
