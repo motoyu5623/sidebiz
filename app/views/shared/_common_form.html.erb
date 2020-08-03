@@ -11,13 +11,16 @@
 <% end %>
 
 <div class="field row">
-  <span class="field-left text-md-right col-12 col-md-4"><%= f.label yield(:title) %>名</span>
-  <span class="field-right col-12 col-md-8 col-lg-7"><%= f.text_field :name, class:"input-form"  %></span>
+  <span class="field-left text-md-right col-12 col-md-4">
+    <%= f.label yield(:title) %>名
+    <span class="required-tag">必須</span>
+  </span>
+  <span class="field-right col-12 col-md-8 col-lg-7"><%= f.text_field :name, class:"input-form", required: true  %></span>
 </div>
 
 <div class="field row">
   <span class="field-left text-md-right col-12 col-md-4"><%= f.label '労働形態' %></span>
-  <span class="field-right col-12 col-md-8 col-lg-7"><%= f.select(:work_type,  {'会社勤務' => '会社勤務','個人事業（法人）' => '個人事業（法人）', '個人事業（非法人）' => '個人事業（非法人）' }, {}, class:"input-form-select") %></span>
+  <span class="field-right col-12 col-md-8 col-lg-7"><%= f.select(:work_type,  {'会社勤務' => '会社勤務','個人事業(法人)' => '個人事業(法人)', '個人事業(非法人)' => '個人事業(非法人)' }, {}, class:"input-form-select") %></span>
 </div>
 
 <hr>
@@ -71,7 +74,7 @@
 </div>
 
 <div class="field row">
-  <span class="field-left text-md-right col-12 col-md-4"><%= f.label '労働時間（週）' %></span>
+  <span class="field-left text-md-right col-12 col-md-4"><%= f.label '労働時間(週)' %></span>
   <span class="field-right col-12 col-md-8 col-lg-7">
     <%= f.select(:worktime_week, { '〜5時間' => '〜5時間' , '5〜10時間' => '5〜10時間',
     '10〜15時間' => '10〜15時間' , '15〜20時間' => '15〜20時間' , '20〜25時間' => '20〜25時間' ,
@@ -85,6 +88,9 @@
 </div>
 
 <div class="field row">
-  <span class="field-left text-md-right col-12 col-md-4"><%= f.label '主な業務内容' %></span>
-  <span class="field-right col-12 col-md-8 col-lg-7"><%= f.text_area :description, class:"input-form-large" %></span>
+  <span class="field-left text-md-right col-12 col-md-4">
+    <%= f.label '主な業務内容' %>
+    <span class="required-tag">必須</span>
+  </span>
+  <span class="field-right col-12 col-md-8 col-lg-7"><%= f.text_area :description, class:"input-form-large", required: true %></span>
 </div>

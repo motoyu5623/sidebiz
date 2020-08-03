@@ -34,6 +34,12 @@ class MainJobsController < ApplicationController
     end
   end
 
+  def destroy
+    @job = MainJob.find_by(id: params[:id])
+    @job.destroy
+    redirect_to user_path(current_user)
+  end
+
   private
 
   def job_params

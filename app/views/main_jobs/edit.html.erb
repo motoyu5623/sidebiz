@@ -9,7 +9,7 @@
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <div class="btn-submit">
       <%= f.submit '更新する', class:"btn btn-dark" %>
-      <%= link_to "削除する", side_job_path(@job), method: :delete, data: { confirm: '削除してよろしいですか？'}, class:"btn btn-light"  %>
+      <%= link_to "削除する", main_job_path(@job), method: :delete, data: { confirm: '削除してよろしいですか？'}, class:"btn btn-light"  %>
     </div>
   <% end %>
 </div>

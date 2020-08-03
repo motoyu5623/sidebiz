@@ -1,5 +1,8 @@
   <div class="field row">
-    <span class="field-left text-md-right col-12 col-md-4"><%= f.label '比較対象となる本業' %></span>
+    <span class="field-left text-md-right col-12 col-md-4">
+      <%= f.label '比較対象となる本業' %>
+      <span class="required-tag">必須</span>
+    </span>
     <span class="field-right col-12 col-md-8 col-lg-7"><%= f.collection_select :main_job_id, current_user.main_jobs.all, :id, :name, {}, class:"input-form-select" %></span>
   </div>
 
@@ -15,7 +18,10 @@
 
   <hr>
   <div class="field row">
-    <span class="field-left text-md-right col-12 col-md-4">重要スキル</span>
+    <span class="field-left text-md-right col-12 col-md-4">
+      重要スキル
+      <span class="required-tag">必須</span>
+      </span>
     <span class="field-right col-12 col-md-8 col-lg-8">
       <small><strong><u>副業 </u></strong>において最も重要と考えられる３つのスキルをご記入ください。<br>そのスキルについて、副業と本業、それぞれにおける重要度を選択してください。</small>
       <table border="1" style="border-collapse: collapse" class="skill-input-table mt-2">
@@ -29,7 +35,7 @@
           <td><%= skill_field.text_field :name, class:"form-in-table" %></td>
           <td><%= skill_field.select(:importance_for_side_job, options_for_select([['1: 全く重要でない', 1],['2: あまり重要でない', 2],['3: まあまあ重要', 3],['4: 重要', 4],['5: 非常に重要', 5]], selected: skill_field.object.importance_for_side_job), {}, class:"form-in-table") %></td>
 
-          <td><%= skill_field.select(:importance_for_main_job, options_for_select([['1: 全く重要でない', 1],['2: あまり重要でない', 2],['3: まあまあ重要', 3],['4: 重要', 4],['5: 非常に重要', 5]], selected: skill_field.object.importance_for_side_job), {}, class:"form-in-table") %></td>
+          <td><%= skill_field.select(:importance_for_main_job, options_for_select([['1: 全く重要でない', 1],['2: あまり重要でない', 2],['3: まあまあ重要', 3],['4: 重要', 4],['5: 非常に重要', 5]], selected: skill_field.object.importance_for_main_job), {}, class:"form-in-table") %></td>
 
         </tr>
         <% end %>
