@@ -22,8 +22,8 @@ class SideJob < ApplicationRecord
   validates :worktime_week, presence: true
   validates :income_month, presence: true
   validates :description, presence: true, length: { maximum: 400 }
-  validates :pulled_skill, presence: true, length: { maximum: 400 }
-  validates :returned_skill, presence: true, length: { maximum: 400 }
+  validates :pulled_skill, length: { maximum: 400 }
+  validates :returned_skill, length: { maximum: 400 }
 
   def stocked_by?(user)
     stocks.where(user_id: user.id).exists?

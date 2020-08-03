@@ -15,11 +15,6 @@
           </div>
 
           <div class="field row">
-            <span class="field-left text-md-right col-12 col-md-4"><%= f.label '誕生日' %></span>
-            <span class="field-right col-12 col-md-8 col-lg-7"><%= f.date_select(:birthday, {use_month_numbers: true, start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1)}, class:"input-form-select")  %></span>
-          </div>
-
-          <div class="field row">
             <span class="field-left text-md-right col-12 col-md-4"><%= f.label 'メールアドレス' %></span>
             <span class="field-right col-12 col-md-8 col-lg-7"><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input-form"  %></span>
           </div>
