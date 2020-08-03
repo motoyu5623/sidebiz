@@ -21,13 +21,11 @@
           <div class="stock_comment_icon d-flex justify-content-end mr-2 my-1">
             <% if user_signed_in? %>
               <%= render "shared/stock_button", job: job %>
+              <%= render "shared/comment_button", job: job %>
             <% else %>
               <%= render "shared/stock_button_no_link", job: job %>
+              <%= render "shared/comment_button_no_link", job: job %>
             <% end %>
-            <span class="ml-3">
-              <i class="far fa-comment-alt"></i>コメント
-              <%= job.comments.count %>
-            </span>
           </div>
         </div>
       </div>
@@ -46,7 +44,7 @@
         </div>
       </div>
       <div class="col-lg-5 col-12">
-        <div class="skill-tags-vertical mt-2">
+        <div class="skill-tags-vertical mt-3">
           <div class="skill-tags-title skill-tag-row mb-2">
             <div class="skill-tag skill-main-tags">本業</div>
             <div class="skill-tag skill-name skill-tags-explanation"><span>スキルの重要度</spn></div>
