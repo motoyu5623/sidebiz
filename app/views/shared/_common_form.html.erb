@@ -11,53 +11,53 @@
 <% end %>
 
 <div class="field row">
-  <span class="field-left col-4 col-sm-3"><%= f.label yield(:title) %>名</span>
-  <span class="field-right col-8 col-md-7 col-sm-9"><%= f.text_field :name, class:"input-form"  %></span>
+  <span class="field-left text-md-right col-12 col-md-4"><%= f.label yield(:title) %>名</span>
+  <span class="field-right col-12 col-md-8 col-lg-7"><%= f.text_field :name, class:"input-form"  %></span>
 </div>
 
 <div class="field row">
-  <span class="field-left col-4 col-sm-3"><%= f.label '労働形態' %></span>
-  <span class="field-right col-8 col-md-7 col-sm-9"><%= f.select(:work_type,  {'会社勤務' => '会社勤務','個人事業（法人）' => '個人事業（法人）', '個人事業（非法人）' => '個人事業（非法人）' }, {}, class:"input-form-select") %></span>
+  <span class="field-left text-md-right col-12 col-md-4"><%= f.label '労働形態' %></span>
+  <span class="field-right col-12 col-md-8 col-lg-7"><%= f.select(:work_type,  {'会社勤務' => '会社勤務','個人事業（法人）' => '個人事業（法人）', '個人事業（非法人）' => '個人事業（非法人）' }, {}, class:"input-form-select") %></span>
 </div>
 
 <hr>
-<span class="field-right col-8 col-md-7 col-sm-9">会社勤務の場合(ajax化したい)</span>
+<span class="field-right col-12 col-md-8 col-lg-7">会社勤務の場合(ajax化したい)</span>
 <div class="field row">
-  <span class="field-left col-4 col-sm-3"><%= f.label "会社名" %></span>
-  <span class="field-right col-8 col-md-7 col-sm-9"><%= f.text_field :company, class:"input-form"  %></span>
+  <span class="field-left text-md-right col-12 col-md-4"><%= f.label "会社名" %></span>
+  <span class="field-right col-12 col-md-8 col-lg-7"><%= f.text_field :company, class:"input-form"  %></span>
 </div>
 
 <div class="field row">
-  <span class="field-left col-4 col-sm-3"><%= f.label "部門" %></span>
-  <span class="field-right col-8 col-md-7 col-sm-9"><%= f.text_field :section, class:"input-form"  %></span>
+  <span class="field-left text-md-right col-12 col-md-4"><%= f.label "部門" %></span>
+  <span class="field-right col-12 col-md-8 col-lg-7"><%= f.text_field :section, class:"input-form"  %></span>
 </div>
 <hr>
 
-<span class="field-right col-8 col-md-7 col-sm-9">個人の場合(ajax化したい)</span>
+<span class="field-right col-12 col-md-8 col-lg-7">個人の場合(ajax化したい)</span>
 
 <div class="field row">
-  <span class="field-left col-4 col-sm-3"><%= f.label "顧客獲得方法" %></span>
-  <span class="field-right col-8 col-md-7 col-sm-9"><%= f.text_field :medium, class:"input-form" %><br><small>SEO、SNS、紹介、セミナー、ダイレクトメール、等</small></span>
+  <span class="field-left text-md-right col-12 col-md-4"><%= f.label "顧客獲得方法" %></span>
+  <span class="field-right col-12 col-md-8 col-lg-7"><%= f.text_field :medium, class:"input-form" %><br><small>SEO、SNS、紹介、セミナー、ダイレクトメール、等</small></span>
   
 </div>
 <hr>
 
 <div class="field row">
-  <span class="field-left col-4 col-sm-3"><%= f.label "業種" %></span>
-  <span class="field-right col-8 col-md-7 col-sm-9"><%= f.text_field :industry, class:"input-form"  %></span>
+  <span class="field-left text-md-right col-12 col-md-4"><%= f.label "業種" %></span>
+  <span class="field-right col-12 col-md-8 col-lg-7"><%= f.text_field :industry, class:"input-form"  %></span>
 </div>
 
 <%# false内は非表示 %>
 <% if false %>
         <div class="field row">
-          <span class="field-left col-4 col-sm-3"><%= f.label "職種" %></span>
-          <span class="field-right col-8 col-md-7 col-sm-9"><%= f.text_field :occupation, class:"input-form" %></span>
+          <span class="field-left text-md-right col-12 col-md-4"><%= f.label "職種" %></span>
+          <span class="field-right col-12 col-md-8 col-lg-7"><%= f.text_field :occupation, class:"input-form" %></span>
         </div>
 <% end %>
 
 <div class="field row">
-  <span class="field-left col-4 col-sm-3"><%= f.label "開始年月" %></span>
-  <span class="field-right col-8 col-md-7 col-sm-9">
+  <span class="field-left text-md-right col-12 col-md-4"><%= f.label "開始年月" %></span>
+  <span class="field-right col-12 col-md-8 col-lg-7">
     <%= raw sprintf(f.date_select(:started_at,
                                   {use_month_numbers: true,
                                   date_separator: '%s',
@@ -71,8 +71,8 @@
 </div>
 
 <div class="field row">
-  <span class="field-left col-4 col-sm-3"><%= f.label '労働時間（週）' %></span>
-  <span class="field-right col-8 col-md-7 col-sm-9">
+  <span class="field-left text-md-right col-12 col-md-4"><%= f.label '労働時間（週）' %></span>
+  <span class="field-right col-12 col-md-8 col-lg-7">
     <%= f.select(:worktime_week, { '〜5時間' => '〜5時間' , '5〜10時間' => '5〜10時間',
     '10〜15時間' => '10〜15時間' , '15〜20時間' => '15〜20時間' , '20〜25時間' => '20〜25時間' ,
     '25〜30時間' => '25〜30時間' , '30〜35時間' => '30〜35時間' , '35〜40時間' => '35〜40時間' ,
@@ -80,11 +80,11 @@
 </div>
 
 <div class="field row">
-  <span class="field-left col-4 col-sm-3"><%= f.label '平均月収' %></span>
-  <span class="field-right col-8 col-md-7 col-sm-9"><%= f.select(:income_month, {'〜1万円'=> '〜1万円', '1〜5万円'=>'1〜5万円', '5〜10万円'=>'5〜10万円', '10〜20万円'=>'10〜20万円', '20〜30万円'=>'20〜30万円', '30〜50万円'=>'30〜50万円', '50万円以上'=>'50万円以上'}, {}, class:"input-form-select") %></span>
+  <span class="field-left text-md-right col-12 col-md-4"><%= f.label '平均月収' %></span>
+  <span class="field-right col-12 col-md-8 col-lg-7"><%= f.select(:income_month, {'〜1万円'=> '〜1万円', '1〜5万円'=>'1〜5万円', '5〜10万円'=>'5〜10万円', '10〜20万円'=>'10〜20万円', '20〜30万円'=>'20〜30万円', '30〜50万円'=>'30〜50万円', '50万円以上'=>'50万円以上'}, {}, class:"input-form-select") %></span>
 </div>
 
 <div class="field row">
-  <span class="field-left col-4 col-sm-3"><%= f.label '主な業務内容' %></span>
-  <span class="field-right col-8 col-md-7 col-sm-9"><%= f.text_area :description, class:"input-form-large" %></span>
+  <span class="field-left text-md-right col-12 col-md-4"><%= f.label '主な業務内容' %></span>
+  <span class="field-right col-12 col-md-8 col-lg-7"><%= f.text_area :description, class:"input-form-large" %></span>
 </div>
