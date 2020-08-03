@@ -11,17 +11,17 @@
 
           <div class="field row">
             <span class="field-left text-md-right col-12 col-md-4"><%= f.label 'ユーザーネーム' %> </span>
-            <span class="field-right col-8"><%= f.text_field :username, autofocus: true, autocomplete: "username", class:"input-form"  %></span>
+            <span class="field-right col-12 col-md-8 col-lg-7"><%= f.text_field :username, autofocus: true, autocomplete: "username", class:"input-form"  %></span>
           </div>
 
           <div class="field row">
             <span class="field-left text-md-right col-12 col-md-4"><%= f.label '誕生日' %></span>
-            <span class="field-right col-8"><%= f.date_select(:birthday, {use_month_numbers: true, start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1)}, class:"input-form-select")  %></span>
+            <span class="field-right col-12 col-md-8 col-lg-7"><%= f.date_select(:birthday, {use_month_numbers: true, start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1)}, class:"input-form-select")  %></span>
           </div>
 
           <div class="field row">
             <span class="field-left text-md-right col-12 col-md-4"><%= f.label 'メールアドレス' %></span>
-            <span class="field-right col-8"><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input-form"  %></span>
+            <span class="field-right col-12 col-md-8 col-lg-7"><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input-form"  %></span>
           </div>
 
           <div class="field row">
@@ -30,13 +30,13 @@
             <% end %>
             <em>(<%= @minimum_password_length %> 文字以上)</em>
             </span>
-            <span class="field-right col-8"><%= f.password_field :password, autocomplete: "new-password", class:"input-form" %><br>
+            <span class="field-right col-12 col-md-8 col-lg-7"><%= f.password_field :password, autocomplete: "new-password", class:"input-form" %><br>
             </span>
           </div>
 
           <div class="field row">
             <span class="field-left text-md-right col-12 col-md-4"><%= f.label 'パスワード（確認）' %></span>
-            <span class="field-right col-8"><%= f.password_field :password_confirmation, autocomplete: "new-password", class:"input-form"  %></span>
+            <span class="field-right col-12 col-md-8 col-lg-7"><%= f.password_field :password_confirmation, autocomplete: "new-password", class:"input-form"  %></span>
           </div>
 
           <div class="actions">
@@ -53,3 +53,9 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+      $('#link-signup').addClass('active');
+  });
+</script>

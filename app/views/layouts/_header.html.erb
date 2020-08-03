@@ -6,27 +6,27 @@
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
       <ul class="navbar-nav mr-2 mt-2 mt-lg-0">
-        <li class="nav-item active">
-          <%= link_to side_jobs_path, class:"nav-link" do %>
+        <li class="nav-item">
+          <%= link_to side_jobs_path, class:"nav-link", id:"link-side-job-index" do %>
             レビューを見る<span class="sr-only">(current)</span>
           <% end %>
         </li>
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to 'レビュー投稿', new_side_job_path, class:"nav-link" %>
+            <%= link_to 'レビュー投稿', new_side_job_path, class:"nav-link", id:"link-side-job-new" %>
           </li>
           <li class="nav-item">
-            <%= link_to 'マイページ', user_path(current_user), class:"nav-link" %>
+            <%= link_to 'マイページ', user_path(current_user), class:"nav-link", id:"link-my-page" %>
           </li>
           <li class="nav-item">
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"nav-link" %>
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"nav-link", id:"link-logout" %>
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to '登録', new_user_registration_path, class:"nav-link" %>
+            <%= link_to '登録', new_user_registration_path, class:"nav-link", id:"link-signup" %>
           </li>
           <li class="nav-item">
-            <%= link_to 'ログイン', new_user_session_path, class:"nav-link" %>
+            <%= link_to 'ログイン', new_user_session_path, class:"nav-link", id:"link-signin" %>
           </li>
         <% end %>
       </ul>

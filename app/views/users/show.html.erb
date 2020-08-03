@@ -110,3 +110,11 @@
 
   <%= render "shared/job_card", jobs: @jobs %>
 </div>
+
+<% if @user == current_user %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+        $('#link-my-page').addClass('active');
+    });
+  </script>
+<% end %>
