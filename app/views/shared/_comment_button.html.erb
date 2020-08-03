@@ -3,5 +3,5 @@
     <i class="far fa-comment-alt"></i>
     コメント
   <% end %>
-  <%= job.comments.count %>
+  <%= job.comments.load.size %>
 </span>

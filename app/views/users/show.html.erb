@@ -26,7 +26,7 @@
         <% if user_signed_in? %>
           <div class="col-12">
             <div class="row stats-bar">
-              <% if current_user == @user %>
+              <% if @user == current_user %>
                 <%= link_to "本業の追加登録", new_main_job_path, class:"btn btn-light mr-2" %>
                 <%= link_to "アカウント編集", edit_user_registration_path, class:"btn btn-dark" %>
               <% else %>
@@ -51,10 +51,10 @@
             <div class="col-md-3 col-6">
               <span class="stats-item black-link">
                 <% if @user == current_user %>
-                  <strong><%= link_to "ストックした数 #{@user.stocks.count}", stocks_side_jobs_path %></strong>
+                  <strong><%= link_to "ストックした数 #{@user.stocks.load.size}", stocks_side_jobs_path %></strong>
                 <% else %>
                   ストックした数 
-                  <%= @user.stocks.count %>
+                  <%= @user.stocks.load.size %>
                 <% end %>
               </span>
             </div>
@@ -80,15 +80,15 @@
             </div>
             <div class="side-name black-link">
               <span class="tag side-tag position-top ">副業</span>
-              <% if @user.side_jobs.present? %>
+              <% if @side_jobs.present? %>
                 <ul class="job-list">
-                  <% @user.side_jobs.each do |job| %>
+                  <% @side_jobs.each do |job| %>
                     <li><%= link_to job.name, side_job_path(job) %> <%= link_to "(編集)", edit_side_job_path(job) if @user == current_user %></li>
                   <% end %>
                 </ul>
               <% else %>
                 <span>未登録　<span>
-                <% if @user ==current_user && @user.main_jobs.present? %>
+                <% if @user ==current_user && @main_jobs.present? %>
                   <%= link_to "→副業を登録する", new_side_job_path %>
                 <% end %>
               <% end %>
@@ -108,7 +108,7 @@
   <h2>副業一覧</h2>
   <br>
 
-  <%= render "shared/job_card", jobs: @jobs %>
+  <%= render "shared/job_card", jobs: @side_jobs %>
 </div>
 
 <% if @user == current_user %>

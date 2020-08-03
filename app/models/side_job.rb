@@ -26,6 +26,6 @@ class SideJob < ApplicationRecord
   validates :returned_skill, length: { maximum: 400 }
 
   def stocked_by?(user)
-    stocks.where(user_id: user.id).exists?
+    stocks.where(user_id: user.id).present?
   end
 end

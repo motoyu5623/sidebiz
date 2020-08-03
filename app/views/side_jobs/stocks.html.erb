@@ -2,5 +2,9 @@
   <div class="page-title">
     <h2>ストックした投稿一覧</h2>
   </div>
-  <%= render "shared/job_card", jobs: @stocks %>
+  <% if @stocks %>
+    <%= render "shared/job_card", jobs: @stocks %>
+  <% else %>
+    ストックした投稿はありません。
+  <% end %>
 </div>
