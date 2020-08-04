@@ -33,10 +33,10 @@ class SideJobsController < ApplicationController
     # binding.pry
     @job = current_user.side_jobs.build(job_params)
     if @job.save
-      flash[:success] = 'job registered!'
+      flash[:notice] = '副業の登録に成功しました'
       redirect_to side_job_path(@job)
     else
-      flash[:success] = 'register faild'
+      flash.now[:alert] = '登録できませんでした'
       render :new
     end
   end
@@ -57,10 +57,10 @@ class SideJobsController < ApplicationController
     @job = SideJob.find_by(id: params[:id])
     @job.update(job_params)
     if @job.save
-      flash[:success] = '編集に成功しました'
+      flash[:notice] = '編集に成功しました'
       redirect_to side_job_path(@job)
     else
-      flash[:danger] = '編集に失敗しました'
+      flash.now[:alert] = '編集に失敗しました'
       render :edit
     end
   end

@@ -10,10 +10,10 @@ class MainJobsController < ApplicationController
     @main_job = current_user.main_jobs.build(job_params)
     @main_job.save
     if @main_job.save
-      flash[:success] = 'job registered!'
+      flash[:notice] = '本業の登録に成功しました'
       redirect_to user_path(current_user.id)
     else
-      flash[:success] = 'register faild'
+      flash[:alert] = '登録できませんでした'
       render :new
     end
   end
@@ -26,18 +26,24 @@ class MainJobsController < ApplicationController
     @job = MainJob.find_by(id: params[:id])
     @job.update(job_params)
     if @job.update(job_params)
-      flash[:success] = '編集に成功しました'
+      flash[:notice] = '編集に成功しました'
       redirect_to user_path(current_user)
     else
-      flash[:danger] = '編集に失敗しました'
+      flash.now[:alert] = '編集に失敗しました'
       render :edit
     end
   end
 
   def destroy
     @job = MainJob.find_by(id: params[:id])
-    @job.destroy
-    redirect_to user_path(current_user)
+    if @job.side_jobs.present?
+      flash.now[:alert] = '副業に参照されているため削除できませんでした'
+      render :edit
+    else
+      @job.destroy
+      flash[:notice] = '本業を削除しました'
+      redirect_to user_path(current_user)
+    end
   end
 
   private

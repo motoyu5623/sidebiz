@@ -18,12 +18,6 @@ body {
 .no-padding {
   padding: 0;
 }
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-}
 
 .black-link {
   a {
@@ -76,10 +70,12 @@ body {
 .notice {
   background-color: #c9f892;
   margin: 0;
+  padding: 0;
 }
 .alert {
   background-color: #f8f092;
   margin: 0;
+  padding: 0;
 }
 
 .btn {
@@ -127,6 +123,15 @@ body {
   font-size: 1.5rem;
   // font-weight: bold;
   font-family: Georgia, 'Times New Roman', Times, serif;;
+}
+
+// ヘッダー
+footer {
+  margin-top: 5rem;
+  .copy-right {
+    text-align: center;
+    margin: 0 auto;
+  }
 }
 
 // トップページ
@@ -713,7 +718,7 @@ body {
   min-height: 580px;
   // max-height: 730px;
   // padding: 0;
-  margin-top: 10px;
+  margin-top: 2rem;
   border-radius: 0.5rem;
   
   .tab-content {
