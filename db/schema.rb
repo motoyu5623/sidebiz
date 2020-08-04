@@ -10,25 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_18_022458) do
+ActiveRecord::Schema.define(version: 2020_08_03_080716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "job_skills", force: :cascade do |t|
-    t.bigint "job_id"
-    t.bigint "skill_id"
-    t.integer "score"
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.bigint "user_id"
+    t.bigint "side_job_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["job_id", "skill_id"], name: "index_job_skills_on_job_id_and_skill_id", unique: true
-    t.index ["job_id"], name: "index_job_skills_on_job_id"
-    t.index ["skill_id"], name: "index_job_skills_on_skill_id"
+    t.index ["side_job_id"], name: "index_comments_on_side_job_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "jobs", force: :cascade do |t|
+  end
+
+  create_table "main_jobs", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.string "name", null: false
-    t.string "work_type"
+    t.string "company"
     t.string "section"
     t.string "industry"
     t.string "medium"
@@ -36,16 +62,33 @@ ActiveRecord::Schema.define(version: 2020_07_18_022458) do
     t.date "started_at"
     t.date "ended_at"
     t.integer "worktime_week", null: false
-    t.text "description", null: false
-    t.text "pulled_skill", null: false
-    t.text "returned_skill", null: false
-    t.boolean "is_main", default: false
+    t.integer "income_month"
+    t.text "description"
+    t.integer "work_type"
+    t.index ["user_id"], name: "index_main_jobs_on_user_id"
+  end
+
+  create_table "side_jobs", force: :cascade do |t|
     t.bigint "user_id", null: false
+    t.bigint "main_job_id", null: false
+    t.text "pulled_skill"
+    t.text "returned_skill"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name", null: false
     t.string "company"
-    t.index ["name"], name: "index_jobs_on_name"
-    t.index ["user_id"], name: "index_jobs_on_user_id"
+    t.string "section"
+    t.string "industry"
+    t.string "medium"
+    t.string "occupation"
+    t.date "started_at"
+    t.date "ended_at"
+    t.integer "worktime_week", null: false
+    t.integer "income_month"
+    t.text "description", null: false
+    t.integer "work_type"
+    t.index ["main_job_id"], name: "index_side_jobs_on_main_job_id"
+    t.index ["user_id"], name: "index_side_jobs_on_user_id"
   end
 
   create_table "skills", force: :cascade do |t|
@@ -54,14 +97,24 @@ ActiveRecord::Schema.define(version: 2020_07_18_022458) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "importance_for_side_job"
     t.integer "importance_for_main_job"
-    t.bigint "job_id"
-    t.index ["job_id"], name: "index_skills_on_job_id"
+    t.bigint "side_job_id"
     t.index ["name"], name: "index_skills_on_name"
+    t.index ["side_job_id"], name: "index_skills_on_side_job_id"
+  end
+
+  create_table "stocks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "side_job_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["side_job_id"], name: "index_stocks_on_side_job_id"
+    t.index ["user_id", "side_job_id"], name: "index_stocks_on_user_id_and_side_job_id", unique: true
+    t.index ["user_id"], name: "index_stocks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
-    t.date "birthday", null: false
+    t.date "birthday"
     t.string "living_place"
     t.string "profile"
     t.string "email", default: "", null: false
@@ -75,7 +128,11 @@ ActiveRecord::Schema.define(version: 2020_07_18_022458) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "job_skills", "jobs"
-  add_foreign_key "job_skills", "skills"
-  add_foreign_key "jobs", "users"
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "main_jobs", "users"
+  add_foreign_key "side_jobs", "main_jobs"
+  add_foreign_key "side_jobs", "users"
+  add_foreign_key "skills", "side_jobs"
+  add_foreign_key "stocks", "side_jobs"
+  add_foreign_key "stocks", "users"
 end

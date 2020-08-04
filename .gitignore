@@ -36,3 +36,10 @@ yarn-debug.log*
 .yarn-integrity
 
 .env
+
+sidebiz.drawio
+.irbrc
+.vscodes
+/config/credentials/production.key
+
+/config/credentials/development.key

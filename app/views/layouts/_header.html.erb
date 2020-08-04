@@ -1,35 +1,37 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <%= link_to 'SideBiz', root_path, class:"navbar-brand" %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
-      <ul class="navbar-nav mr-2 mt-2 mt-lg-0">
-        <li class="nav-item active">
-          <%= link_to jobs_path, class:"nav-link" do %>
-            レビューを見る<span class="sr-only">(current)</span>
+<header>
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+    <div class="container">
+      <%= link_to 'SideBiz', root_path, class:"navbar-brand" %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-2 mt-2 mt-lg-0">
+          <li class="nav-item">
+            <%= link_to side_jobs_path, class:"nav-link", id:"link-side-job-index" do %>
+              レビューを見る<span class="sr-only">(current)</span>
+            <% end %>
+          </li>
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to 'レビュー投稿', new_side_job_path, class:"nav-link", id:"link-side-job-new" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'マイページ', user_path(current_user), class:"nav-link", id:"link-my-page" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"nav-link", id:"link-logout" %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to '登録', new_user_registration_path, class:"nav-link", id:"link-signup" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'ログイン', new_user_session_path, class:"nav-link", id:"link-signin" %>
+            </li>
           <% end %>
-        </li>
-        <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to 'レビュー投稿', new_job_path, class:"nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'マイページ', edit_user_registration_path, class:"nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"nav-link" %>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to '登録', new_user_registration_path, class:"nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'ログイン', new_user_session_path, class:"nav-link" %>
-          </li>
-        <% end %>
-      </ul>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
+</header>

@@ -1,0 +1,7 @@
+<span class="ml-3">
+  <%= link_to side_job_path(id: job.id, anchor: 'comments') do %>
+    <i class="far fa-comment-alt"></i>
+    コメント
+  <% end %>
+  <%= job.comments.load.size %>
+</span>

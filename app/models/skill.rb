@@ -1,7 +1,4 @@
 class Skill < ApplicationRecord
-  belongs_to :job
-  # validates :name, presence: true
-  # has_many :job_skills, dependent: :destroy
-  # has_many :jobs, through: :job_skills
-  # accepts_nested_attributes_for :job_skills, allow_destroy: true
+  belongs_to :side_job
+  validates :name, presence: true, length: { maximum: 50 }
 end

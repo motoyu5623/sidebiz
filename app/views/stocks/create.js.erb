@@ -1,0 +1,2 @@
+$("#stock_btn_<%= @side_job.id %>").html("<%= j(render 'shared/stock_area', { job: @side_job}) %>");
+$("#stock_count_<%= @side_job.id %>").html("<%= @side_job.stocks.count %>");

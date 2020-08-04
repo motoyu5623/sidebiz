@@ -1,26 +1,48 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container">
+  <div class="page-title">
   </div>
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10 ">
+      <div class="job-new-field">
+        <h2 class="area-title">ログイン</h2>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field row">
+            <span class="field-left text-md-right col-12 col-md-4"><%= f.label 'メールアドレス' %></span>
+            <span class="field-right col-12 col-md-8 col-lg-7"><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input-form" %></span>
+          </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+          <div class="field row">
+            <span class="field-left text-md-right col-12 col-md-4"><%= f.label 'パスワード' %></span>
+            <span class="field-right col-12 col-md-8 col-lg-7"><%= f.password_field :password, autocomplete: "current-password", class:"input-form" %></span>
+          </div>
+
+          <% if devise_mapping.rememberable? %>
+            <div class="field row">
+              <span class="field-right col-12 col-md-8 col-lg-7 offset-md-4">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </span>
+            </div>
+          <% end %>
+
+          <div class="actions">
+            <div class="btn-submit">
+              <%= f.submit 'ログインする', class:"btn btn-dark" %>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="devise-link-area">
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
+</div>
 
-<%= render "devise/shared/links" %>
+<script type="text/javascript">
+  $(document).ready(function(){
+      $('#link-signin').addClass('active');
+  });
+</script>

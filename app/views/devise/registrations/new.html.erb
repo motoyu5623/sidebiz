@@ -1,39 +1,56 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
+<div class="container">
+  <div class="page-title">
   </div>
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10 ">
+      <div class="job-new-field">
+        <h2 class="area-title">新規登録</h2>
 
-  <div class="field">
-    <%= f.label :birthday %><br />
-    <%= f.date_select :birthday, use_month_numbers: true, start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1) %>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+
+          <div class="field row">
+            <span class="field-left text-md-right col-12 col-md-4"><%= f.label 'ユーザーネーム' %> </span>
+            <span class="field-right col-12 col-md-8 col-lg-7"><%= f.text_field :username, autofocus: true, autocomplete: "username", class:"input-form"  %></span>
+          </div>
+
+          <div class="field row">
+            <span class="field-left text-md-right col-12 col-md-4"><%= f.label 'メールアドレス' %></span>
+            <span class="field-right col-12 col-md-8 col-lg-7"><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input-form"  %></span>
+          </div>
+
+          <div class="field row">
+            <span class="field-left text-md-right col-12 col-md-4"><%= f.label 'パスワード' %>
+            <% if @minimum_password_length %>
+            <% end %>
+            <em>(<%= @minimum_password_length %> 文字以上)</em>
+            </span>
+            <span class="field-right col-12 col-md-8 col-lg-7"><%= f.password_field :password, autocomplete: "new-password", class:"input-form" %><br>
+            </span>
+          </div>
+
+          <div class="field row">
+            <span class="field-left text-md-right col-12 col-md-4"><%= f.label 'パスワード（確認）' %></span>
+            <span class="field-right col-12 col-md-8 col-lg-7"><%= f.password_field :password_confirmation, autocomplete: "new-password", class:"input-form"  %></span>
+          </div>
+
+          <div class="actions">
+            <div class="btn-submit">
+              <%= f.submit '登録する', class:"btn btn-dark" %>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="devise-link-area">
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<script type="text/javascript">
+  $(document).ready(function(){
+      $('#link-signup').addClass('active');
+  });
+</script>

@@ -1,0 +1,14 @@
+<div class="edit_or_delete d-flex justify-content-end mr-2 black-link">
+  <span class="">
+    <%= link_to  edit_side_job_path(job), id: :"button-edit-#{job.id}" do %>
+      <i class="fas fa-edit"></i>
+      編集
+    <% end %>
+  </span>
+  <span class="ml-3">
+    <%= link_to side_job_path(job), id: :"button-delete-#{job.id}", method: :delete, data: { confirm: '削除してよろしいですか？'} do %>
+      <i class="far fa-trash-alt"></i>
+      削除
+    <% end %>
+  </span>
+  </div>

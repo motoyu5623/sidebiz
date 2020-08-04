@@ -1,0 +1,87 @@
+<% jobs.each do |job| %>
+  <div class="card">
+    <div class="card-header px-2 py-1">
+      <div class="row">
+        <div class="col-lg-6 col-12 job-transition">
+          <span class="job-name shortcut">
+            <span class="tag main-tag">本業</span>
+            <span><%=  job.main_job.name %></span>
+          </span>
+          <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+          <span class="job-name shortcut">
+            <span class="tag side-tag">副業</span>
+            <span>
+              <%= link_to side_job_path(job) do %>
+                <%= job.name %> (詳細 <i class="fas fa-external-link-alt"></i>)
+              <% end %>
+            </span>
+          </span>
+        </div>
+        <div class="col-lg-6 col-12">
+          <div class="stock_comment_icon d-flex justify-content-end mr-2 my-1">
+            <% if user_signed_in? %>
+              <%= render "shared/stock_button", job: job %>
+              <%= render "shared/comment_button", job: job %>
+            <% else %>
+              <%= render "shared/stock_button_no_link", job: job %>
+              <%= render "shared/comment_button_no_link", job: job %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row no-gutters card-content">
+      <div class="col-sm-2 col-1">
+        <% if job.user.avatar.attached? %>
+          <%= image_tag job.user.avatar.variant(combine_options:{resize:"200x200^", gravity: :center, crop:"200x200+0+0"}).processed, class:"card-img-size"  %>
+        <% else %>
+          <%= image_tag '/noimage.png', class:"card-img-size" %>
+        <% end %>
+      </div>
+      <div class="container col-lg-5 col-sm-10 col-12">
+        <div class="simple-description shortcut-multi-line">
+          <%= job.description %>
+        </div>
+      </div>
+      <div class="col-lg-5 col-12">
+        <div class="skill-tags-vertical mt-3">
+          <div class="skill-tags-title skill-tag-row mb-2">
+            <div class="skill-tag skill-main-tags">本業</div>
+            <div class="skill-tag skill-name skill-tags-explanation"><span>スキルの重要度</spn></div>
+            <div class="skill-tag skill-side-tags">副業</div>
+          </div>
+          <% job.skills.each do |skill| %>
+            <div class="skill-tag-row">
+              <div class="skill-tag skill-main-tags"><%= skill.importance_for_main_job %></div>
+              <div class="skill-tag skill-name"><%= skill.name %></div>
+              <div class="skill-tag skill-side-tags"><%= skill.importance_for_side_job %></div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer px-3 py-1">
+      <div class="row">
+        <div class="col-sm-6 col-12">
+          <div class="card-personal-info">
+            <span class="name-holder-sm black-link mr-3">
+              投稿者: <%= link_to "@#{job.user.username}", user_path(job.user) %>
+            </span>
+            <span class="black-link shortcut">
+              エリア: <%= job.user.living_place %>
+            </span>
+          </div>
+        </div>
+        <div class="col-sm-6 col-12">
+          <% if user_signed_in? && current_user == job.user %>
+            <%= render "shared/job_edit_or_delete", job: job %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="row justify-content-center pagination-box">
+  <%= paginate jobs, remote: true %>
+</div>
