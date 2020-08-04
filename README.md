@@ -17,7 +17,7 @@ Sidebizは、「副業✕スキル」がテーマのレビューサイトです�
 
 # URL
 
-[](https://sidebizz.herokuapp.com/)
+[https://sidebizz.herokuapp.com/](https://sidebizz.herokuapp.com/)
 
 # 使用技術
 
@@ -58,14 +58,7 @@ Sidebizは、「副業✕スキル」がテーマのレビューサイトです�
   * 編集、削除（本人のみ）
   * レビューへのコメント
   * レビューのストック
-* 複数条件による絞り込み
  
-# Requirement
- 
-"hoge"を動かすのに必要なライブラリなどを列挙する
- 
-* huga 3.5.2
-* hogehuga 1.0.2
  
 # Installation
  
@@ -94,11 +87,9 @@ python demo.py
 作成情報を列挙する
  
 * yusuke sakamoto
-* moto
  
 # License
 ライセンスを明示する
  
 "hoge" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
  
-"hoge" is Confidential.

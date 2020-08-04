@@ -3,7 +3,7 @@ class SideJobsController < ApplicationController
 
   def index
     @q = SideJob.order(updated_at: :desc).ransack(params[:q])
-    @jobs = @q.result.includes({user: :avatar_attachment}, :skills, :main_job, :stocks, :comments).page(params[:page])
+    @jobs = @q.result.includes({ user: :avatar_attachment }, :skills, :main_job, :stocks, :comments).page(params[:page])
   end
 
   def show
