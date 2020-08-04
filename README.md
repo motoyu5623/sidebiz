@@ -1,19 +1,21 @@
 # Sidebiz
  
-Sidebizは、「副業✕スキル」がテーマのレビューサイトです。
+Sidebizは、「副業」 × 「スキル」がテーマのレビューサイトです。
 
 
 * 副業の実際の業務内容や稼働時間、収入等を知ることができる
 * 自分のどんなスキルがどの副業に活かせるか知ることができる
  
 # イメージ
- 
 
+![sidebizz herokuapp com_side_jobs_2 (1)](https://user-images.githubusercontent.com/62973760/89298703-a172fb00-d6a0-11ea-9bbe-006188b55cfd.png) 
+
+![sidebizz herokuapp com_side_jobs_2](https://user-images.githubusercontent.com/62973760/89298800-c7000480-d6a0-11ea-807c-2be969bba36d.png)
 
 # 制作背景
 
 * 自分のスキルがどんな職業で活かせるのかを知りたかった
-* 副業人口が今後拡大していく中で、副業情報のニーズが高くなると思った。
+* 副業人口が今後拡大していく中で、副業情報のニーズが現在進行形で高まっていると思った
 
 # URL
 
@@ -60,36 +62,7 @@ Sidebizは、「副業✕スキル」がテーマのレビューサイトです�
   * レビューのストック
  
  
-# Installation
- 
-Requirementで列挙したライブラリなどのインストール方法を説明する
- 
-```bash
-pip install huga_package
-```
- 
-# Usage
- 
-DEMOの実行方法など、"hoge"の基本的な使い方を説明する
- 
-```bash
-git clone https://github.com/hoge/~
-cd examples
-python demo.py
-```
- 
-# Note
- 
-注意点などがあれば書く
- 
-# Author
- 
-作成情報を列挙する
+# 製作者
  
 * yusuke sakamoto
- 
-# License
-ライセンスを明示する
- 
-"hoge" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
  
