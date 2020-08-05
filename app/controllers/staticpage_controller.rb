@@ -1,5 +1,5 @@
 class StaticpageController < ApplicationController
   def index
-    @jobs = SideJob.includes(:user, :skills, :main_job).order(updated_at: :desc).page(params[:page])
+    @side_jobs = SideJob.includes({ user: :avatar_attachment }, :skills, :main_job, :stocks, :comments).order(updated_at: :desc).page(params[:page])
   end
 end

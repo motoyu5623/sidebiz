@@ -3,38 +3,38 @@ class SideJobsController < ApplicationController
 
   def index
     @q = SideJob.order(updated_at: :desc).ransack(params[:q])
-    @jobs = @q.result.includes({ user: :avatar_attachment }, :skills, :main_job, :stocks, :comments).page(params[:page])
+    @side_jobs = @q.result.includes({ user: :avatar_attachment }, :skills, :main_job, :stocks, :comments).page(params[:page])
   end
 
   def show
-    @job = SideJob.find(params[:id])
-    @user = @job.user
-    @main_job = @job.main_job
-    @skills = @job.skills.pluck(:name, :importance_for_side_job, :importance_for_main_job)
+    @side_job = SideJob.find(params[:id])
+    @user = @side_job.user
+    @main_job = @side_job.main_job
+    @skills = @side_job.skills.pluck(:name, :importance_for_side_job, :importance_for_main_job)
     @labels = @skills.map(&:first)
     @importance_for_side_job = @skills.map(&:second)
     @importance_for_main_job = @skills.map(&:third)
-    @comments = @job.comments
-    @comment = @job.comments.build
+    @comments = @side_job.comments
+    @comment = @side_job.comments.build
   end
 
   def new
     if current_user.main_jobs.blank?
-      redirect_to new_main_job_path, notice: '最初に本業の情報を入力してください。'
+      redirect_to new_main_job_path, notice: '最初に本業の情報を入力してください（本業名だけ入力し、他の項目は後で入力することも可能です）'
     else
-      @job = current_user.side_jobs.build
+      @side_job = current_user.side_jobs.build
       3.times do
-        @job.skills.build
+        @side_job.skills.build
       end
     end
   end
 
   def create
     # binding.pry
-    @job = current_user.side_jobs.build(job_params)
-    if @job.save
+    @side_job = current_user.side_jobs.build(job_params)
+    if @side_job.save
       flash[:notice] = '副業の登録に成功しました'
-      redirect_to side_job_path(@job)
+      redirect_to side_job_path(@side_job)
     else
       flash.now[:alert] = '登録できませんでした'
       render :new
@@ -42,23 +42,20 @@ class SideJobsController < ApplicationController
   end
 
   def edit
-    @job = SideJob.find_by(id: params[:id])
-    # @job.skills.create_or_find_by
-    # if @job.skills.blank?
-    return unless @job.skills.blank?
+    @side_job = SideJob.find_by(id: params[:id])
+    return unless @side_job.skills.blank?
 
     3.times do
-      @job.skills.build
+      @side_job.skills.build
     end
-    # end
   end
 
   def update
-    @job = SideJob.find_by(id: params[:id])
-    @job.update(job_params)
-    if @job.save
+    @side_job = SideJob.find_by(id: params[:id])
+    @side_job.update(job_params)
+    if @side_job.save
       flash[:notice] = '編集に成功しました'
-      redirect_to side_job_path(@job)
+      redirect_to side_job_path(@side_job)
     else
       flash.now[:alert] = '編集に失敗しました'
       render :edit
@@ -66,8 +63,8 @@ class SideJobsController < ApplicationController
   end
 
   def destroy
-    @job = SideJob.find_by(id: params[:id])
-    @job.destroy
+    @side_job = SideJob.find_by(id: params[:id])
+    @side_job.destroy
     redirect_to user_path(current_user)
   end
 
