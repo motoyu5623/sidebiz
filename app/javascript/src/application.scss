@@ -7,12 +7,20 @@ $light: #EDF2F5;
 
 // 汎用
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
+  // height: 100%;
   -moz-box-sizing:    border-box;
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
   background-color: #feffff;
   padding-top: 62px;
+  margin-bottom: 5rem;
+  // position: relative;
 }
 
 .no-padding {
@@ -125,9 +133,13 @@ body {
   font-family: Georgia, 'Times New Roman', Times, serif;;
 }
 
-// ヘッダー
+
+// フッター
 footer {
-  margin-top: 5rem;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  // margin-top: 5rem;
   .copy-right {
     text-align: center;
     margin: 0 auto;
