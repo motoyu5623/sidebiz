@@ -1,0 +1,8 @@
+.rspec
+log
+tmp
+vendor/assets
+node_modules
+sidebiz.drawio
+.irbrc
+launch.json

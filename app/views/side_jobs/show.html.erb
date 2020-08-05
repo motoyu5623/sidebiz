@@ -1,14 +1,14 @@
 <div class="container">
   <div class="page-title">
     <div class="job-show-title-box">
-      <span class="job-show-title"><%= @job.name %></span>
+      <span class="job-show-title"><%= @side_job.name %></span>
       <span> のレビュー </span><%= link_to "@#{@user.username}", user_path(@user) %>
     </div>
   </div>
   <div class="card">
     <div class="card-body">
-      <%= render "job_summary_box", job:@job %>
-      <%= render "job_synergy", job:@job %>
+      <%= render "job_summary_box", job:@side_job %>
+      <%= render "job_synergy", job:@side_job %>
       <%= render "job_summary_box", job:@main_job %>
       <hr>
       <span>スキルチャート</span>
@@ -26,19 +26,19 @@
     <div class="col-sm-6 col-12">
       <div class="stock_comment_icon ml-2 black-link">
         <% if user_signed_in? %>
-          <%= render "shared/stock_button", job: @job %>
+          <%= render "shared/stock_button", job: @side_job %>
         <% else %>
-          <%= render "shared/stock_button_no_link", job: @job %>
+          <%= render "shared/stock_button_no_link", job: @side_job %>
         <% end %>
         <span class="ml-3">
           <i class="far fa-comment-alt"></i>コメント
-          <%= @job.comments.count %>
+          <%= @side_job.comments.count %>
         </span>
       </div>
     </div>
     <div class="col-sm-6 col-12">
-      <% if user_signed_in? && current_user == @job.user %>
-        <%= render "shared/job_edit_or_delete", job: @job %>
+      <% if user_signed_in? && current_user == @side_job.user %>
+        <%= render "shared/job_edit_or_delete", job: @side_job %>
       <% end %>
     </div>
   </div>
@@ -59,7 +59,7 @@
 
     <br>
     <% if user_signed_in? %>
-      <%= form_with(model: [@job, @comment], local: true, class:"row align-items-end") do |f| %>
+      <%= form_with(model: [@side_job, @comment], local: true, class:"row align-items-end") do |f| %>
         <div class="col-md-8 col-12">
             <%= f.text_area :content, class:"comment-form", row: 5 %>
         </div>
@@ -86,7 +86,7 @@
         data: <%= @importance_for_side_job %>
       }, {
         label: '本業における重要度',
-        backgroundColor: "rgba(59,190,255,0.2)",
+        backgroundColor: "rgba(59,190,255,0.7)",
         borderColor: "rgba(59,190,255,0.5)",
         data: <%= @importance_for_main_job %>
       }

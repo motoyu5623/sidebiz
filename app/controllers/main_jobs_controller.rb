@@ -19,13 +19,13 @@ class MainJobsController < ApplicationController
   end
 
   def edit
-    @job = MainJob.find_by(id: params[:id])
+    @main_job = MainJob.find_by(id: params[:id])
   end
 
   def update
-    @job = MainJob.find_by(id: params[:id])
-    @job.update(job_params)
-    if @job.update(job_params)
+    @main_job = MainJob.find_by(id: params[:id])
+    @main_job.update(job_params)
+    if @main_job.update(job_params)
       flash[:notice] = '編集に成功しました'
       redirect_to user_path(current_user)
     else
@@ -35,12 +35,12 @@ class MainJobsController < ApplicationController
   end
 
   def destroy
-    @job = MainJob.find_by(id: params[:id])
-    if @job.side_jobs.present?
+    @main_job = MainJob.find_by(id: params[:id])
+    if @main_job.side_jobs.present?
       flash.now[:alert] = '副業に参照されているため削除できませんでした'
       render :edit
     else
-      @job.destroy
+      @main_job.destroy
       flash[:notice] = '本業を削除しました'
       redirect_to user_path(current_user)
     end

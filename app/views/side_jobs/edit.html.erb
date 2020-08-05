@@ -3,15 +3,15 @@
   <div class="page-title">
     <h2>副業レビューの編集</h2>
   </div>
-  <%= form_with(model: @job, local:true, class:"job-new-field") do |f| %>
+  <%= form_with(model: @side_job, local:true, class:"job-new-field") do |f| %>
 
-    <%= render "shared/common_form", {job:@job, f:f} %>
-    <%= render "shared/common_form_for_side_job", {job:@job, f:f} %>
+    <%= render "shared/common_form", {job:@side_job, f:f} %>
+    <%= render "shared/common_form_for_side_job", {job:@side_job, f:f} %>
 
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <div class="btn-submit">
       <%= f.submit '更新する', class:"btn btn-dark" %>
-      <%= link_to "削除する", side_job_path(@job), method: :delete, data: { confirm: '削除してよろしいですか？'}, class:"btn btn-light"  %>
+      <%= link_to "削除する", side_job_path(@side_job), method: :delete, data: { confirm: '削除してよろしいですか？'}, class:"btn btn-light"  %>
     </div>
   <% end %>
 </div>

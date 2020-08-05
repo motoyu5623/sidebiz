@@ -32,13 +32,13 @@
   </div>
 
   <% if params[:q].blank? %>
-    <span><strong><%= @jobs.total_count %></strong> 件の投稿</span>
-  <% elsif @jobs.present? %>
-    <span><strong><%= @jobs.total_count %></strong> 件の投稿が一致しました</span>
+    <span><strong><%= @side_jobs.total_count %></strong> 件の投稿</span>
+  <% elsif @side_jobs.present? %>
+    <span><strong><%= @side_jobs.total_count %></strong> 件の投稿が一致しました</span>
   <% else %>
     <span>一致する検索結果はありませんでした</span>
   <% end %>
-  <%= render "shared/job_card", jobs: @jobs %>
+  <%= render "shared/job_card", jobs: @side_jobs %>
 </div>
 
 <script type="text/javascript">
