@@ -12,7 +12,7 @@ FactoryBot.define do
     ended_at { '' }
     worktime_week { '〜5時間' }
     income_month { '〜1万円' }
-    description { '動画撮影' }
+    description { '動画撮影する' }
     pulled_skill { 'なし' }
     returned_skill { 'なし' }
   end
