@@ -65,6 +65,7 @@ class SideJobsController < ApplicationController
   def destroy
     @side_job = SideJob.find_by(id: params[:id])
     @side_job.destroy
+    flash[:notice] = '削除しました'
     redirect_to user_path(current_user)
   end
 

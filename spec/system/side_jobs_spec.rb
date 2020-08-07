@@ -54,6 +54,7 @@ RSpec.describe 'SideJobs', type: :system do
 
     expect {
       click_link "削除"
+      expect(page).to have_content "削除しました"
     }.to change(user.side_jobs, :count).by(-1)
   end
 

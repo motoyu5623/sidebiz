@@ -33,6 +33,7 @@ RSpec.describe 'MainJobs', type: :system do
     expect {
       visit edit_main_job_path(user.main_jobs.last)
       click_link "削除"
+      expect(page).to have_content "削除しました"
     }.to change(user.main_jobs, :count).by(-1)
   end
 
