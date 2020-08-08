@@ -6,10 +6,10 @@ RSpec.describe User, type: :system do
   let(:other_user) { create(:user) }
 
   describe 'User CRUD' do
-    describe 'ログイン前' do
-      describe 'ユーザー新規登録' do
-        context 'フォームの入力値が正常' do
-          it 'ユーザーの新規作成が成功' do
+    describe 'before log in' do
+      describe 'registrate user' do
+        context 'with valid input' do
+          it 'succeed in creating user' do
             visit root_path
             click_link "ユーザー登録する"
             expect(current_path).to eq new_user_registration_path
@@ -25,8 +25,8 @@ RSpec.describe User, type: :system do
             }.to change(User, :count).by(1)
           end
         end
-        context 'ユーザーネーム未記入' do
-          it 'ユーザーの新規登録が失敗' do
+        context 'without username' do
+          it 'fail in creating user' do
             visit root_path
             click_link "ユーザー登録する"
             expect(current_path).to eq new_user_registration_path
@@ -42,8 +42,8 @@ RSpec.describe User, type: :system do
             }.to_not change(User, :count)
           end
         end
-        context 'メールアドレス未記入' do
-          it 'ユーザーの新規登録が失敗' do
+        context 'without email' do
+          it 'fail in craeting user' do
             visit root_path
             click_link "ユーザー登録する"
             expect(current_path).to eq new_user_registration_path
@@ -59,8 +59,8 @@ RSpec.describe User, type: :system do
             }.to_not change(User, :count)
           end
         end
-        context '登録済メールアドレス' do
-          it 'ユーザーの新規作成が失敗する' do
+        context 'with email already registrated' do
+          it 'fail in craeting user' do
             visit root_path
             click_link "ユーザー登録する"
             expect(current_path).to eq new_user_registration_path
@@ -78,12 +78,12 @@ RSpec.describe User, type: :system do
         end
       end
     end
-    describe 'ログイン後' do
+    describe 'after log in' do
       before { login_as(user) }
-      describe 'ユーザー編集' do
-        describe 'パスワード以外' do
-          context 'フォームの入力値が正常' do
-            it 'ユーザーの編集が成功' do
+      describe 'edit user' do
+        describe 'except for password' do
+          context 'with valid input' do
+            it 'succeed in editing user' do
               visit edit_user_registration_path(user)
               fill_in 'user_username', with: "NEWFOOBAR"
               fill_in 'user_email', with: 'change@example.com'
@@ -92,8 +92,8 @@ RSpec.describe User, type: :system do
               expect(page).to have_content 'アカウントを更新しました'
             end
           end
-          context 'メールアドレスが未入力' do
-            it 'ユーザーの編集が失敗' do
+          context 'with email form empty' do
+            it 'fail in editing user' do
               visit edit_user_registration_path(user)
               fill_in 'user_email', with: nil
               click_button 'プロフィールを更新する'
@@ -102,9 +102,9 @@ RSpec.describe User, type: :system do
             end
           end
         end
-        describe 'パスワード' do
-          context 'フォームの入力値が正常' do
-            it 'ユーザーの編集が成功' do
+        describe 'password' do
+          context 'with valid input' do
+            it 'succeeded in editing user' do
               visit edit_user_registration_path(user)
               click_link 'パスワードを変更'
               fill_in 'user_password', with: 'newpassword'
@@ -115,8 +115,8 @@ RSpec.describe User, type: :system do
               expect(page).to have_content 'アカウントを更新しました'
             end
           end
-          context '現在のパスワードを未入力' do
-            it 'ユーザーの編集が失敗' do
+          context 'without current password' do
+            it 'fail in editing user' do
               visit edit_user_registration_path(user)
               click_link 'パスワードを変更'
               fill_in 'user_password', with: 'newpassword'
