@@ -12,18 +12,18 @@ RSpec.describe Skill, type: :model do
   it 'is invalid without name' do
     skill.name = nil
     skill.valid?
-    expect(skill.errors[:name]).to include("を入力してください")
+    expect(skill.errors[:name]).to include('を入力してください')
   end
 
   it 'is invalid without importance_for_side_job' do
     skill.importance_for_side_job = nil
     skill.valid?
-    expect(skill.errors[:importance_for_side_job]).to include("を入力してください")
+    expect(skill.errors[:importance_for_side_job]).to include('を入力してください')
   end
 
   it 'is invalid without importance_for_main_job' do
     skill.importance_for_main_job = nil
     skill.valid?
-    expect(skill.errors[:importance_for_main_job]).to include("を入力してください")
+    expect(skill.errors[:importance_for_main_job]).to include('を入力してください')
   end
 end

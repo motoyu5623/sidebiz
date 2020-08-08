@@ -43,45 +43,39 @@ class SideJobsController < ApplicationController
 
   def edit
     @side_job = SideJob.find_by(id: params[:id])
-    if correct_user?
-      return unless @side_job.skills.blank?
-
+    if wrong_user?
+      flash[:alert] = 'あなたの投稿ではありません'
+      redirect_to @side_job
+    elsif @side_job.skills.blank?
       3.times do
         @side_job.skills.build
       end
-    else
-      flash[:alert] = 'あなたの投稿ではありません'
-      redirect_to @side_job
     end
   end
 
   def update
     @side_job = SideJob.find_by(id: params[:id])
-    if correct_user?
-      @side_job.update(job_params)
-      if @side_job.save
-        flash[:notice] = '編集に成功しました'
-        redirect_to side_job_path(@side_job)
-      else
-        flash.now[:alert] = '編集に失敗しました'
-        render :edit
-      end
-    else
+    if wrong_user?
       flash[:alert] = 'あなたの投稿ではありません'
       redirect_to @side_job
+    elsif @side_job.update(job_params)
+      flash[:notice] = '編集に成功しました'
+      redirect_to side_job_path(@side_job)
+    else
+      flash.now[:alert] = '編集に失敗しました'
+      render :edit
     end
   end
 
   def destroy
     @side_job = SideJob.find_by(id: params[:id])
-    if correct_user?
-    # if @side_job.user == current_user
+    if wrong_user?
+      flash[:alert] = 'あなたの投稿ではありません'
+      redirect_to @side_job
+    else
       @side_job.destroy
       flash[:notice] = '削除しました'
       redirect_to user_path(current_user)
-    else
-      flash[:alert] = 'あなたの投稿ではありません'
-      redirect_to @side_job
     end
   end
 
@@ -100,8 +94,8 @@ class SideJobsController < ApplicationController
                                      :user_id, skills_attributes: %i[name side_job_id id importance_for_side_job importance_for_main_job])
   end
 
-  def correct_user?
+  def wrong_user?
     @user = @side_job.user
-    @user == current_user
+    @user != current_user
   end
 end

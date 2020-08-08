@@ -40,17 +40,17 @@ RSpec.describe 'SideJobs', type: :request do
   describe '#create' do
     context 'as an authorized user' do
       it 'create a side job' do
-        side_job_params = FactoryBot.attributes_for(:side_job, main_job_id: main_job.id).merge({skills: [attributes_for(:skill)]})
+        side_job_params = FactoryBot.attributes_for(:side_job, main_job_id: main_job.id).merge({ skills: [attributes_for(:skill)] })
         login_as(user)
-        expect {
+        expect do
           post side_jobs_path, params: { side_job: side_job_params }
-        }.to change(SideJob, :count).by(1)
+        end.to change(SideJob, :count).by(1)
       end
     end
     context 'as an unauthorized user' do
       it 'redirect to log in page' do
         side_job_params = FactoryBot.attributes_for(:side_job)
-        post side_jobs_path, params: {side_job: side_job_params}
+        post side_jobs_path, params: { side_job: side_job_params }
         expect(response).to redirect_to new_user_session_path
       end
     end
@@ -67,36 +67,36 @@ RSpec.describe 'SideJobs', type: :request do
   describe '#update' do
     context 'as an authorized user' do
       it 'update a side job' do
-        side_job_params = FactoryBot.attributes_for(:side_job, name: 'TikToker').merge({skills: [attributes_for(:skill)]})
+        side_job_params = FactoryBot.attributes_for(:side_job, name: 'TikToker').merge({ skills: [attributes_for(:skill)] })
         login_as(user)
-        patch side_job_path(side_job), params: { id: side_job.id, side_job: side_job_params}
+        patch side_job_path(side_job), params: { id: side_job.id, side_job: side_job_params }
         expect(side_job.reload.name).to eq 'TikToker'
       end
     end
     context 'as an unauthorized user' do
       it 'does not update tha side job' do
-        side_job_params = FactoryBot.attributes_for(:side_job, name: 'TikToker').merge({skills: [attributes_for(:skill)]})
+        side_job_params = FactoryBot.attributes_for(:side_job, name: 'TikToker').merge({ skills: [attributes_for(:skill)] })
         login_as(other_user)
-        patch side_job_path(side_job), params: { id: side_job.id, side_job: side_job_params}
+        patch side_job_path(side_job), params: { id: side_job.id, side_job: side_job_params }
         expect(side_job.reload.name).to eq 'YouTuber'
       end
 
       it 'redirect to log in page' do
-        side_job_params = FactoryBot.attributes_for(:side_job, name: 'TikToker').merge({skills: [attributes_for(:skill)]})
+        side_job_params = FactoryBot.attributes_for(:side_job, name: 'TikToker').merge({ skills: [attributes_for(:skill)] })
         login_as(other_user)
-        patch side_job_path(side_job), params: { id: side_job.id, side_job: side_job_params}
+        patch side_job_path(side_job), params: { id: side_job.id, side_job: side_job_params }
         expect(response).to redirect_to side_job_path(side_job)
       end
     end
     context 'as a guest' do
       it 'returns a 302 response' do
-        side_job_params = FactoryBot.attributes_for(:side_job, name: 'TikToker').merge({skills: [attributes_for(:skill)]})
-        patch side_job_path(side_job), params: { id: side_job.id, side_job: side_job_params}
+        side_job_params = FactoryBot.attributes_for(:side_job, name: 'TikToker').merge({ skills: [attributes_for(:skill)] })
+        patch side_job_path(side_job), params: { id: side_job.id, side_job: side_job_params }
         expect(response).to have_http_status '302'
       end
       it 'redirects to log in page' do
-        side_job_params = FactoryBot.attributes_for(:side_job, name: 'TikToker').merge({skills: [attributes_for(:skill)]})
-        patch side_job_path(side_job), params: { id: side_job.id, side_job: side_job_params}
+        side_job_params = FactoryBot.attributes_for(:side_job, name: 'TikToker').merge({ skills: [attributes_for(:skill)] })
+        patch side_job_path(side_job), params: { id: side_job.id, side_job: side_job_params }
         expect(response).to redirect_to new_user_session_path
       end
     end
@@ -106,17 +106,17 @@ RSpec.describe 'SideJobs', type: :request do
     context 'as an authorized user' do
       it 'deletes a side job' do
         login_as(user)
-        expect {
+        expect do
           delete side_job_path(side_job), params: { id: side_job.id }
-        }.to change(user.side_jobs, :count).by(-1)
+        end.to change(user.side_jobs, :count).by(-1)
       end
     end
     context 'as an unauthorized user' do
       it 'does not delete tha side job' do
         login_as(other_user)
-        expect {
+        expect do
           delete side_job_path(side_job), params: { id: side_job.id }
-        }.to_not change(SideJob, :count)
+        end.to_not change(SideJob, :count)
       end
       it 'redirects to log in page' do
         login_as(other_user)
@@ -134,11 +134,10 @@ RSpec.describe 'SideJobs', type: :request do
         expect(response).to redirect_to new_user_session_path
       end
       it 'does not delete the side job' do
-        expect {
+        expect do
           delete side_job_path(side_job), params: { id: side_job.id }
-        }.to_not change(SideJob, :count)
+        end.to_not change(SideJob, :count)
       end
     end
-    
   end
 end

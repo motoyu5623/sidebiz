@@ -33,8 +33,8 @@ gem 'devise'
 gem 'font_awesome5_rails'
 gem 'image_processing'
 gem 'kaminari'
-gem 'ransack'
 gem 'rails-i18n'
+gem 'ransack'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

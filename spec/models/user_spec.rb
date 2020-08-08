@@ -11,18 +11,18 @@ RSpec.describe User, type: :model do
   it 'is invalid without username' do
     user.username = nil
     user.valid?
-    expect(user.errors[:username]).to include("を入力してください")
+    expect(user.errors[:username]).to include('を入力してください')
   end
 
   it 'is invalid without email' do
     user.email = nil
     user.valid?
-    expect(user.errors[:email]).to include("を入力してください")
+    expect(user.errors[:email]).to include('を入力してください')
   end
 
   it 'is invalid with a duplicate email address' do
     other_user.email = user.email
     other_user.valid?
-    expect(other_user.errors[:email]).to include("はすでに存在します")
+    expect(other_user.errors[:email]).to include('はすでに存在します')
   end
 end

@@ -12,18 +12,18 @@ RSpec.describe Comment, type: :model do
   it 'is invalid without content' do
     comment.content = nil
     comment.valid?
-    expect(comment.errors[:content]).to include("を入力してください")
+    expect(comment.errors[:content]).to include('を入力してください')
   end
 
   it 'is invalid without user' do
     comment.user = nil
     comment.valid?
-    expect(comment.errors[:user]).to include("を入力してください")
+    expect(comment.errors[:user]).to include('を入力してください')
   end
-  
+
   it 'is invalid without side_job' do
     comment.side_job = nil
     comment.valid?
-    expect(comment.errors[:side_job]).to include("を入力してください")
+    expect(comment.errors[:side_job]).to include('を入力してください')
   end
 end

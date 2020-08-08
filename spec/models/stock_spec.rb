@@ -12,12 +12,12 @@ RSpec.describe Stock, type: :model do
   it 'is invalid without user' do
     stock.user = nil
     stock.valid?
-    expect(stock.errors[:user]).to include("を入力してください")
+    expect(stock.errors[:user]).to include('を入力してください')
   end
 
   it 'is invalid without side_job' do
     stock.side_job = nil
     stock.valid?
-    expect(stock.errors[:side_job]).to include("を入力してください")
+    expect(stock.errors[:side_job]).to include('を入力してください')
   end
 end

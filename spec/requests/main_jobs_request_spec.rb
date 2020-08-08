@@ -26,15 +26,15 @@ RSpec.describe 'MainJobs', type: :request do
       it 'create a main job' do
         main_job_params = FactoryBot.attributes_for(:main_job, name: 'SIer')
         login_as(user)
-        expect {
+        expect do
           post main_jobs_path, params: { main_job: main_job_params }
-        }.to change(MainJob, :count).by(1)
+        end.to change(MainJob, :count).by(1)
       end
     end
     context 'as an unauthorized user' do
       it 'redirect to log in page' do
         main_job_params = FactoryBot.attributes_for(:main_job, name: 'SIer')
-        post main_jobs_path, params: {main_job: main_job_params}
+        post main_jobs_path, params: { main_job: main_job_params }
         expect(response).to redirect_to new_user_session_path
       end
     end
@@ -53,7 +53,7 @@ RSpec.describe 'MainJobs', type: :request do
       it 'update a main job' do
         main_job_params = FactoryBot.attributes_for(:main_job, name: 'コーダー')
         login_as(user)
-        patch main_job_path(main_job), params: { id: main_job.id, main_job: main_job_params}
+        patch main_job_path(main_job), params: { id: main_job.id, main_job: main_job_params }
         expect(main_job.reload.name).to eq 'コーダー'
       end
     end
@@ -62,26 +62,26 @@ RSpec.describe 'MainJobs', type: :request do
       it 'does not update tha main job' do
         main_job_params = FactoryBot.attributes_for(:main_job, name: 'コーダー')
         login_as(other_user)
-        patch main_job_path(main_job), params: { id: main_job.id, main_job: main_job_params}
+        patch main_job_path(main_job), params: { id: main_job.id, main_job: main_job_params }
         expect(main_job.reload.name).to eq 'WEBエンジニア'
       end
       it 'redirect to log in page' do
         main_job_params = FactoryBot.attributes_for(:main_job, name: 'TikToker')
         login_as(other_user)
-        patch main_job_path(main_job), params: { id: main_job.id, main_job: main_job_params}
+        patch main_job_path(main_job), params: { id: main_job.id, main_job: main_job_params }
         expect(response).to redirect_to user_path(other_user)
       end
     end
-    
+
     context 'as a guest' do
       it 'returns a 302 response' do
         main_job_params = FactoryBot.attributes_for(:main_job, name: 'コーダー')
-        patch main_job_path(main_job), params: { id: main_job.id, main_job: main_job_params}
+        patch main_job_path(main_job), params: { id: main_job.id, main_job: main_job_params }
         expect(response).to have_http_status '302'
       end
       it 'redirects to log in page' do
         main_job_params = FactoryBot.attributes_for(:main_job, name: 'コーダー')
-        patch main_job_path(main_job), params: { id: main_job.id, main_job: main_job_params}
+        patch main_job_path(main_job), params: { id: main_job.id, main_job: main_job_params }
         expect(response).to redirect_to new_user_session_path
       end
     end
@@ -91,18 +91,18 @@ RSpec.describe 'MainJobs', type: :request do
     context 'as an authorized user' do
       it 'deletes a main job' do
         login_as(user)
-        expect {
+        expect do
           delete main_job_path(main_job), params: { id: main_job.id }
-        }.to change(user.main_jobs, :count).by(-1)
+        end.to change(user.main_jobs, :count).by(-1)
       end
     end
 
     context 'as an unauthorized user' do
       it 'does not delete tha main job' do
         login_as(other_user)
-        expect {
+        expect do
           delete main_job_path(main_job), params: { id: main_job.id }
-        }.to_not change(MainJob, :count)
+        end.to_not change(MainJob, :count)
       end
       it 'redirects to log in page' do
         login_as(other_user)
@@ -121,9 +121,9 @@ RSpec.describe 'MainJobs', type: :request do
         expect(response).to redirect_to new_user_session_path
       end
       it 'does not delete the main job' do
-        expect {
+        expect do
           delete main_job_path(main_job), params: { id: main_job.id }
-        }.to_not change(MainJob, :count)
+        end.to_not change(MainJob, :count)
       end
     end
   end
