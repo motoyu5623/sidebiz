@@ -20,10 +20,10 @@ RSpec.describe Skill, type: :model do
     skill.valid?
     expect(skill.errors[:importance_for_side_job]).to include("を入力してください")
   end
+
   it 'is invalid without importance_for_main_job' do
     skill.importance_for_main_job = nil
     skill.valid?
     expect(skill.errors[:importance_for_main_job]).to include("を入力してください")
   end
-
 end
