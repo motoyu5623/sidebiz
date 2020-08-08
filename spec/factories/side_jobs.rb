@@ -4,6 +4,7 @@ FactoryBot.define do
     association :main_job
     name { 'YouTuber' }
     work_type { '会社勤務' }
+    company { ''}
     section { '' }
     industry { 'IT' }
     medium { '' }

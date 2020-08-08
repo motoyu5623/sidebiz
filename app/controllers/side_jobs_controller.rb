@@ -43,30 +43,46 @@ class SideJobsController < ApplicationController
 
   def edit
     @side_job = SideJob.find_by(id: params[:id])
-    return unless @side_job.skills.blank?
+    if correct_user?
+      return unless @side_job.skills.blank?
 
-    3.times do
-      @side_job.skills.build
+      3.times do
+        @side_job.skills.build
+      end
+    else
+      flash[:alert] = 'あなたの投稿ではありません'
+      redirect_to @side_job
     end
   end
 
   def update
     @side_job = SideJob.find_by(id: params[:id])
-    @side_job.update(job_params)
-    if @side_job.save
-      flash[:notice] = '編集に成功しました'
-      redirect_to side_job_path(@side_job)
+    if correct_user?
+      @side_job.update(job_params)
+      if @side_job.save
+        flash[:notice] = '編集に成功しました'
+        redirect_to side_job_path(@side_job)
+      else
+        flash.now[:alert] = '編集に失敗しました'
+        render :edit
+      end
     else
-      flash.now[:alert] = '編集に失敗しました'
-      render :edit
+      flash[:alert] = 'あなたの投稿ではありません'
+      redirect_to @side_job
     end
   end
 
   def destroy
     @side_job = SideJob.find_by(id: params[:id])
-    @side_job.destroy
-    flash[:notice] = '削除しました'
-    redirect_to user_path(current_user)
+    if correct_user?
+    # if @side_job.user == current_user
+      @side_job.destroy
+      flash[:notice] = '削除しました'
+      redirect_to user_path(current_user)
+    else
+      flash[:alert] = 'あなたの投稿ではありません'
+      redirect_to @side_job
+    end
   end
 
   def stocks
@@ -82,5 +98,10 @@ class SideJobsController < ApplicationController
                                      :description, :pulled_skill,
                                      :returned_skill, :main_job_id,
                                      :user_id, skills_attributes: %i[name side_job_id id importance_for_side_job importance_for_main_job])
+  end
+
+  def correct_user?
+    @user = @side_job.user
+    @user == current_user
   end
 end
