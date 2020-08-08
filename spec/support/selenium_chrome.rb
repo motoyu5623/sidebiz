@@ -15,3 +15,4 @@ Capybara.register_driver :selenium_chrome_headless do |app|
 end
 
 Capybara.javascript_driver = :selenium_chrome_headless
+Capybara.default_max_wait_time = 15
