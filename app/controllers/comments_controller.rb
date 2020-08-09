@@ -10,7 +10,6 @@ class CommentsController < ApplicationController
     else
       flash[:alert] = 'コメントできませんでした'
     end
-    redirect_back(fallback_location: root_path)
   end
 
   private

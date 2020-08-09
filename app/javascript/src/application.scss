@@ -714,18 +714,19 @@ footer {
     text-align: center;
     color: #006699;
   }
-
 }
-
 
 .comment-form {
   width: 100%;
   border-radius: 0.25rem;
   // height: 2rem;
   border: 1px solid #bdd4e2;
-
 }
 
+.comment-time-stamp {
+  color: #888888;
+  // font-size: 0.75rem;
+}
 
 // ユーザー編集
 

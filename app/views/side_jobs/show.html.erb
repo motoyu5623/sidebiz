@@ -22,7 +22,7 @@
 </div>
 
 <div class="container">
-  <div class="row">
+  <div class="row pb-4">
     <div class="col-sm-6 col-12">
       <div class="stock_comment_icon ml-2 black-link">
         <% if user_signed_in? %>
@@ -45,29 +45,23 @@
 </div>
 
 <div class="container" id="comments">
-  <div class="comment-area black-link">
-    <p class="mt-5">コメント一覧</p>
-    <% @comments.each do |comment| %>
-      <div>
-        <% unless comment.user.blank? %>
-      <hr>
-          <%= link_to "@#{comment.user.username}", user_path(comment.user), class:"mr-2" %>
+  <div class="comment-area black-link mt-4">
+    <div class="comment-form-area my-3">
+      <% if user_signed_in? %>
+        <%= form_with(model: [@side_job, @comment], remote: true, class:"row align-items-end") do |f| %>
+          <div class="col-md-8 col-12">
+              <%= f.text_area :content, class:"comment-form", required: true, row: 5 %>
+          </div>
+          <div class="col">
+              <%= f.submit "送信する", class:"btn btn-dark mb-2"  %>
+          </div>
         <% end %>
-          <%= comment.content %>
-      </div>
-    <% end %>
-
-    <br>
-    <% if user_signed_in? %>
-      <%= form_with(model: [@side_job, @comment], local: true, class:"row align-items-end") do |f| %>
-        <div class="col-md-8 col-12">
-            <%= f.text_area :content, class:"comment-form", row: 5 %>
-        </div>
-        <div class="col">
-            <%= f.submit "送信する", class:"btn btn-dark mb-2"  %>
-        </div>
       <% end %>
-    <% end %>
+    </div>
+    <p class="">コメント一覧</p>
+    <div id="comment-list">
+      <%= render @comments %>
+    </div>
   </div>
 </div>
 

@@ -14,7 +14,7 @@ class SideJobsController < ApplicationController
     @labels = @skills.map(&:first)
     @importance_for_side_job = @skills.map(&:second)
     @importance_for_main_job = @skills.map(&:third)
-    @comments = @side_job.comments
+    @comments = @side_job.comments.order(updated_at: :desc)
     @comment = @side_job.comments.build
   end
 
