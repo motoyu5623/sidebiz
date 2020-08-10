@@ -22,7 +22,7 @@ RSpec.describe 'Reaction', type: :system do
     end.to change(Stock, :count).by(-1)
   end
 
-  scenario 'two users add comment' do
+  scenario 'two users add comment', js: true do
     login_as(other_user)
     visit side_job_path(side_job)
     fill_in 'comment_content', with: '良い組み合わせですね'

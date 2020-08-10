@@ -16,7 +16,7 @@ RSpec.describe 'MainJobs', type: :system do
       expect(current_path).to eq user_path(user)
       expect(page).to have_content "#{user.username}のページ"
       expect(page).to have_content 'WEBエンジニア'
-      expect(page).to have_content '本業の追加登録'
+      expect(page).to have_content '本業の新規登録'
       expect(page).to have_content 'アカウント編集'
     end.to change(user.main_jobs, :count).by(1)
 
