@@ -75,6 +75,10 @@ body {
   }
 }
 
+#error_explanation {
+  color: red;
+  padding: 0 3rem 1rem 3rem;
+}
 .notice {
   background-color: #c9f892;
   margin: 0;
@@ -411,6 +415,9 @@ footer {
   height: 30px;
 }
   
+.if-working-individually {
+  display: none;
+}
 
 // Jobインデックスページ
 
@@ -439,7 +446,7 @@ footer {
 }
 
 .card {
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
   box-shadow: 5px 5px 5px 0 #003366;
 }
 
@@ -707,18 +714,19 @@ footer {
     text-align: center;
     color: #006699;
   }
-
 }
-
 
 .comment-form {
   width: 100%;
   border-radius: 0.25rem;
   // height: 2rem;
   border: 1px solid #bdd4e2;
-
 }
 
+.comment-time-stamp {
+  color: #888888;
+  // font-size: 0.75rem;
+}
 
 // ユーザー編集
 

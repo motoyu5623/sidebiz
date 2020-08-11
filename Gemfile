@@ -33,6 +33,7 @@ gem 'devise'
 gem 'font_awesome5_rails'
 gem 'image_processing'
 gem 'kaminari'
+gem 'rails-i18n'
 gem 'ransack'
 
 group :development, :test do

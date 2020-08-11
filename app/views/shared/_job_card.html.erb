@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-header px-2 py-1">
       <div class="row">
-        <div class="col-lg-6 col-12 job-transition">
+        <div class="col-lg-8 col-12 job-transition">
           <span class="job-name shortcut">
             <span class="tag main-tag">本業</span>
             <span><%=  job.main_job.name %></span>
@@ -17,7 +17,7 @@
             </span>
           </span>
         </div>
-        <div class="col-lg-6 col-12">
+        <div class="col-lg-4 col-12">
           <div class="stock_comment_icon d-flex justify-content-end mr-2 my-1">
             <% if user_signed_in? %>
               <%= render "shared/stock_button", job: job %>

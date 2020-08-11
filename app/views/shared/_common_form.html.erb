@@ -1,6 +1,5 @@
 <% if job.errors.any? %>
   <div class="container", id="error_explanation">
-    <h2><%= pluralize(job.errors.count, "error") %> prohibited this job from being saved:</h2>
 
     <ul>
       <% job.errors.full_messages.each do |message| %>
@@ -20,30 +19,33 @@
 
 <div class="field row">
   <span class="field-left text-md-right col-12 col-md-4"><%= f.label '労働形態' %></span>
-  <span class="field-right col-12 col-md-8 col-lg-7"><%= f.select(:work_type,  {'会社勤務' => '会社勤務','個人事業(法人)' => '個人事業(法人)', '個人事業(非法人)' => '個人事業(非法人)' }, {}, class:"input-form-select") %></span>
+  <span class="field-right col-12 col-md-8 col-lg-7"><%= f.select(:work_type,  {'会社勤務' => '会社勤務','個人事業(法人)' => '個人事業(法人)', '個人事業(非法人)' => '個人事業(非法人)' }, {}, {class:"input-form-select", id:"work-type-form"}) %></span>
 </div>
 
+<div class="output"></div>
+
+<div class="if-working-in-company">
 <hr>
-<span class="field-right col-12 col-md-8 col-lg-7">会社勤務の場合</span>
-<div class="field row">
-  <span class="field-left text-md-right col-12 col-md-4"><%= f.label "会社名" %></span>
-  <span class="field-right col-12 col-md-8 col-lg-7"><%= f.text_field :company, class:"input-form"  %></span>
-</div>
+  <div class="field row">
+    <span class="field-left text-md-right col-12 col-md-4"><%= f.label "会社名" %></span>
+    <span class="field-right col-12 col-md-8 col-lg-7"><%= f.text_field :company, class:"input-form"  %></span>
+  </div>
 
-<div class="field row">
-  <span class="field-left text-md-right col-12 col-md-4"><%= f.label "所属部署" %></span>
-  <span class="field-right col-12 col-md-8 col-lg-7"><%= f.text_field :section, class:"input-form"  %></span>
-</div>
+  <div class="field row">
+    <span class="field-left text-md-right col-12 col-md-4"><%= f.label "所属部署" %></span>
+    <span class="field-right col-12 col-md-8 col-lg-7"><%= f.text_field :section, class:"input-form"  %></span>
+  </div>
 <hr>
-
-<span class="field-right col-12 col-md-8 col-lg-7">個人の場合</span>
-
-<div class="field row">
-  <span class="field-left text-md-right col-12 col-md-4"><%= f.label "顧客獲得方法" %></span>
-  <span class="field-right col-12 col-md-8 col-lg-7"><%= f.text_field :medium, class:"input-form" %><br><small>SEO、SNS、紹介、セミナー、ダイレクトメール、等</small></span>
-  
 </div>
+
+<div class="if-working-individually">
 <hr>
+  <div class="field row">
+    <span class="field-left text-md-right col-12 col-md-4"><%= f.label "顧客獲得方法" %></span>
+    <span class="field-right col-12 col-md-8 col-lg-7"><%= f.text_field :medium, class:"input-form" %><br><small>SEO、SNS、紹介、セミナー、ダイレクトメール、等</small></span>
+  </div>
+<hr>
+</div>
 
 <div class="field row">
   <span class="field-left text-md-right col-12 col-md-4"><%= f.label "業種" %></span>
@@ -100,3 +102,20 @@
     <span class="field-right col-12 col-md-8 col-lg-7"><%= f.text_area :description, class:"input-form-large" %></span>
   <% end %>
 </div>
+
+
+<script type="text/javascript">
+  $(function() {
+    $('#work-type-form').change(function() {
+      var val = $(this).val();
+      if (val == "会社勤務") {
+        $('.if-working-individually').hide();
+        $('.if-working-in-company').show();
+      } else {
+        $('.if-working-in-company').hide();
+        $('.if-working-individually').show();
+      }
+    });
+  });
+</script>
+

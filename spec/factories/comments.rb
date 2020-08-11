@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :comment do
-    content { 'MyString' }
-    user { '' }
-    side_job { '' }
+    content { '初コメントしてみた' }
+    association :user
+    association :side_job
   end
 end

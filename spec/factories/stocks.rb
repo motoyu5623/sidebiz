@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :stock do
-    user { nil }
-    side_job { nil }
+    association :user
+    association :side_job
   end
 end

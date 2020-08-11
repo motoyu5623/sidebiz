@@ -14,7 +14,7 @@ class SideJobsController < ApplicationController
     @labels = @skills.map(&:first)
     @importance_for_side_job = @skills.map(&:second)
     @importance_for_main_job = @skills.map(&:third)
-    @comments = @side_job.comments
+    @comments = @side_job.comments.order(updated_at: :desc)
     @comment = @side_job.comments.build
   end
 
@@ -43,17 +43,22 @@ class SideJobsController < ApplicationController
 
   def edit
     @side_job = SideJob.find_by(id: params[:id])
-    return unless @side_job.skills.blank?
-
-    3.times do
-      @side_job.skills.build
+    if wrong_user?
+      flash[:alert] = 'あなたの投稿ではありません'
+      redirect_to @side_job
+    elsif @side_job.skills.blank?
+      3.times do
+        @side_job.skills.build
+      end
     end
   end
 
   def update
     @side_job = SideJob.find_by(id: params[:id])
-    @side_job.update(job_params)
-    if @side_job.save
+    if wrong_user?
+      flash[:alert] = 'あなたの投稿ではありません'
+      redirect_to @side_job
+    elsif @side_job.update(job_params)
       flash[:notice] = '編集に成功しました'
       redirect_to side_job_path(@side_job)
     else
@@ -64,8 +69,14 @@ class SideJobsController < ApplicationController
 
   def destroy
     @side_job = SideJob.find_by(id: params[:id])
-    @side_job.destroy
-    redirect_to user_path(current_user)
+    if wrong_user?
+      flash[:alert] = 'あなたの投稿ではありません'
+      redirect_to @side_job
+    else
+      @side_job.destroy
+      flash[:notice] = '削除しました'
+      redirect_to user_path(current_user)
+    end
   end
 
   def stocks
@@ -81,5 +92,10 @@ class SideJobsController < ApplicationController
                                      :description, :pulled_skill,
                                      :returned_skill, :main_job_id,
                                      :user_id, skills_attributes: %i[name side_job_id id importance_for_side_job importance_for_main_job])
+  end
+
+  def wrong_user?
+    @user = @side_job.user
+    @user != current_user
   end
 end

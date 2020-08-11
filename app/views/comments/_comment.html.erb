@@ -1,0 +1,12 @@
+<hr>
+<div>
+  <% unless comment.user.blank? %>
+    <%= link_to "@#{comment.user.username}", user_path(comment.user), class:"mr-2" %>
+  <% end %>
+    <%= comment.content %>
+  <div class="comment-time-stamp float-right">
+    <% unless comment.created_at.blank? %>
+      <%= l comment.created_at %>
+    <% end %>
+  </div>
+</div>

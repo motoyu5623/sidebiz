@@ -20,12 +20,18 @@ class MainJobsController < ApplicationController
 
   def edit
     @main_job = MainJob.find_by(id: params[:id])
+    if wrong_user?
+      flash[:alert] = '他人の本業の編集はできません'
+      redirect_to user_path(current_user)
+    end
   end
 
   def update
     @main_job = MainJob.find_by(id: params[:id])
-    @main_job.update(job_params)
-    if @main_job.update(job_params)
+    if wrong_user?
+      flash[:alert] = '他人の本業の編集はできません'
+      redirect_to user_path(current_user)
+    elsif @main_job.update(job_params)
       flash[:notice] = '編集に成功しました'
       redirect_to user_path(current_user)
     else
@@ -36,7 +42,10 @@ class MainJobsController < ApplicationController
 
   def destroy
     @main_job = MainJob.find_by(id: params[:id])
-    if @main_job.side_jobs.present?
+    if wrong_user?
+      flash[:alert] = '他人の本業の削除はできません'
+      redirect_to user_path(current_user)
+    elsif @main_job.side_jobs.present?
       flash.now[:alert] = '副業に参照されているため削除できませんでした'
       render :edit
     else
@@ -55,5 +64,10 @@ class MainJobsController < ApplicationController
                                      :ended_at, :worktime_week,
                                      :income_month, :description,
                                      :user_id)
+  end
+
+  def wrong_user?
+    @user = @main_job.user
+    @user != current_user
   end
 end
