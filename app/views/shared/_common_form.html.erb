@@ -90,19 +90,19 @@
 </div>
 
 <div class="field row">
-  <span class="field-left text-md-right col-12 col-md-4">
-    <%= f.label '主な業務内容' %>
-    <% if current_page?(new_side_job_path) %>
-      <span class="required-tag">必須</span>
-    <% end %>
-  </span>
   <% if current_page?(new_side_job_path) %>
+    <span class="field-left text-md-right col-12 col-md-4">
+      <%= f.label '主な業務内容' %>
+      <span class="required-tag">必須</span>
+    </span>
     <span class="field-right col-12 col-md-8 col-lg-7"><%= f.text_area :description, class:"input-form-large", required: true %></span>
   <% else %>
+    <span class="field-left text-md-right col-12 col-md-4">
+      <%= f.label '主な業務内容' %>
+    </span>
     <span class="field-right col-12 col-md-8 col-lg-7"><%= f.text_area :description, class:"input-form-large" %></span>
   <% end %>
 </div>
-
 
 <script type="text/javascript">
   $(function() {
