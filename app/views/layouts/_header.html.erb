@@ -16,11 +16,16 @@
             <li class="nav-item">
               <%= link_to 'レビュー投稿', new_side_job_path, class:"nav-link", id:"link-side-job-new" %>
             </li>
-            <li class="nav-item">
-              <%= link_to 'マイページ', user_path(current_user), class:"nav-link", id:"link-my-page" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"nav-link", id:"link-logout" %>
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                ユーザー
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%= link_to 'ユーザー一覧', users_path, class:"dropdown-item", id:"" %>
+                <div class="dropdown-divider"></div>
+                <%= link_to 'マイページ', user_path(current_user), class:"dropdown-item", id:"" %>
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"dropdown-item", id:"" %>
+              </div>
             </li>
           <% else %>
             <li class="nav-item">
