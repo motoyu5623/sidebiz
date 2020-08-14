@@ -20,7 +20,7 @@ class SideJobsController < ApplicationController
 
   def new
     if current_user.main_jobs.blank?
-      redirect_to new_main_job_path, notice: '最初に本業の情報を入力してください（本業名だけ入力し、他の項目は後で入力することも可能です）'
+      redirect_to new_main_job_path, notice: '最初に本業の情報を入力してください（本業名だけ入力し、他の項目は後で編集することも可能です）'
     else
       @side_job = current_user.side_jobs.build
       3.times do
@@ -30,7 +30,6 @@ class SideJobsController < ApplicationController
   end
 
   def create
-    # binding.pry
     @side_job = current_user.side_jobs.build(job_params)
     if @side_job.save
       flash[:notice] = '副業の登録に成功しました'

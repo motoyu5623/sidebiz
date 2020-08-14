@@ -64,7 +64,7 @@
         <div class="col-12 col-md-6 mt-3">
           <div class="job-list">
             <div class="main-name black-link">
-              <span class="tag main-tag position-top">本業</span>
+              <span class="tag main-tag">本業</span>
               <% if @main_jobs.present? %>
                 <ul class="job-list">
                   <% @main_jobs.each do |main_job| %>
@@ -80,7 +80,7 @@
               <% end %>
             </div>
             <div class="side-name black-link">
-              <span class="tag side-tag position-top ">副業</span>
+              <span class="tag side-tag">副業</span>
               <% if @side_jobs.present? %>
                 <ul class="job-list">
                   <% @side_jobs.each do |job| %>
@@ -98,8 +98,8 @@
         </div>
         <div class="col-12 col-md-6 mt-3">
           <div class="profile">
-            <div>略歴</div>
-            <%= @user.profile%>
+            <div>＜略歴＞</div>
+            <%= simple_format(@user.profile) %>
           </div>
         </div>
       </div>

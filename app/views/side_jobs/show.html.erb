@@ -5,15 +5,15 @@
       <span> のレビュー </span><%= link_to "@#{@user.username}", user_path(@user) %>
     </div>
   </div>
-  <div class="card">
-    <div class="card-body">
+  <div class="job-show-board">
+    <div class="">
       <%= render "job_summary_box", job:@side_job %>
       <%= render "job_synergy", job:@side_job %>
       <%= render "job_summary_box", job:@main_job %>
       <hr>
       <span>スキルチャート</span>
       <div class="row justify-content-center">
-        <div class="col-12 col-lg-5 job-right">
+        <div class="col-12 col-lg-5">
           <canvas id="myChart" width="400" height="400"></canvas>
         </div>
       </div>
