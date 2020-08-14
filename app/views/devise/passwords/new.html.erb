@@ -3,13 +3,13 @@
   </div>
   <div class="row justify-content-center">
     <div class="col-lg-8 col-md-10 ">
-      <div class="job-new-field">
-        <h2 class="area-title">パスワードの再設定</h2>
+      <div class="input-field">
+        <h2 class="field-title">パスワードの再設定</h2>
         <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
           <div class="field row">
-            <span class="field-left text-md-right col-12 col-md-4"><%= f.label :"メールアドレス" %></span>
-            <span class="field-right col-12 col-md-8 col-lg-7"><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input-form" %></span>
+            <span class="text-md-right col-12 col-md-4"><%= f.label :"メールアドレス" %></span>
+            <span class="col-12 col-md-8 col-lg-7"><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input-form" %></span>
           </div>
           <div class="actions">
             <div class="btn-submit">

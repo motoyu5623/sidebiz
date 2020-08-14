@@ -3,7 +3,7 @@
   <div class="page-title">
     <h2>本業情報の登録</h2>
   </div>
-  <%= form_with(model: @main_job, url: main_jobs_path, local:true, class:"job-new-field") do |f| %>
+  <%= form_with(model: @main_job, url: main_jobs_path, local:true, class:"input-field") do |f| %>
     <%= render "shared/common_form", {job:@main_job, f:f} %>
 
     <%= f.hidden_field :user_id, :value => current_user.id %>

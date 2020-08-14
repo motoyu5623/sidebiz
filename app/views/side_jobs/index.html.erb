@@ -5,19 +5,19 @@
   <div class="container search-box mb-4">
     <%= search_form_for @q do |f| %>
       <div class="row">
-        <div class="col-md-3 col-6 form-field">
+        <div class="col-md-3 col-6">
           <%= f.label :name_cont, "副業名", class: "label"   %><br>
           <%= f.search_field :name_cont, class: "input-form" %>
         </div>
-        <div class="col-md-3 col-6 form-field">
+        <div class="col-md-3 col-6">
           <%= f.label :main_job_name_cont, "本業名", class: "label"   %><br>
           <%= f.search_field :main_job_name_cont, class: "input-form" %>
         </div>
-        <div class="col-md-3 col-6 form-field">
+        <div class="col-md-3 col-6">
           <%= f.label :skills_name_cont, "スキル名", class: "label"  %><br>
           <%= f.search_field :skills_name_cont, class: "input-form" %>
         </div>
-        <div class="col-md-3 col-6 form-field">
+        <div class="col-md-3 col-6">
           <%= f.label :user_username_cont, "ユーザー名", class: "label"   %><br>
           <%= f.search_field :user_username_cont, class: "input-form" %>
         </div>

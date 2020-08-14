@@ -13,14 +13,14 @@ html {
 }
 
 body {
-  // height: 100%;
-  -moz-box-sizing:    border-box;
-  -webkit-box-sizing: border-box;
   box-sizing:         border-box;
   background-color: #feffff;
   padding-top: 62px;
   margin-bottom: 5rem;
-  // position: relative;
+}
+
+.card-img-size {
+  max-width: 100%;
 }
 
 .no-padding {
@@ -53,22 +53,25 @@ body {
   font-size: 0.75rem;
   padding: 0.125rem 0.75rem;
 }
+
 .pagination-box {
   margin-top: 40px;
 }
+
 .pagination {
-  // display: inline-block;
   margin: 10px, 0;
-  // text-align: center;
+
   li {
     a {
       border: none;
       color: #696969;
     }
+
     a:hover {
       border-radius: 0.25rem;
     }
   }
+
   .active>a {
     background: #93c9ff;
     border-radius: 0.25rem;
@@ -79,11 +82,13 @@ body {
   color: red;
   padding: 0 3rem 1rem 3rem;
 }
+
 .notice {
   background-color: #c9f892;
   margin: 0;
   padding: 0;
 }
+
 .alert {
   background-color: #f8f092;
   margin: 0;
@@ -93,6 +98,7 @@ body {
 .btn {
   min-width: 5rem;
 }
+
 .btn-dark {
   color: #eeffff;
 }
@@ -106,35 +112,72 @@ body {
   margin-bottom: 2rem;
 }
 
+.field-title {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.devise-link-area {
+  margin-top: 3rem;
+  text-align: center;
+
+  a {
+    color: #000000;
+  }
+  a:link {
+    color:#000000;
+  }
+  a:visited {
+    color:#000000;
+  }
+  a:hover {
+    color:#6699cc;
+    text-decoration:underline;
+  }
+  a:active {
+    color:#6699cc;
+  }
+}
+
 .flex-simple-description {
-  // border: 1px solid #ddd;
   border-radius: 0.5rem;
   background-color: #feffff;
   padding: 0.5rem;
   min-height: 9rem;
-
 }
+
 .simple-description {
-  // border: 1px solid #ddd;
   border-radius: 0.5rem;
   background-color: #feffff;
   min-height: 8rem;
   overflow: hidden;
   padding: 0.5rem;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
 }
+
+.shortcut {
+  white-space: nowrap; /* 横幅のMAXに達しても改行しない */
+  overflow: hidden; /* ハミ出した部分を隠す */
+  text-overflow: ellipsis; /* 「…」と省略 */
+  -webkit-text-overflow: ellipsis; /* Safari */
+}
+
+.shortcut-multi-line { 
+  overflow: hidden; /* ハミ出した部分を隠す */
+  text-overflow: ellipsis; /* 「…」と省略 */
+  -webkit-text-overflow: ellipsis; /* Safari */
+}
+
 
 // ヘッダー
 .navbar {
   box-shadow: 0 2px 4px 0 #003366;
-}
-
-.navbar-brand {
-  font-size: 1.5rem;
-  // font-weight: bold;
-  font-family: Georgia, 'Times New Roman', Times, serif;;
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;;
+  }
 }
 
 
@@ -143,7 +186,7 @@ footer {
   position: absolute;
   width: 100%;
   bottom: 0;
-  // margin-top: 5rem;
+
   .copy-right {
     text-align: center;
     margin: 0 auto;
@@ -153,12 +196,20 @@ footer {
 // トップページ
 .top-background-img-wrapper {
   overflow-x: hidden;
-    position: relative;
+  position: relative;
+  
+  .top-background-img {
+    background-position: center center;
+    max-width: 100%;
+    min-width: 1140px;
+  }
+
   .top-container {
     position: absolute;
     left: 50%;
     top: 8%;
     transform: translateX(-50%);
+
     .top-copy {
       color: #dddddd;
       font-size: 1.75rem;
@@ -184,35 +235,29 @@ footer {
 .link-signup {
   display: inline-block;
   margin-top: 1.5rem;
-}
-.btn-signup {
-  // padding: 0.5rem 10%;
-  font-size: 1.125rem;
-  // max-width: 10rem;
-}
-.top-background-img {
-  // background-size: cover;
-  background-position: center center;
-  max-width: 100%;
-  min-width: 1140px;
+
+  .btn-signup {
+    font-size: 1.125rem;
+  }
 }
 
 .area {
   text-align: center;
   padding: 3rem 0;
+
+  .area-title {
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    font-weight: bold;
+    text-align: center;
+  }
 }
 
-.area-title {
-  margin-top: 1rem;
-  margin-bottom: 3rem;
-  font-weight: bold;
-  text-align: center;
-}
 
 .benefit-area {
   background-color: #edf2f5;
+
   .benefit-box {
-    // display: inline-block;
     margin: 0.5rem;
     background-color: #fff;
     border-radius: 1rem;
@@ -221,6 +266,7 @@ footer {
     border: #6699cc 1px solid;
     color: $dark;
   }
+
   .benefit-description {
     background-color: #fff;
     border-radius: 0.5rem;
@@ -230,41 +276,34 @@ footer {
   }
 }
 
-
 .tutorial-area {
   background-color: #eeffff;
+
   .media {
     margin: 1rem 0;
     border: 1px solid #6699cc;
     background-color: #fff;
     border-radius: 0.5rem;
-  }
-  .use-step-icon-box {
-    border-right: 1px solid #6699cc;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    // position: relative;
-    // padding-right: 0.5rem;
-    // padding-top: 0.25rem;
-    // padding-bottom: 0.25rem;
-    // height: 100%;
-    .use-step-icon {
-      max-width: 100%;
-      // padding: 3%;
-      // position: absolute;
-      // top: 50%;
-      // left: 0;
-      // transform: translateY(-50%);
-    }
-  }
 
-  .use-step-row {
-    width: 100%;
-  }
-  .use-step {
-    text-align-last: left;
-    padding: 0.5rem 0;
+    .use-step-row {
+      width: 100%;
+
+      .use-step-icon-box {
+        border-right: 1px solid #6699cc;
+        padding: 0;
+        display: flex;
+        align-items: center;
+
+        .use-step-icon {
+          max-width: 100%;
+        }
+      }
+
+      .use-step {
+        text-align-last: left;
+        padding: 0.5rem 0;
+      }
+    }
   }
 }
 
@@ -282,71 +321,25 @@ footer {
     }
   }
 }
+
 .job-index-area {
   border-top: 1px solid #edf2f5;
 }
 
-.job-index-explanation {
-  // max-width: 670px;
-}
 
-
-// .account-form-box {
-
-//   border: 1px solid #000;
-//   margin: 3rem auto;
-//   padding: 2rem;
-//   width: 600px;
-//   max-width: 90%;
-//   text-align: center;
-// }
-.devise-link-area {
-  margin-top: 3rem;
-  text-align: center;
-  a {
-    color: #000000;
-  }
-  a:link {
-    color:#000000;
-  }
-  a:visited {
-    color:#000000;
-  }
-  a:hover {
-    color:#6699cc;
-    text-decoration:underline;
-  }
-  a:active {
-    color:#6699cc;
-  }
-
-}
-
-// レビュー投稿ページ
-.job-new-field {
+// 入力フォーム系
+.input-field {
   background-color: #edf2f5;
   padding: 2rem 0;
   margin: 0 auto;
   width: 100%;
   border-radius: 1rem;
 }
+
 .field {
   margin: 0 auto;
   width: 100%;
   margin-bottom: 1.5rem;
-}
-
-.field-left {
-  display: inline-block;
-  // width: 30%;
-  // text-align: right;
-  vertical-align: top;
-  // margin-right: 10px;
-}
-
-.field-right {
-  display: inline-block;
-  // width: 65%;
 }
 
 .input-form {
@@ -354,24 +347,23 @@ footer {
   border-radius: 0.25rem;
   height: 2rem;
   border: 1px solid #fff;
-
 }
+
 .input-form-select {
   border: none;
   height: 2rem;
 }
+
 .input-form-large {
   width: 100%;
   border-radius: 0.25rem;
   height: 4rem;
   border: 1px solid #fff;
 }
+
 .skill-input-table {
   background-color: #fff;
-  // border: #edf2f5;
   border: #fff;
-  // border: none;
-  border-radius: 0.5rem;
 
   th {
     font-weight: normal;
@@ -382,12 +374,11 @@ footer {
     padding: 0 1rem;
   }
 }
+
 .form-in-table {
   display: inline-block;
-  // background-color: #edf2f5;
   margin: 0.4rem auto;
   width: 100%;
-  // border: none;
   border-radius: 0.25rem;
   height: 2rem;
   border: 1px solid #bdd4e2;
@@ -397,50 +388,20 @@ footer {
   margin-top: 4rem;
   text-align: center;
 }
-
-.job-left{
-  width: 30%;
-}
-
-.job-center{
-  width: 30%;
-}
-
-.job-right{
-  width: 30%;
-}
-
-.description-400 {
-  border: 1px solid;
-  height: 30px;
-}
   
+// Job 登録ページ
 .if-working-individually {
   display: none;
 }
 
-// Jobインデックスページ
-
+// Job 一覧ページ
 .search-box {
   background-color: #a3cbdf;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   border-radius: 1rem;
 
-}
-
-.form-field {
-  display: inline-block;
-  // margin-right: 2rem;
-
-
-  .label {
-    margin-bottom: 0;
-  }
   .input-form {
-    width: 100%;
-    border-radius: 0.5rem;
-    border: none;
     height: 2.5rem;
   }
 }
@@ -448,69 +409,110 @@ footer {
 .card {
   margin-bottom: 4rem;
   box-shadow: 5px 5px 5px 0 #003366;
-}
 
-.card-header {
-  background-color: #006699;
-  color: #ffffff;
-  border: none;
-  padding: 5px 20px;
-  .name-holder-sm {
-    font-size: 1.5rem;
-  }
-  a {
+  .card-header {
+    background-color: #006699;
     color: #ffffff;
-  }
-  a:link {
+    border: none;
+    padding: 5px 20px;
+
+    .job-transition {
+      .job-name {
+        display: inline-block;
+        max-width: 47%;
+        padding: 0.25rem 0;
+        vertical-align: middle;
+      }
+      .arrow {
+        display: inline-block;
+        width: 6%;
+        text-align: center;
+        vertical-align: middle;
+      }
+    }
+    
+    .stock_comment_icon {
+      display: inline-block;
+    }
+
+    a {
+      color: #ffffff;
+    }
+    a:link {
+      color:#ffffff;
+      }
+    a:visited {
     color:#ffffff;
     }
-  a:visited {
-  color:#ffffff;
-  }
-  a:hover {
-  color:#99ffff;
-  text-decoration:underline;
-  }
-  a:active {
-  color:#6699cc;
+    a:hover {
+    color:#99ffff;
+    text-decoration:underline;
+    }
+    a:active {
+    color:#6699cc;
+    }
   }
 
 
-  .action_on_sidebiz {
-    // text-align: right;
-    // float: right;
+  .card-content {
+    background-color: #edf2f5;
+
+    .simple-description {
+      margin: 1rem;
+      height: 8.25rem;
+    }
+    .skill-tags-explanation {
+      text-align: center;
+      margin-bottom: 0.5rem;
+      span {
+        background-color: #feffff;
+        padding: 0.2rem 1rem;
+        border-radius: 1rem;
+        font-weight: bold;
+      }
+    }
+
+    .skill-tags-vertical {
+      padding: 0 2% 4% 2%;
+
+      .skill-tags-title {
+        border-bottom: 1px solid #aacddf;
+
+      }
+      .skill-tag-row {
+        text-align: center;
+        margin-bottom: 0.25rem;
+        .skill-tag {
+          display: inline-block;
+        }
+        .skill-main-tags {
+          width: 18%;
+        }
+        .skill-name {
+          width: 60%;
+        }
+        .skill-side-tags {
+          width: 18%;
+        }
+      }
+    }
   }
-}
-.stock_comment_icon {
-  display: inline-block;
-  // float: right;
-  
+
+  .card-footer {
+    .card-personal-info {
+      display: inline-block;
+    }
+
+  }
+
 }
 
-.card-personal-info {
-  display: inline-block;
-}
+
 .edit_or_delete {
-  // margin-right: 5%;
-  // margin-top: 0.5rem;
-  // margin-bottom: 0.25rem;
   display: inline-block;
-  // float: right;
-
 }
 
-.card-body {
-  background-color: #edf2f5;
-  padding: 2rem;
-}
-.card-content {
-  background-color: #edf2f5;
-
-  .simple-description {
-    margin: 1rem;
-    height: 8.25rem;
-  }
-}
+// Jobタグ
 .tag {
   border: 1px solid #edf2f5;
   border-radius: 1rem;
@@ -526,107 +528,10 @@ footer {
   color: #006699;
 }
 
-.card-img-size {
-  width: 100%;
-}
-.job-transition {
-  // display: inline-block;
-  // width: 100%;
-  // margin: 0.25rem auto;
-  // vertical-align: middle;
-  .job-name {
-    display: inline-block;
-    max-width: 47%;
-    padding: 0.25rem 0;
-      // padding: 0;
-      // width: 42%;
-      // text-align: center;
-    vertical-align: middle;
-  }
-  .arrow {
-    display: inline-block;
-    width: 6%;
-    text-align: center;
-    vertical-align: middle;
-
-    // display: inline-block;
-    // padding: 0;
-    // width: 6%;
-    // text-align: center;
-  }
-}
-
-.side-name {
-  display: inline-block;
-  // display: inline-block;
-  // padding: 0;
-  // width: 42%;
-  // text-align: center;
-}
-.link-to-job {
-  // display: inline-block;
-  width: 4%;
-}
-
-.shortcut {
-  white-space: nowrap; /* 横幅のMAXに達しても改行しない */
-  overflow: hidden; /* ハミ出した部分を隠す */
-  text-overflow: ellipsis; /* 「…」と省略 */
-  -webkit-text-overflow: ellipsis; /* Safari */
-}
-
-.shortcut-multi-line { 
-  overflow: hidden; /* ハミ出した部分を隠す */
-  text-overflow: ellipsis; /* 「…」と省略 */
-  -webkit-text-overflow: ellipsis; /* Safari */
-}
-
-.card-content-wrapper {
-  margin: 0;
-}
-.skill-tags-explanation {
-  text-align: center;
-  margin-bottom: 0.5rem;
-  span {
-    background-color: #feffff;
-    padding: 0.2rem 1rem;
-    border-radius: 1rem;
-    font-weight: bold;
-
-  }
-}
-
-.skill-tags-vertical {
-  // min-width: 100%;
-  // margin: 0.5rem auto;
-  padding: 0 2% 4% 2%;
-
-  .skill-tags-title {
-    border-bottom: 1px solid #aacddf;
-
-  }
-  .skill-tag-row {
-    text-align: center;
-    margin-bottom: 0.25rem;
-    .skill-tag {
-      display: inline-block;
-    }
-    .skill-main-tags {
-      width: 18%;
-    }
-    .skill-name {
-      width: 60%;
-    }
-    .skill-side-tags {
-      width: 18%;
-    }
-  }
-}
 
 
 
-
-// Job show ページ
+// Job 詳細ページ
 
 .job-show-title-box{
     font-size: 1.5rem;
@@ -652,120 +557,99 @@ footer {
   }
 }
 
-.job-summary-box {
-  // background-color: #6699cc;
-  padding: 2rem 1rem 0rem 1rem;
-  margin-bottom: 1rem;
-  border-radius: 0.5rem;
-  border: #006699 1px solid;
-  position: relative;
+.job-show-board {
+  margin-bottom: 2rem;
+  box-shadow: 5px 5px 5px 0 #003366;
+  background-color: #edf2f5;
+  padding: 2rem;
 
-  .job-summary-title {
-    position: absolute;
-    top: -1px;
-    left: -1px;
+  .section-title {
+    display: inline-block;
     border: #006699 1px solid;
-    border-radius: 0.4rem 0 0.4rem 0;
-    padding: 0.25rem 1rem;
-  }
-  .job-summary-title-main {
-    background-color: #edf2f5;
-    // color: #feffff;
-    // background-color: #aacddf;
+    border-radius: 1rem;
+    padding: 0 1rem 0 0.5rem;
+    margin-bottom: 0.5rem;
+    background-color: #aacddf;
     color: #006699;
   }
-  .job-summary-title-side {
-    background-color: #006699;
-    color: #feffff;
-  }
 
-
-  .job-profile-table {
-    background-color: #fff;
-    width: 90%;
-    border: #edf2f5;
+  .job-summary-box {
+    padding: 2rem 1rem 0rem 1rem;
+    margin-bottom: 1rem;
     border-radius: 0.5rem;
+    border: #006699 1px solid;
+    position: relative;
 
-    th {
-      width: 7rem;
+    .job-summary-title {
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      border: #006699 1px solid;
+      border-radius: 0.4rem 0 0.4rem 0;
+      padding: 0.25rem 1rem;
     }
-    td {
-      padding: 0.25rem 0.5rem;
+    .job-summary-title-main {
+      background-color: #edf2f5;
+      color: #006699;
+    }
+    .job-summary-title-side {
+      background-color: #006699;
+      color: #feffff;
+    }
+
+    .job-profile-table {
+      background-color: #fff;
+      width: 90%;
+      border: #edf2f5;
+      border-radius: 0.5rem;
+
+      th {
+        width: 7rem;
+      }
+      td {
+        padding: 0.25rem 0.5rem;
+      }
     }
   }
-}
 
-.section-title {
-  display: inline-block;
-  border: #006699 1px solid;
-  border-radius: 1rem;
-  padding: 0 1rem 0 0.5rem;
-  margin-bottom: 0.5rem;
-  background-color: #aacddf;
-  color: #006699;
-}
+  .job-synergy-box {
+    margin: 2rem auto;
 
-.job-synergy-box {
-  margin: 2rem auto;
-
-  .synergy-icon {
-    vertical-align: middle;
-    margin: 0 auto;
-    text-align: center;
-    color: #006699;
+    .synergy-icon {
+      vertical-align: middle;
+      margin: 0 auto;
+      text-align: center;
+      color: #006699;
+    }
   }
 }
 
 .comment-form {
   width: 100%;
   border-radius: 0.25rem;
-  // height: 2rem;
   border: 1px solid #bdd4e2;
 }
 
 .comment-time-stamp {
   color: #888888;
-  // font-size: 0.75rem;
 }
 
 // ユーザー編集
-
-
 .edit-field {
-  // border:1px solid #DBDBDB;
   background-color: #edf2f5;
-  // width: 100%;
   min-height: 580px;
-  // max-height: 730px;
-  // padding: 0;
   margin-top: 2rem;
   border-radius: 0.5rem;
   
   .tab-content {
     padding: 2rem 0;
     
-    .field {
-      margin-top:10px;
-      
-      .field-left{
-        display: inline-block;
-        vertical-align:top;
-        // width:25%;
-        // text-align:right;
-        // padding-right: 20px;
-      }
-      
-      .field-right {
-        display: inline-block;
-        // width:65%;
-      }
-    }
-    
     .personal-info {
       margin-top: 30px;
       margin-bottom: 10px;
     }
   }
+
   .nav-pills {
     .active{
       background-color: $dark;
@@ -779,7 +663,11 @@ footer {
   }
 }
 
-// ユーザーshow
+// ユーザー詳細ページ
+.side-name {
+  display: inline-block;
+}
+
 .stats-bar {
   margin: 0.25rem;
   border-bottom: 1px solid #bdd4e2;
@@ -788,16 +676,11 @@ footer {
 
   .stats-item {
     display: inline-block;
-    // margin-top: 0.5rem;
   }
 }
 
-.position-top {
-  vertical-align: top;
-}
 .job-list {
   display: inline-block;
   list-style: none;
   padding: 0;
 }
-
