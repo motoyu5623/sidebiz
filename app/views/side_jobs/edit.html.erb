@@ -3,7 +3,7 @@
   <div class="page-title">
     <h2>副業レビューの編集</h2>
   </div>
-  <%= form_with(model: @side_job, local:true, class:"job-new-field") do |f| %>
+  <%= form_with(model: @side_job, local:true, class:"input-field") do |f| %>
 
     <%= render "shared/common_form", {job:@side_job, f:f} %>
     <%= render "shared/common_form_for_side_job", {job:@side_job, f:f} %>
